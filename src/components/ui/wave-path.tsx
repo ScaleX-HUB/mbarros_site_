@@ -1,0 +1,97 @@
+import React, { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
+
+type WavePathProps = React.ComponentProps<"div">;
+
+export function WavePath({ className, ...props }: WavePathProps) {
+  const path = useRef<SVGPathElement>(null);
+
+  const progressRef = useRef(0);
+  const xRef = useRef(0.2);
+  const timeRef = useRef(Math.PI / 2);
+  const reqIdRef = useRef<number | null>(null);
+
+  const setPath = (progress: number) => {
+    const width = window.innerWidth * 0.7;
+    if (!path.current) return;
+
+    path.current.setAttributeNS(
+      null,
+      "d",
+      `M0 100 Q${width * xRef.current} ${100 + progress * 0.6}, ${width} 100`,
+    );
+  };
+
+  const lerp = (x: number, y: number, a: number) => x * (1 - a) + y * a;
+
+  const resetAnimation = () => {
+    timeRef.current = Math.PI / 2;
+    progressRef.current = 0;
+  };
+
+  const animateOut = () => {
+    const newProgress = progressRef.current * Math.sin(timeRef.current);
+    progressRef.current = lerp(progressRef.current, 0, 0.025);
+    timeRef.current += 0.2;
+
+    setPath(newProgress);
+
+    if (Math.abs(progressRef.current) > 0.75) {
+      reqIdRef.current = requestAnimationFrame(animateOut);
+    } else {
+      resetAnimation();
+      reqIdRef.current = null;
+    }
+  };
+
+  const manageMouseEnter = () => {
+    if (reqIdRef.current) {
+      cancelAnimationFrame(reqIdRef.current);
+      reqIdRef.current = null;
+      resetAnimation();
+    }
+  };
+
+  const manageMouseMove = (e: React.MouseEvent) => {
+    const { movementY, clientX } = e;
+
+    if (!path.current) return;
+
+    const pathBound = path.current.getBoundingClientRect();
+    xRef.current = (clientX - pathBound.left) / pathBound.width;
+    progressRef.current += movementY;
+
+    setPath(progressRef.current);
+  };
+
+  const manageMouseLeave = () => {
+    animateOut();
+  };
+
+  useEffect(() => {
+    setPath(progressRef.current);
+
+    const onResize = () => setPath(progressRef.current);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      if (reqIdRef.current) cancelAnimationFrame(reqIdRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className={cn("relative h-px w-[70vw]", className)} {...props}>
+      <div
+        onMouseEnter={manageMouseEnter}
+        onMouseMove={manageMouseMove}
+        onMouseLeave={manageMouseLeave}
+        className="relative -top-5 z-10 h-10 w-full hover:-top-[150px] hover:h-[300px]"
+      />
+      <svg className="absolute -top-[100px] h-[300px] w-full">
+        <path ref={path} className="fill-none stroke-current" strokeWidth={2} />
+      </svg>
+    </div>
+  );
+}
