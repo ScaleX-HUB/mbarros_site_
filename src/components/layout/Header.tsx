@@ -36,7 +36,7 @@ const Header = () => {
               <img
                 src={logoMbarros}
                 alt="MBarros Indústria"
-                className="h-10 md:h-12 w-auto"
+                className="h-12 md:h-14 lg:h-16 w-auto"
               />
             </Link>
           </div>

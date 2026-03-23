@@ -50,6 +50,12 @@ const HeroSection = () => {
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mr-auto space-y-6 text-left">
           {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full animate-fade-up delay-0 mb-2">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+              Indústria 100% Nordestina · Orgulhosamente Pernambucana
+            </span>
+          </div>
 
           {/* Headline */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-semibold leading-tight animate-fade-up delay-100">

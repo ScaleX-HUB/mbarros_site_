@@ -26,11 +26,11 @@ const StructureSection = () => {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold mt-4">
-            Tecnologia europeia e{" "}
+            Tecnologia Europeia e Chinesa —{" "}
             <span className="text-primary">qualidade padronizada.</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6">
-            Nossa nova fábrica em Pernambuco possui 10.000 m² equipados com o que há de mais moderno em maquinário alemão. Isso garante agilidade, repetibilidade e um acabamento que posiciona sua marca no segmento premium.
+            Nossa fábrica em Pernambuco possui 10.000 m² equipados com maquinário de última geração — Tecnologia Europeia e Chinesa. Isso garante agilidade, repetibilidade e um acabamento que posiciona sua marca no segmento premium.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto mt-12 text-center md:text-left">

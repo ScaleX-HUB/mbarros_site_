@@ -1,4 +1,4 @@
-import { Factory, Users, Package, MapPin } from "lucide-react";
+import { Factory, Users, Package, MapPin, Building2 } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
 
 const stats = [
@@ -15,14 +15,14 @@ const stats = [
     label: "Peças por Mês",
   },
   {
-    icon: Users,
-    value: 100,
-    suffix: "+",
-    label: "Colaboradores",
+    icon: Building2,
+    value: 22,
+    suffix: "",
+    label: "Cidades Atendidas",
   },
   {
     icon: MapPin,
-    value: 27,
+    value: 7,
     suffix: "",
     label: "Estados Atendidos",
   },
@@ -48,7 +48,7 @@ const AuthoritySection = () => {
           </h2>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
             Estrutura sólida para sustentar o crescimento da sua marca. 
-            Tecnologia europeia e processos padronizados.
+            Tecnologia Europeia e Chinesa, processos padronizados.
           </p>
         </div>
 

@@ -126,14 +126,14 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Phone size={18} className="text-primary flex-shrink-0" />
-                <a href="tel:8130239020" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  (81) 3023-9020
+                <a href="tel:5581985592995" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  (81) 98559-2995
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-primary flex-shrink-0" />
-                <a href="mailto:contato@mbarrosplanejados.com.br" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  contato@mbarrosplanejados.com.br
+                <a href="mailto:comercial@mbarrosind.com.br" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  comercial@mbarrosind.com.br
                 </a>
               </div>
 

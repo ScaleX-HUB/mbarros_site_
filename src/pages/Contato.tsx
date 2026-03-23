@@ -85,9 +85,7 @@ const Contato = () => {
                     <div>
                       <h3 className="font-medium text-foreground">Telefones</h3>
                       <p className="text-muted-foreground text-sm mt-1">
-                        <a href="tel:8130239020" className="hover:text-primary transition-colors">(81) 3023-9020</a><br />
-                        <a href="tel:5581971156396" className="hover:text-primary transition-colors">(81) 97115-6396</a><br />
-                        <a href="tel:5581997977980" className="hover:text-primary transition-colors">(81) 99797-7980</a>
+                        <a href="tel:5581985592995" className="hover:text-primary transition-colors">(81) 98559-2995</a>
                       </p>
                     </div>
                   </div>
@@ -99,8 +97,8 @@ const Contato = () => {
                     <div>
                       <h3 className="font-medium text-foreground">E-mail</h3>
                       <p className="text-muted-foreground text-sm mt-1">
-                        <a href="mailto:contato@mbarrosplanejados.com.br" className="hover:text-primary transition-colors">
-                          contato@mbarrosplanejados.com.br
+                        <a href="mailto:comercial@mbarrosind.com.br" className="hover:text-primary transition-colors">
+                          comercial@mbarrosind.com.br
                         </a>
                       </p>
                     </div>

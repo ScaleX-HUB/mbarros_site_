@@ -4,11 +4,31 @@ import { Timeline } from "@/components/ui/timeline";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
 
 const timeline = [
-  { year: "1988", event: "Fundação da empresa em Pernambuco" },
-  { year: "2000", event: "Expansão para o mercado nordestino" },
-  { year: "2010", event: "Modernização do parque fabril" },
-  { year: "2018", event: "Implantação do modelo White Label" },
-  { year: "2023", event: "Nova unidade fabril com 10.000m²" },
+  {
+    year: "2005",
+    event: "Primeiros passos: estrutura inicial da empresa em Pernambuco",
+    image: "/imagens_mbarros/historico/2005.jpeg",
+  },
+  {
+    year: "2008",
+    event: "Crescimento e consolidação no mercado nordestino",
+    image: "/imagens_mbarros/historico/2008.jpeg",
+  },
+  {
+    year: "2010",
+    event: "Modernização do parque fabril e aumento da capacidade produtiva",
+    image: "/imagens_mbarros/historico/2010.jpeg",
+  },
+  {
+    year: "2012",
+    event: "Ampliação da estrutura e expansão das operações",
+    image: "/imagens_mbarros/historico/2012.jpeg",
+  },
+  {
+    year: "2023",
+    event: "Nova unidade fabril com 10.000m² e painéis solares — referência industrial no Nordeste",
+    image: "/imagens_mbarros/historico/2023.png",
+  },
 ];
 
 const values = [
@@ -109,20 +129,15 @@ const Sobre = () => {
                     {t.event}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <img
-                      src={MBARROS_IMAGES[(Number(t.year) || 0) % MBARROS_IMAGES.length]?.src}
-                      alt={`Marco ${t.year}`}
-                      loading="lazy"
-                      className="rounded-lg object-cover h-24 md:h-44 lg:h-56 w-full"
-                    />
-                    <img
-                      src={MBARROS_IMAGES[((Number(t.year) || 0) + 1) % MBARROS_IMAGES.length]?.src}
-                      alt={`Estrutura ${t.year}`}
-                      loading="lazy"
-                      className="rounded-lg object-cover h-24 md:h-44 lg:h-56 w-full"
-                    />
-                  </div>
+                  <img
+                    src={t.image}
+                    alt={`Estrutura ${t.year}`}
+                    loading="lazy"
+                    className="rounded-lg object-cover h-48 md:h-64 lg:h-80 w-full"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                    }}
+                  />
                 </div>
               ),
             }))}
@@ -174,8 +189,8 @@ const Sobre = () => {
               <div className="stat-label">Anos</div>
             </div>
             <div className="card-industrial text-center">
-              <div className="stat-number text-3xl">27</div>
-              <div className="stat-label">Estados</div>
+              <div className="stat-number text-3xl">22</div>
+              <div className="stat-label">Cidades · 7 Estados</div>
             </div>
             <div className="card-industrial text-center">
               <div className="stat-number text-3xl">100%</div>
