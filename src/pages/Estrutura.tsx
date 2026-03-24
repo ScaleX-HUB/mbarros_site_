@@ -1,5 +1,9 @@
 import Layout from "@/components/layout/Layout";
 import { Cog, Scissors, Settings, Package, Truck, Shield } from "lucide-react";
+import sandingPortrait from "@/assets/process-sanding-grid-portrait.png";
+import finishingComponents from "@/assets/process-finishing-components.png";
+import panelPositioning from "@/assets/production-panel-positioning.png";
+import cncOperator from "@/assets/team-operator-cnc-monitor.png";
 
 const equipment = [
   {
@@ -152,6 +156,51 @@ const Estrutura = () => {
                 {index < process.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-px bg-border" />
                 )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Equipe em Ação */}
+      <section className="section-container">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-4">
+              <div className="flex items-center gap-4">
+                <span className="h-px w-8 bg-primary" />
+                <span className="text-primary text-xs uppercase tracking-[0.2em] font-medium">
+                  Nossa Equipe
+                </span>
+                <span className="h-px w-8 bg-primary" />
+              </div>
+            </div>
+            <h2 className="section-title">
+              Processo <span className="text-gradient">em ação</span>
+            </h2>
+            <p className="section-subtitle mx-auto mt-4">
+              Cada etapa executada por profissionais especializados com EPIs e rigor técnico.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              { src: sandingPortrait, alt: "Trabalhador realizando acabamento em perfis", caption: "Acabamento de Precisão" },
+              { src: finishingComponents, alt: "Acabamento em série de componentes", caption: "Produção Seriada" },
+              { src: panelPositioning, alt: "Posicionamento de painel MDF na máquina", caption: "Linha de Produção" },
+              { src: cncOperator, alt: "Operador acompanhando painel CNC", caption: "Operação CNC" },
+            ].map((photo) => (
+              <div key={photo.caption} className="relative rounded-sm overflow-hidden group h-64 lg:h-80">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                <span className="absolute bottom-3 left-3 right-3 text-white text-xs font-medium tracking-wide">
+                  {photo.caption}
+                </span>
               </div>
             ))}
           </div>
