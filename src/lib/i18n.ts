@@ -1,4 +1,4 @@
-import i18n from "i18next";
+ï»¿import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
@@ -18,26 +18,26 @@ const resources = {
         idioma: "Idioma"
       },
       hero: {
-        badge: "Indústria 100% Nordestina · Orgulhosamente Pernambucana",
+        badge: "IndÃºstria 100% Nordestina Â· Orgulhosamente Pernambucana",
         title1: "Estrutura industrial para",
         title2: "marcas que querem crescer",
-        subtitle: "Seja parceiro de uma indústria inteligente. Focamos na produção para que você foque nas vendas.",
+        subtitle: "Seja parceiro de uma indÃºstria inteligente. Focamos na produÃ§Ã£o para que vocÃª foque nas vendas.",
         ctaParceiro: "Seja um Parceiro",
         ctaContato: "Fale com nosso time"
       },
       authority: {
-        badge: "NOSSA HISTÓRIA",
+        badge: "NOSSA HISTÃ“RIA",
         title1: "Escala industrial com",
         title2: "controle de qualidade",
-        desc1: "Estrutura sólida para sustentar o crescimento da sua marca, com destaque para a presença comercial em",
+        desc1: "Estrutura sÃ³lida para sustentar o crescimento da sua marca, com destaque para a presenÃ§a comercial em",
         highlight: "22 cidades e 7 estados",
         desc2: ". Tecnologia Europeia e Chinesa, processos padronizados.",
         capilaridade: "Capilaridade Comercial",
-        presenca: "Presença em 22 cidades e 7 estados",
-        presencaDesc: "Operação estruturada para atender lojistas com proximidade regional e capacidade industrial consistente.",
+        presenca: "PresenÃ§a em 22 cidades e 7 estados",
+        presencaDesc: "OperaÃ§Ã£o estruturada para atender lojistas com proximidade regional e capacidade industrial consistente.",
         statParque: "Parque Fabril",
-        statPecas: "Peças por Mês",
-        statCidades: "Cidades com Presença",
+        statPecas: "PeÃ§as por MÃªs",
+        statCidades: "Cidades com PresenÃ§a",
         statEstados: "Estados Ativos"
       },
       partnership: {
@@ -45,19 +45,19 @@ const resources = {
         title1: "O modelo",
         title2: "White Label",
         desc: "Trabalhamos nos bastidores para que a sua marca brilhe de frente. Com o modelo de parceria industrial da MBARROS, sua loja vende projetos assinados com o seu nome, fabricados com tecnologia Europeia e Chinesa.",
-        step1Title: "Você Projeta",
+        step1Title: "VocÃª Projeta",
         step1Desc: "Sua equipe desenvolve o design e valida com o cliente usando o software Promob.",
-        step2Title: "Nós Validamos",
-        step2Desc: "O projeto passa por nosso time de engenharia para revisão e otimização produtiva.",
-        step3Title: "Nós Produzimos",
-        step3Desc: "A fábrica assume a produção utilizando maquinário de ponta e matéria-prima premium.",
+        step2Title: "NÃ³s Validamos",
+        step2Desc: "O projeto passa por nosso time de engenharia para revisÃ£o e otimizaÃ§Ã£o produtiva.",
+        step3Title: "NÃ³s Produzimos",
+        step3Desc: "A fÃ¡brica assume a produÃ§Ã£o utilizando maquinÃ¡rio de ponta e matÃ©ria-prima premium.",
         step4Title: "Seu Cliente Recebe",
-        step4Desc: "Entregamos o projeto finalizado com precisão, agilidade e pronto para montagem."
+        step4Desc: "Entregamos o projeto finalizado com precisÃ£o, agilidade e pronto para montagem."
       },
       footer: {
-        sobre: "Sobre nós",
-        sobreText: "Indústria de móveis planejados alto padrão focada no modelo White Label para lojistas.",
-        links: "Links Rápidos",
+        sobre: "Sobre nÃ³s",
+        sobreText: "IndÃºstria de mÃ³veis planejados alto padrÃ£o focada no modelo White Label para lojistas.",
+        links: "Links RÃ¡pidos",
         contato: "Contato",
         direitos: "Todos os direitos reservados"
       }
@@ -78,7 +78,7 @@ const resources = {
         idioma: "Language"
       },
       hero: {
-        badge: "100% Northeastern Industry · Proudly from Pernambuco",
+        badge: "100% Northeastern Industry Â· Proudly from Pernambuco",
         title1: "Industrial structure for",
         title2: "brands that want to grow",
         subtitle: "Partner with a smart industry. We focus on production so you can focus on sales.",
@@ -138,10 +138,10 @@ const resources = {
         idioma: "Idioma"
       },
       hero: {
-        badge: "Industria 100% Nordestina · Orgullosamente de Pernambuco",
+        badge: "Industria 100% Nordestina Â· Orgullosamente de Pernambuco",
         title1: "Estructura industrial para",
         title2: "marcas que quieren crecer",
-        subtitle: "Asóciese con una industria inteligente. Nos centramos en la producción para que usted se centre en las ventas.",
+        subtitle: "AsÃ³ciese con una industria inteligente. Nos centramos en la producciÃ³n para que usted se centre en las ventas.",
         ctaParceiro: "Sea un Socio",
         ctaContato: "Hable con nuestro equipo"
       },
@@ -149,35 +149,35 @@ const resources = {
         badge: "NUESTRA HISTORIA",
         title1: "Escala industrial con",
         title2: "control de calidad",
-        desc1: "Estructura sólida para apoyar el crecimiento de su marca, destacando nuestra presencia comercial en",
+        desc1: "Estructura sÃ³lida para apoyar el crecimiento de su marca, destacando nuestra presencia comercial en",
         highlight: "22 ciudades y 7 estados",
-        desc2: ". Tecnología europea y china, procesos estandarizados.",
+        desc2: ". TecnologÃ­a europea y china, procesos estandarizados.",
         capilaridade: "Capilaridad Comercial",
         presenca: "Presencia en 22 ciudades y 7 estados",
-        presencaDesc: "Operación estructurada para atender a minoristas con proximidad regional y capacidad industrial consistente.",
-        statParque: "Planta de Fabricación",
+        presencaDesc: "OperaciÃ³n estructurada para atender a minoristas con proximidad regional y capacidad industrial consistente.",
+        statParque: "Planta de FabricaciÃ³n",
         statPecas: "Piezas por Mes",
         statCidades: "Ciudades con Presencia",
         statEstados: "Estados Activos"
       },
       partnership: {
-        badge: "La Asociación",
+        badge: "La AsociaciÃ³n",
         title1: "El modelo",
         title2: "White Label",
-        desc: "Trabajamos entre bastidores para que su marca brille. Con el modelo de asociación industrial de MBARROS, su tienda vende proyectos firmados con su nombre, fabricados con tecnología europea y china.",
-        step1Title: "Usted Diseña",
-        step1Desc: "Su equipo desarrolla el diseño y lo valida con el cliente usando el software Promob.",
+        desc: "Trabajamos entre bastidores para que su marca brille. Con el modelo de asociaciÃ³n industrial de MBARROS, su tienda vende proyectos firmados con su nombre, fabricados con tecnologÃ­a europea y china.",
+        step1Title: "Usted DiseÃ±a",
+        step1Desc: "Su equipo desarrolla el diseÃ±o y lo valida con el cliente usando el software Promob.",
         step2Title: "Nosotros Validamos",
-        step2Desc: "El proyecto pasa por nuestro equipo de ingeniería para su revisión y optimización de producción.",
+        step2Desc: "El proyecto pasa por nuestro equipo de ingenierÃ­a para su revisiÃ³n y optimizaciÃ³n de producciÃ³n.",
         step3Title: "Nosotros Producimos",
-        step3Desc: "La fábrica asume la producción utilizando maquinaria de última generación y materias primas premium.",
+        step3Desc: "La fÃ¡brica asume la producciÃ³n utilizando maquinaria de Ãºltima generaciÃ³n y materias primas premium.",
         step4Title: "Su Cliente Recibe",
-        step4Desc: "Entregamos el proyecto terminado con precisión, agilidad y listo para su montaje."
+        step4Desc: "Entregamos el proyecto terminado con precisiÃ³n, agilidad y listo para su montaje."
       },
       footer: {
         sobre: "Sobre nosotros",
         sobreText: "Industria de muebles a medida de alta gama enfocada en el modelo White Label para minoristas.",
-        links: "Enlaces Rápidos",
+        links: "Enlaces RÃ¡pidos",
         contato: "Contacto",
         direitos: "Todos los derechos reservados"
       }
@@ -197,3 +197,4 @@ i18n
   });
 
 export default i18n;
+
