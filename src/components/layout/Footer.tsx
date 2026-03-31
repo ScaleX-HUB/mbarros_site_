@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, Instagram, Facebook, LayoutDashboard } from "lucide-react";
-import Logo from "./Logo";
+import logoMbarros from "@/assets/logo-mbarros.png";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Brand & About */}
           <div className="space-y-6">
             <Link to="/" className="inline-block transition-opacity hover:opacity-80">
-              <Logo />
+              <img src={logoMbarros} alt="MBarros" className="h-10 w-auto object-contain dark:brightness-0 dark:invert transition-all duration-300" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
               {t("footer.sobreText")}
@@ -75,7 +75,7 @@ const Footer = () => {
               <li className="flex items-start gap-3.5 text-muted-foreground">
                 <MapPin size={18} className="mt-0.5 text-primary/70" />
                 <span className="text-sm leading-relaxed">
-                  Rua da Indústria, 123<br />
+                  Rua da Indï¿½stria, 123<br />
                   Distrito Industrial<br />
                   Pernambuco, PE
                 </span>
@@ -87,7 +87,7 @@ const Footer = () => {
           <div>
             <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide">Newsletter</h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Receba novidades e tendências do mercado moveleiro.
+              Receba novidades e tendï¿½ncias do mercado moveleiro.
             </p>
             <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
               <input
@@ -112,7 +112,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link to="/cookies" className="hover:text-primary transition-colors hover:underline underline-offset-4">
-              Políticas de Cookies
+              Polï¿½ticas de Cookies
             </Link>
             <a href="#" className="hover:text-primary transition-colors hover:underline underline-offset-4">
               Termos de Uso
