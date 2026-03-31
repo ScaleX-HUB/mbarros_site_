@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, Variants } from "framer-motion";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
 import { useTranslation } from "react-i18next";
 
 const DEFAULT_HERO_DURATION_MS = 6500;
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -19,7 +19,7 @@ const staggerContainer = {
   },
 };
 
-const fadeUpItem = {
+const fadeUpItem: Variants = {
   hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
   show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.2, ease: "easeOut" } },
 };
