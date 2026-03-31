@@ -1,5 +1,6 @@
 import { Factory, Users, Package, MapPin, Building2 } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
+import { BrazilMap } from "@/components/ui/brazil-map";
 
 const stats = [
   {
@@ -51,14 +52,19 @@ const AuthoritySection = () => {
           </p>
         </div>
 
-        <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 px-6 py-5 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Capilaridade Comercial</p>
-          <p className="mt-2 text-2xl font-display font-semibold text-foreground md:text-3xl">
-            Presença em 22 cidades e 7 estados
-          </p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Operação estruturada para atender lojistas com proximidade regional e capacidade industrial consistente.
-          </p>
+        <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 flex flex-col lg:flex-row items-center justify-between gap-8 h-auto overflow-hidden relative">
+          <div className="text-left max-w-lg z-10 flex-shrink-0">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Capilaridade Comercial</p>
+            <p className="mt-2 text-2xl font-display font-semibold text-foreground md:text-3xl">
+              Presença em 22 cidades e 7 estados
+            </p>
+            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+              Operação estruturada para atender lojistas com proximidade regional e capacidade industrial consistente.
+            </p>
+          </div>
+          <div className="flex-1 w-full max-w-[400px] flex items-center justify-center -my-16 pointer-events-none opacity-90">
+            <BrazilMap />
+          </div>
         </div>
 
         {/* Stats Grid */}
