@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
@@ -11,11 +12,31 @@ import Projetos from "./pages/Projetos";
 import Contato from "./pages/Contato";
 import SejaParceiro from "./pages/SejaParceiro";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import TrabalheConosco from "./pages/TrabalheConosco";
 import NotFound from "./pages/NotFound";
 import Cookies from "./pages/Cookies";
+import Busca from "./pages/Busca";
 
 const queryClient = new QueryClient();
+
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname, location.search, location.hash]);
+
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -24,6 +45,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
@@ -33,6 +55,8 @@ const App = () => (
             <Route path="/contato" element={<Contato />} />
             <Route path="/seja-parceiro" element={<SejaParceiro />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/busca" element={<Busca />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/trabalhe-conosco" element={<TrabalheConosco />} />
             <Route path="/representantes" element={<Navigate to="/seja-parceiro" replace />} />

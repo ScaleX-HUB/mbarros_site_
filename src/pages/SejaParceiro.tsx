@@ -52,31 +52,33 @@ const SejaParceiro = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-container bg-card">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-primary text-sm uppercase tracking-widest font-medium">
+      <section className="bg-card/60 border-b border-border/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+          <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
             Seja um Parceiro
-          </span>
-          <h1 className="section-title mt-4">
-            Cresça com <span className="text-gradient">estrutura industrial</span>
+          </p>
+          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
+            Cresça com estrutura industrial
           </h1>
-          <p className="section-subtitle mx-auto mt-4">
-            Preencha o formulário abaixo e nossa equipe comercial 
-            entrará em contato para apresentar o modelo de parceria.
+          <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-2xl">
+            Preencha o formulário para avaliarmos o perfil da sua loja e apresentar o modelo de parceria MBARROS.
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="section-container">
+      <section className="section-container pt-8 md:pt-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Sidebar */}
             <div className="lg:col-span-1 space-y-8">
-              <div>
-                <h2 className="text-xl font-display font-semibold text-foreground mb-4">
+              <div className="card-industrial">
+                <h2 className="text-xl font-display font-semibold text-foreground mb-2">
                   Requisitos para parceria
                 </h2>
+                <p className="text-sm text-muted-foreground mb-5">
+                  Estes critérios ajudam a garantir uma operação comercial e produtiva mais eficiente.
+                </p>
                 <ul className="space-y-3">
                   {requirements.map((req) => (
                     <li key={req} className="flex items-center gap-3">
@@ -92,7 +94,7 @@ const SejaParceiro = () => {
                   Tem dúvidas?
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  Conheça mais sobre o modelo White Label antes de se cadastrar.
+                  Veja como funciona o modelo White Label antes de concluir o cadastro.
                 </p>
                 <Button variant="outline" size="sm" asChild>
                   <Link to="/white-label">
@@ -106,9 +108,12 @@ const SejaParceiro = () => {
             {/* Form */}
             <div className="lg:col-span-2">
               <div className="card-industrial">
-                <h2 className="text-2xl font-display font-semibold text-foreground mb-6">
+                <h2 className="text-xl font-display font-semibold text-foreground mb-2">
                   Formulário de Interesse
                 </h2>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Quanto mais detalhes você informar, melhor será nosso direcionamento comercial.
+                </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">

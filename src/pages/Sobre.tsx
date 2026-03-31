@@ -62,7 +62,7 @@ const videoStats = [
 
 const Sobre = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const handleVideoClick = () => {
     if (!videoRef.current) return;
@@ -132,14 +132,24 @@ const Sobre = () => {
               </div>
             </div>
 
-            <div className="card-industrial">
-              <h2 className="text-2xl font-display font-semibold text-foreground mb-4">
-                Marcos
-              </h2>
-              <p className="text-muted-foreground text-sm">
-                Uma visão rápida da nossa evolução e dos principais investimentos em estrutura e qualidade.
-              </p>
+            {/* Founders image */}
+            <div className="relative group rounded-sm overflow-hidden border border-border bg-black shadow-xl">
+              {/* Glow */}
+              <div className="absolute -inset-1 bg-primary/20 rounded-sm blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <img
+                src="/imagens_mbarros/donos_fundadores_fabrica.jpg"
+                alt="Fundadores da MBarros"
+                className="w-full aspect-[4/3] md:aspect-video object-cover object-[50%_28%] md:object-[50%_22%]"
+                loading="lazy"
+              />
+              {/* Bottom caption */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
+                <p className="text-white text-xs font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Fundadores — visão e propósito
+                </p>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -187,8 +197,16 @@ const Sobre = () => {
                 ref={videoRef}
                 src="/videos/IMG_8483.mp4"
                 preload="metadata"
+                autoPlay
+                muted
+                loop
                 playsInline
                 className="w-full aspect-video object-cover"
+                onCanPlay={() => {
+                  videoRef.current?.play().catch(() => {
+                    setIsPlaying(false);
+                  });
+                }}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
@@ -331,7 +349,7 @@ const Sobre = () => {
               </div>
               <div className="card-industrial text-center">
                 <div className="stat-number text-3xl">22</div>
-                <div className="stat-label">Cidades · 7 Estados</div>
+                <div className="stat-label">Presença em 22 cidades · 7 estados</div>
               </div>
               <div className="card-industrial text-center">
                 <div className="stat-number text-3xl">100%</div>

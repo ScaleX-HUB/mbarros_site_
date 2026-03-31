@@ -2,114 +2,45 @@ import { useEffect, useMemo, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { cn } from "@/lib/utils";
 import { CardStack3D } from "@/components/ui/3d-flip-card";
-import { PROJECT_CATEGORY_IMAGES } from "@/lib/project-images";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const categories = [
-  { id: "todos", label: "Todos" },
-  { id: "residenciais", label: "Residenciais" },
-  { id: "corporativos", label: "Corporativos" },
-  { id: "especiais", label: "Especiais" },
-];
-
-// Placeholder projects - substituir por dados reais
-const projects = [
-  {
-    id: 1,
-    title: "Cozinha Moderna",
-    category: "residenciais",
-    image:
-      "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=2400&q=80",
-    description: "Cozinha planejada com acabamento em laca e detalhes em alumínio.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.residenciais,
-  },
-  {
-    id: 2,
-    title: "Escritório Executivo",
-    category: "corporativos",
-    image:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=80",
-    description: "Ambiente corporativo com móveis funcionais e design contemporâneo.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.corporativos,
-  },
-  {
-    id: 3,
-    title: "Closet Premium",
-    category: "residenciais",
-    image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=2400&q=80",
-    description: "Closet sob medida com iluminação integrada e organização inteligente.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.residenciais,
-  },
-  {
-    id: 4,
-    title: "Recepção Corporativa",
-    category: "corporativos",
-    image:
-      "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=2400&q=80",
-    description: "Balcão de recepção com design marcante e acabamento premium.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.corporativos,
-  },
-  {
-    id: 5,
-    title: "Quarto de Casal",
-    category: "residenciais",
-    image:
-      "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=2400&q=80",
-    description: "Dormitório completo com cabeceira estofada e armários planejados.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.residenciais,
-  },
-  {
-    id: 6,
-    title: "Loja de Varejo",
-    category: "especiais",
-    image:
-      "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=2400&q=80",
-    description: "Projeto comercial personalizado para exposição de produtos.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.especiais,
-  },
-  {
-    id: 7,
-    title: "Home Office",
-    category: "residenciais",
-    image:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=80",
-    description: "Espaço de trabalho residencial com design ergonômico.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.residenciais,
-  },
-  {
-    id: 8,
-    title: "Sala de Reuniões",
-    category: "corporativos",
-    image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2400&q=80",
-    description: "Mobiliário para sala de reuniões com recursos audiovisuais.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.corporativos,
-  },
-  {
-    id: 9,
-    title: "Espaço Gourmet",
-    category: "especiais",
-    image:
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=80",
-    description: "Área gourmet completa com churrasqueira e bancadas.",
-    relatedImages: PROJECT_CATEGORY_IMAGES.especiais,
-  },
-];
+import { useSearchParams } from "react-router-dom";
+import { normalizeSearchQuery } from "@/lib/search";
+import { projectCategories as categories, projects } from "@/lib/project-data";
 
 const Projetos = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeCategory, setActiveCategory] = useState("todos");
   const isMobile = useIsMobile();
   const [isStackOpen, setIsStackOpen] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(null);
   const [frontIndex, setFrontIndex] = useState<number>(0);
+  const searchTerm = searchParams.get("s") ?? "";
 
-  const filteredProjects = activeCategory === "todos"
-    ? projects
-    : projects.filter((p) => p.category === activeCategory);
+  const filteredProjects = useMemo(() => {
+    const normalizedSearchTerm = normalizeSearchQuery(searchTerm);
+
+    return projects.filter((project) => {
+      const matchesCategory = activeCategory === "todos" || project.category === activeCategory;
+
+      if (!matchesCategory) {
+        return false;
+      }
+
+      if (!normalizedSearchTerm) {
+        return true;
+      }
+
+      const categoryLabel = categories.find((category) => category.id === project.category)?.label ?? "";
+      const searchableContent = normalizeSearchQuery(
+        `${project.title} ${project.description} ${categoryLabel}`
+      );
+
+      return searchableContent.includes(normalizedSearchTerm);
+    });
+  }, [activeCategory, searchTerm]);
 
   const selectedProject = selectedProjectId
     ? projects.find((p) => p.id === selectedProjectId)
@@ -125,6 +56,25 @@ const Projetos = () => {
     setFrontIndex(0);
   }, [isStackOpen, selectedProjectId]);
 
+  useEffect(() => {
+    const requestedCategory = searchParams.get("categoria");
+    const categoryExists = categories.some((category) => category.id === requestedCategory);
+
+    setActiveCategory(categoryExists && requestedCategory ? requestedCategory : "todos");
+  }, [searchParams]);
+
+  const handleCategoryChange = (categoryId: string) => {
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (categoryId === "todos") {
+      nextParams.delete("categoria");
+    } else {
+      nextParams.set("categoria", categoryId);
+    }
+
+    setSearchParams(nextParams);
+  };
+
   const goPrev = () => {
     if (!selectedImagesCount) return;
     setFrontIndex((prev) => (prev - 1 + selectedImagesCount) % selectedImagesCount);
@@ -138,29 +88,35 @@ const Projetos = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-container bg-card">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-primary text-sm uppercase tracking-widest font-medium">
+      <section className="bg-card/60 border-b border-border/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+          <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
             Portfólio
-          </span>
-          <h1 className="section-title mt-4">
-            Projetos que <span className="text-gradient">transformam espaços</span>
+          </p>
+          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
+            Projetos que transformam espaços
           </h1>
-          <p className="section-subtitle mx-auto mt-4">
-            Conheça alguns dos ambientes produzidos pela MBarros. 
-            Design, funcionalidade e acabamento de alto padrão.
+          <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-2xl">
+            Conheça alguns dos ambientes produzidos pela MBarros com design, funcionalidade e acabamento de alto padrão.
           </p>
         </div>
       </section>
 
       {/* Filter */}
-      <section className="py-8 border-b border-border">
+      <section className="py-6 border-b border-border">
         <div className="container mx-auto px-4">
+          {searchTerm && (
+            <div className="mb-6 text-center">
+              <p className="text-sm uppercase tracking-wider text-muted-foreground">
+                Resultados para <span className="text-foreground font-medium">{searchTerm}</span>
+              </p>
+            </div>
+          )}
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id)}
+                onClick={() => handleCategoryChange(category.id)}
                 className={cn(
                   "px-6 py-2 text-sm font-medium uppercase tracking-wider rounded-sm transition-all",
                   activeCategory === category.id
@@ -176,7 +132,7 @@ const Projetos = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-container">
+      <section className="section-container pt-8 md:pt-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project) => (
@@ -219,7 +175,7 @@ const Projetos = () => {
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
               <p className="text-muted-foreground">
-                Nenhum projeto encontrado nesta categoria.
+                Nenhum projeto encontrado com os filtros atuais.
               </p>
             </div>
           )}

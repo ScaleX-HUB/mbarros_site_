@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import "./lib/i18n";
 import "./index.css";
 
 // Force light mode — remove any previously stored dark preference

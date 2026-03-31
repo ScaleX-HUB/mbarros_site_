@@ -54,49 +54,59 @@ const TrabalheConosco = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-container bg-card">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-primary text-sm uppercase tracking-widest font-medium">
+      <section className="bg-card/60 border-b border-border/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+          <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
             Carreiras
-          </span>
-          <h1 className="section-title mt-4">
-            Trabalhe <span className="text-gradient">conosco</span>
+          </p>
+          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
+            Trabalhe conosco
           </h1>
-          <p className="section-subtitle mx-auto mt-4">
-            Faça parte de uma equipe que transforma projetos em realidade. 
-            Estamos sempre em busca de talentos.
+          <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-2xl">
+            Faça parte da equipe MBARROS e contribua com uma operação industrial que cresce com qualidade e organização.
           </p>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="section-container">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-sm mb-4">
-                  <benefit.icon size={32} className="text-primary" />
-                </div>
-                <h3 className="text-lg font-display font-semibold text-foreground mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Benefits + Form */}
+      <section className="section-container pt-8 md:pt-10">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
+          <div className="space-y-6 lg:sticky lg:top-28">
+            <div className="card-industrial">
+              <h2 className="text-xl font-display font-semibold text-foreground mb-2">
+                Por que trabalhar na MBARROS
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Buscamos profissionais comprometidos, colaborativos e com vontade de evoluir.
+              </p>
 
-      {/* Form */}
-      <section className="section-container bg-card">
-        <div className="max-w-2xl mx-auto">
+              <div className="space-y-4">
+                {benefits.map((benefit) => (
+                  <div key={benefit.title} className="flex items-start gap-3 rounded-sm border border-border bg-background/60 p-4">
+                    <div className="mt-0.5 inline-flex items-center justify-center w-9 h-9 bg-primary/10 rounded-sm shrink-0">
+                      <benefit.icon size={18} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-display font-semibold text-foreground mb-1">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="card-industrial">
-            <h2 className="text-2xl font-display font-semibold text-foreground mb-6 text-center">
+            <h2 className="text-xl font-display font-semibold text-foreground mb-2">
               Envie seu currículo
             </h2>
+            <p className="text-sm text-muted-foreground mb-6">
+              Preencha os dados abaixo e nosso RH entra em contato quando houver vaga compatível.
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">

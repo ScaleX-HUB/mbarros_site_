@@ -1,7 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Cog,
+  Diamond,
+  Grid3x3,
+  Layers,
+  Link2,
+  PaintBucket,
+  type LucideIcon,
+} from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useReducedMotion } from "framer-motion";
 import productionPanelInspectionWide from "@/assets/production-panel-inspection-wide.png";
@@ -9,12 +20,37 @@ import sprayPaintBooth from "@/assets/process-spray-paint-booth.png";
 import panelPositioning from "@/assets/production-panel-positioning.png";
 
 const materials = [
-  { name: "MDF", description: "Painéis de alta densidade" },
-  { name: "MDP", description: "Resistência e versatilidade" },
-  { name: "Laca", description: "Acabamento premium" },
-  { name: "Vidro", description: "Elegância e sofisticação" },
-  { name: "Alumínio", description: "Estrutura e durabilidade" },
-];
+  {
+    name: "MDF",
+    description: "Painel de alta densidade para peças estruturais e de acabamento fino",
+    icon: Layers,
+  },
+  {
+    name: "MDP",
+    description: "Resistência e versatilidade para painéis de larga escala",
+    icon: Grid3x3,
+  },
+  {
+    name: "Laca",
+    description: "Acabamento premium com alto brilho e durabilidade",
+    icon: PaintBucket,
+  },
+  {
+    name: "Vidro",
+    description: "Elegância e sofisticação para portas e detalhes especiais",
+    icon: Diamond,
+  },
+  {
+    name: "Alumínio",
+    description: "Perfis estruturais leves e resistentes à corrosão",
+    icon: Cog,
+  },
+  {
+    name: "Fita de Borda PUR",
+    description: "Colagem invisível com alta aderência e durabilidade",
+    icon: Link2,
+  },
+] as const satisfies ReadonlyArray<{ name: string; description: string; icon: LucideIcon }>;
 
 const galleryPhotos = [
   { src: productionPanelInspectionWide, alt: "Trabalhador posicionando painel MDF em máquina CNC", caption: "Linha de Produção" },
@@ -88,29 +124,61 @@ const StructureSection = () => {
           </div>
         </div>
 
-        {/* Materials */}
+        {/* Materials + Video */}
         <div className="card-industrial">
-          <h3 className="text-xl font-display font-semibold text-foreground mb-8 text-center">
-            Matérias-Primas de Qualidade
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {materials.map((material) => (
-              <div
-                key={material.name}
-                className="text-center p-4 bg-background rounded-sm border border-border hover:border-primary/50 transition-colors"
-              >
-                <span className="text-lg font-display font-semibold text-foreground">
-                  {material.name}
-                </span>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {material.description}
-                </p>
-              </div>
-            ))}
+          <div className="text-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-display font-semibold text-foreground">
+              Matérias-Primas de Qualidade
+            </h3>
+            <p className="text-muted-foreground text-sm md:text-base mt-3 max-w-2xl mx-auto">
+              Trabalhamos apenas com fornecedores homologados e materiais certificados, garantindo durabilidade e acabamento premium em cada peça produzida.
+            </p>
           </div>
-          <p className="text-center text-muted-foreground text-sm mt-6">
-            Fornecedores: Duratex e Placas do Brasil
-          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            {/* YouTube Video */}
+            <div className="relative aspect-video overflow-hidden rounded-sm shadow-2xl ring-1 ring-border">
+              <iframe
+                src="https://www.youtube.com/embed/t4DJTVCMAEg?autoplay=1&mute=1&loop=1&playlist=t4DJTVCMAEg&rel=0&modestbranding=1&controls=0&playsinline=1"
+                title="Matérias-Primas de Qualidade – MBarros Indústria"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+              />
+              {/* Subtle label overlay */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
+                <p className="text-white text-xs font-medium tracking-wide">Processo produtivo MBarros</p>
+              </div>
+            </div>
+
+            {/* Materials list */}
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {materials.map((material) => (
+                  <div
+                    key={material.name}
+                    className="flex items-start gap-3 p-4 bg-background rounded-sm border border-border hover:border-primary/50 transition-colors"
+                  >
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-primary/30 bg-primary/10 text-primary">
+                      <material.icon className="h-4 w-4" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <span className="text-sm font-display font-semibold text-foreground">
+                        {material.name}
+                      </span>
+                      <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                        {material.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground border-t border-border pt-4">
+                <span className="font-semibold text-foreground">Fornecedores homologados:</span>{" "}
+                Duratex e Placas do Brasil
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Photo Carousel */}

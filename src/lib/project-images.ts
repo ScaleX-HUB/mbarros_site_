@@ -2,85 +2,67 @@ import type { CardImage } from "@/components/ui/3d-flip-card";
 
 export type ProjectCategory = "residenciais" | "corporativos" | "especiais";
 
-// High-resolution stock images (Unsplash). Kept as direct image CDN URLs.
-// Note: `w=2400` is used for large displays; the browser will downscale as needed.
 export const PROJECT_CATEGORY_IMAGES: Record<ProjectCategory, CardImage[]> = {
   residenciais: [
     {
-      src: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=2400&q=80",
-      alt: "Cozinha planejada - projeto residencial",
+      src: "/imagens_mbarros/projetos_corporativos/casa-design-home-office-681x1024.jpg",
+      alt: "Home office planejado com estantes modulares e parede de tijolinho",
     },
     {
-      src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=2400&q=80",
-      alt: "Dormitório planejado - projeto residencial",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=2400&q=80",
-      alt: "Área gourmet planejada - projeto residencial",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=2400&q=80",
-      alt: "Closet sob medida - projeto residencial",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=80",
-      alt: "Home office planejado - projeto residencial",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=2400&q=80",
-      alt: "Sala de estar planejada - projeto residencial",
+      src: "/imagens_mbarros/projetos_corporativos/casa-design-office.jpg",
+      alt: "Escritório pessoal com estante em madeira escura e papel de parede tropical",
     },
   ],
   corporativos: [
     {
-      src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=80",
-      alt: "Escritório moderno - projeto corporativo",
+      src: "/imagens_mbarros/projetos_corporativos/casa-design-moveis-sala-reuniao-3-bvg-1024x683.jpg",
+      alt: "Sala de reuniões executiva com painel em laca escura e TV embutida",
     },
     {
-      src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=2400&q=80",
-      alt: "Sala de reunião - projeto corporativo",
+      src: "/imagens_mbarros/projetos_corporativos/casa-design-sala-reuniao.jpg",
+      alt: "Sala de reunião com armários em laca vermelha e mesa central",
     },
     {
-      src: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&w=2400&q=80",
-      alt: "Recepção corporativa - projeto corporativo",
+      src: "/imagens_mbarros/projetos_corporativos/PHOTO-2017-01-30-17-42-15-1024x768.jpg",
+      alt: "Balcão de recepção corporativa em laminado branco com tampo de vidro",
     },
     {
-      src: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2400&q=80",
-      alt: "Ambiente profissional planejado - projeto corporativo",
+      src: "/imagens_mbarros/projetos_corporativos/PHOTO-2017-01-30-17-38-45-1024x768.jpg",
+      alt: "Balcão de recepção em granito com painel de marcenaria ao fundo",
     },
     {
-      src: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2400&q=80",
-      alt: "Equipe em ambiente corporativo - projeto corporativo",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-6.jpeg",
+      alt: "Grande salão com mesas longas em madeira e metal — coworking ou auditório",
     },
     {
-      src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2400&q=80",
-      alt: "Estação de trabalho corporativa - projeto corporativo",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-8.jpeg",
+      alt: "Espaço de trabalho coletivo com fileiras de mesas e divisórias",
     },
   ],
   especiais: [
     {
-      src: "https://images.unsplash.com/photo-1555529771-835f59fc5efe?auto=format&fit=crop&w=2400&q=80",
-      alt: "Projeto comercial - mobiliário especial",
+      src: "/imagens_mbarros/projetos_especiais/aeroportorecife2.jpg",
+      alt: "Balcão circular no Aeroporto de Recife",
     },
     {
-      src: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=2400&q=80",
-      alt: "Ambiente planejado personalizado - projeto especial",
+      src: "/imagens_mbarros/projetos_especiais/aeropotonatal2.jpg",
+      alt: "Balcão de check-in no Aeroporto de Natal",
     },
     {
-      src: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2400&q=80",
-      alt: "Projeto sob medida - soluções especiais",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-1.jpeg",
+      alt: "Recepção premium com frente ondulada em ripas de madeira e mármore",
     },
     {
-      src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2400&q=80",
-      alt: "Espaço comercial com marcenaria planejada - projeto especial",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-2.jpeg",
+      alt: "Detalhe lateral da recepção em MDF ripado com acabamento em mármore",
     },
     {
-      src: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=2400&q=80",
-      alt: "Cozinha de alto padrão - projeto especial",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-3.jpeg",
+      alt: "Vista frontal da recepção ondulada com painel de ripas e parede amadeirada",
     },
     {
-      src: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=2400&q=80",
-      alt: "Ambiente sob medida - projeto especial",
+      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-9.jpeg",
+      alt: "Instalação expositiva em estrela com nichos dourados e pedestais",
     },
   ],
 };

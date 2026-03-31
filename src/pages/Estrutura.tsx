@@ -9,22 +9,22 @@ const equipment = [
   {
     icon: Scissors,
     title: "Máquinas de Corte",
-    description: "Equipamentos de precisão para corte de painéis com mínimo desperdício e máxima qualidade.",
+    description: "Equipamentos com Tecnologia Europeia e Chinesa para corte de painéis com mínimo desperdício e máxima qualidade.",
   },
   {
     icon: Settings,
     title: "Fita de Borda",
-    description: "Máquinas automáticas para aplicação de fita de borda com acabamento impecável.",
+    description: "Máquinas automáticas com Tecnologia Europeia e Chinesa para aplicação de fita de borda com acabamento impecável.",
   },
   {
     icon: Cog,
     title: "Usinagem e Furação",
-    description: "Centro de usinagem CNC para furação precisa e encaixes perfeitos.",
+    description: "Centro de usinagem CNC com Tecnologia Europeia e Chinesa para furação precisa e encaixes perfeitos.",
   },
   {
     icon: Package,
     title: "Móveis Curvos",
-    description: "Estrutura especializada para produção de peças curvas e designs diferenciados.",
+    description: "Estrutura especializada com Tecnologia Europeia e Chinesa para produção de peças curvas e designs diferenciados.",
   },
 ];
 
@@ -42,7 +42,7 @@ const process = [
   {
     step: "03",
     title: "Produção",
-    description: "Execução com maquinário moderno e controle de qualidade.",
+    description: "Execução com maquinário de Tecnologia Europeia e Chinesa e controle de qualidade.",
   },
   {
     step: "04",
@@ -69,7 +69,7 @@ const Estrutura = () => {
             Parque fabril <span className="text-gradient">moderno e eficiente</span>
           </h1>
           <p className="section-subtitle mx-auto mt-4">
-            Mais de 10.000m² equipados com tecnologia europeia para 
+            Mais de 10.000m² equipados com Tecnologia Europeia e Chinesa para 
             produzir mais de 55.000 peças por mês.
           </p>
         </div>
@@ -107,7 +107,7 @@ const Estrutura = () => {
               Maquinário <span className="text-gradient">de ponta</span>
             </h2>
             <p className="section-subtitle mx-auto mt-4">
-              Equipamentos importados da Alemanha para garantir precisão e qualidade.
+              Equipamentos com Tecnologia Europeia e Chinesa para garantir precisão, repetibilidade e qualidade.
             </p>
           </div>
 

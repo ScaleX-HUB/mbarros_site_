@@ -1,13 +1,13 @@
 .rulerWrap {
   position: fixed;
-  right: 18px;
+  right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  height: 70vh;
-  width: 72px;
+  height: 64vh;
+  width: 58px;
   z-index: 40;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.42;
 }
 
 .ruler {
@@ -19,16 +19,16 @@
 
 .track {
   position: absolute;
-  inset: 8px 0 8px 0;
+  inset: 10px 0 10px 0;
 }
 
 .spine {
   position: absolute;
-  right: 22px;
+  right: 18px;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: hsl(var(--foreground) / 0.45);
+  background: hsl(var(--foreground) / 0.2);
 }
 
 .ticks {
@@ -50,31 +50,31 @@
 .tick {
   display: block;
   height: 1px;
-  background: hsl(var(--foreground) / 0.38);
-  margin-right: 22px;
+  background: hsl(var(--foreground) / 0.2);
+  margin-right: 18px;
 }
 
 .tickSmall {
-  width: 8px;
+  width: 6px;
 }
 
 .tickMedium {
-  width: 12px;
+  width: 9px;
 }
 
 .tickLarge {
-  width: 20px;
+  width: 14px;
   height: 2px;
-  background: hsl(var(--foreground) / 0.55);
+  background: hsl(var(--foreground) / 0.34);
 }
 
 .tickNumber {
   position: absolute;
   right: 0;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1;
-  font-weight: 600;
-  color: hsl(var(--foreground) / 0.72);
+  font-weight: 500;
+  color: hsl(var(--foreground) / 0.45);
   letter-spacing: 0.02em;
 }
 
@@ -89,31 +89,31 @@
 .indicatorLine {
   display: block;
   height: 2px;
-  width: 34px;
-  background: hsl(var(--foreground) / 0.72);
+  width: 24px;
+  background: hsl(var(--primary) / 0.48);
 }
 
 @media (max-width: 640px) {
   .rulerWrap {
-    right: 12px;
-    height: 56vh;
-    width: 64px;
-    opacity: 0.55;
+    right: 10px;
+    height: 52vh;
+    width: 52px;
+    opacity: 0.35;
   }
 
   .tickNumber {
-    font-size: 11px;
+    display: none;
   }
 
   .spine {
-    right: 20px;
+    right: 16px;
   }
 
   .tick {
-    margin-right: 20px;
+    margin-right: 16px;
   }
 
   .indicatorLine {
-    width: 30px;
+    width: 20px;
   }
 }

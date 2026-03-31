@@ -11,20 +11,24 @@ import {
 } from "@/components/ui/navbar-menu";
 import { getCategoryCover } from "@/lib/project-images";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
-
-const navItems = [
-  { label: "Home", path: "/" },
-  { label: "Sobre", path: "/sobre" },
-  { label: "White Label", path: "/white-label" },
-  { label: "Projetos", path: "/projetos" },
-  { label: "Blog", path: "/blog" },
-  { label: "Contato", path: "/contato" },
-];
+import { SiteSearch } from "@/components/search/SiteSearch";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const location = useLocation();
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: t("header.sobre"), path: "/sobre" },
+    { label: "White Label", path: "/white-label" },
+    { label: t("header.projetos"), path: "/projetos" },
+    { label: t("header.blog"), path: "/blog" },
+    { label: t("header.contato"), path: "/contato" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -33,11 +37,31 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img
-                src={logoMbarros}
-                alt="MBarros Indústria"
-                className="h-12 md:h-14 lg:h-16 w-auto"
-              />
+              <span
+                className="relative block h-12 w-[11.25rem] md:h-14 md:w-[13.125rem] lg:h-16 lg:w-[15rem]"
+                aria-label="MBarros Indústria"
+              >
+                <img
+                  src={logoMbarros}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-contain dark:hidden"
+                />
+                <span className="hidden dark:block">
+                  <img
+                    src={logoMbarros}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-contain [clip-path:inset(0_49%_0_0)]"
+                  />
+                  <img
+                    src={logoMbarros}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-contain [clip-path:inset(0_0_0_49%)] brightness-0 invert"
+                  />
+                </span>
+              </span>
             </Link>
           </div>
 
@@ -55,7 +79,7 @@ const Header = () => {
                   location.pathname === "/sobre" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                Sobre
+                {t("header.sobre")}
               </Link>
 
               <Link
@@ -71,7 +95,7 @@ const Header = () => {
               <MenuItem
                 setActive={setActive}
                 active={active}
-                item="Projetos"
+                item={t("header.projetos")}
                 to="/projetos"
                 labelClassName={
                   location.pathname === "/projetos" ? "text-primary" : undefined
@@ -112,22 +136,22 @@ const Header = () => {
                   location.pathname === "/blog" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                Blog
+                {t("header.blog")}
               </Link>
 
               <MenuItem
                 setActive={setActive}
                 active={active}
-                item="Contato"
+                item={t("header.contato")}
                 to="/contato"
                 labelClassName={
                   location.pathname === "/contato" ? "text-primary" : undefined
                 }
               >
                 <div className="flex flex-col space-y-3 text-sm">
-                  <HoveredLink to="/contato">Fale com a equipe</HoveredLink>
-                  <HoveredLink to="/trabalhe-conosco">Trabalhe Conosco</HoveredLink>
-                  <HoveredLink to="/seja-parceiro">Seja um Parceiro</HoveredLink>
+                  <HoveredLink to="/contato">{t("header.faleComEquipe")}</HoveredLink>
+                  <HoveredLink to="/trabalhe-conosco">{t("header.trabalheConosco")}</HoveredLink>
+                  <HoveredLink to="/seja-parceiro">{t("header.sejaParceiro")}</HoveredLink>
                 </div>
               </MenuItem>
             </NavbarMenu>
@@ -135,13 +159,20 @@ const Header = () => {
 
           {/* CTA Button (direita, desktop) */}
           <div className="hidden lg:flex items-center justify-end gap-3">
+            <SiteSearch
+              className="w-full max-w-[13.5rem] xl:max-w-[15rem]"
+              inputClassName="text-xs"
+              placeholder={t("header.busque")}
+              compact
+              subtle
+              collapsible
+            />
+            <LanguageSwitcher compact />
             <ThemeToggle />
             <Button variant="hero" asChild>
-              <Link to="/seja-parceiro">Seja um Parceiro</Link>
+              <Link to="/seja-parceiro">{t("header.sejaParceiro")}</Link>
             </Button>
           </div>
-
-          
 
           {/* Mobile Menu Button */}
           <button
@@ -157,6 +188,13 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="lg:hidden py-6 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
+              <SiteSearch
+                placeholder={t("header.busque")}
+                compact
+                subtle
+                formClassName="rounded-full px-2"
+              />
+
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -174,14 +212,21 @@ const Header = () => {
 
               <div className="pt-2 flex items-center justify-between">
                 <span className="text-sm uppercase tracking-wider font-medium text-muted-foreground">
-                  Tema
+                  {t("header.idioma")}
+                </span>
+                <LanguageSwitcher compact />
+              </div>
+
+              <div className="pt-2 flex items-center justify-between">
+                <span className="text-sm uppercase tracking-wider font-medium text-muted-foreground">
+                  {t("header.tema")}
                 </span>
                 <ThemeToggle />
               </div>
 
               <Button variant="hero" className="mt-4" asChild>
                 <Link to="/seja-parceiro" onClick={() => setIsMenuOpen(false)}>
-                  Seja um Parceiro
+                  {t("header.sejaParceiro")}
                 </Link>
               </Button>
             </div>
