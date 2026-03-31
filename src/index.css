@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -58,8 +58,8 @@
     --shadow-elevated: 0 20px 60px hsl(0 0% 0% / 0.18);
 
     /* Typography */
-    --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
-    --font-body: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
     /* Sidebar */
     --sidebar-background: 35 12% 97%;

@@ -100,7 +100,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1 variants={fadeUpItem} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-semibold leading-tight text-foreground dark:text-white drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)] transition-colors duration-700">
-            A melhor indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do nordeste</span>
+            A melhor indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do NORDESTE</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -121,20 +121,20 @@ const HeroSection = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={1} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Somos</h3>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Somos</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
                 A trajetória de inovação e excelência que nos consolidou como a principal indústria do Nordeste.
               </p>
             </motion.div>
             <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={2} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Estrutura Fabril</h3>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Estrutura Fabril</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
                 Conheça a infraestrutura de ponta que viabiliza nossa produção em larga escala com precisão.
               </p>
             </motion.div>
             <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={3} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Atendemos</h3>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Atendemos</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
                 Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.
               </p>
             </motion.div>
