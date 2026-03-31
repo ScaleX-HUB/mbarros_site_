@@ -4,26 +4,30 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { PROJECT_CATEGORY_IMAGES, type ProjectCategory } from "@/lib/project-images";
+import { useTranslation } from "react-i18next";
 
-const categories = [
-  {
-    id: "residenciais",
-    title: "Projetos Residenciais",
-    description: "Cozinhas, dormitórios, salas e espaços personalizados para residências.",
-  },
-  {
-    id: "corporativos",
-    title: "Projetos Corporativos",
-    description: "Escritórios, ambientes empresariais e espaços de trabalho funcionais.",
-  },
-  {
-    id: "especiais",
-    title: "Projetos Especiais",
-    description: "Soluções personalizadas para necessidades específicas e projetos únicos.",
-  },
-];
+
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
+
+  const categories = [
+    {
+      id: "residenciais",
+      title: t("projects.cat1.title"),
+      description: t("projects.cat1.desc"),
+    },
+    {
+      id: "corporativos",
+      title: t("projects.cat2.title"),
+      description: t("projects.cat2.desc"),
+    },
+    {
+      id: "especiais",
+      title: t("projects.cat3.title"),
+      description: t("projects.cat3.desc"),
+    },
+  ];
   const prefersReducedMotion = useReducedMotion();
   const categoryIds = useMemo(
     () => categories.map((c) => c.id as ProjectCategory),
@@ -65,7 +69,7 @@ const ProjectsSection = () => {
             <div className="flex items-center gap-4">
               <span className="h-px w-8 bg-primary"></span>
               <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                PORTFÓLIO
+                {t("projects.badge")}
               </span>
               <span className="h-px w-8 bg-primary"></span>
             </div>
@@ -132,7 +136,7 @@ const ProjectsSection = () => {
         <div className="text-center mt-12">
           <Button variant="hero" size="lg" asChild>
             <Link to="/projetos">
-              Ver todos os projetos
+              {t("projects.btn")}
               <ArrowRight size={18} />
             </Link>
           </Button>

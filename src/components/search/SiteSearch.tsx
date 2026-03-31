@@ -21,6 +21,7 @@ interface SiteSearchProps {
   compact?: boolean;
   subtle?: boolean;
   collapsible?: boolean;
+  hideDefaultSuggestions?: boolean;
 }
 
 const suggestionTypeLabel: Record<SearchSuggestion["type"], string> = {
@@ -38,8 +39,7 @@ export function SiteSearch({
   placeholder = "Buscar projetos, conteúdos e páginas...",
   compact = false,
   subtle = false,
-  collapsible = false,
-}: SiteSearchProps) {
+  collapsible = false,  hideDefaultSuggestions = false,}: SiteSearchProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [query, setQuery] = useState("");
@@ -86,8 +86,12 @@ export function SiteSearch({
       return getSearchSuggestions(query, 6);
     }
 
+    if (hideDefaultSuggestions) {
+      return [];
+    }
+
     return getDefaultSuggestions();
-  }, [query]);
+  }, [query, hideDefaultSuggestions]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

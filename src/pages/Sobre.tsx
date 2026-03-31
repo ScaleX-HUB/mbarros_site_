@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/Layout";
+﻿import Layout from "@/components/layout/Layout";
 import { Factory, Users, Target, Award, Play, Maximize2 } from "lucide-react";
 import { Timeline } from "@/components/ui/timeline";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
@@ -39,25 +39,25 @@ const values = [
   {
     icon: Target,
     title: "Missão",
-    description: "Transformar os sonhos dos clientes em ambientes personalizados, utilizando matérias-primas de qualidade e processos de produção que garantam o resultado esperado.",
+    description: "Transformar os sonhos dos clientes em ambientes personalizados com matérias-primas de qualidade.",
   },
   {
     icon: Factory,
     title: "Visão",
-    description: "Ser referência nacional em móveis planejados White Label, fortalecendo o mercado e oferecendo estrutura industrial para lojistas de todo o Brasil.",
+    description: "Ser referência nacional em móveis planejados White Label, fortalecendo parceiros.",
   },
   {
     icon: Award,
     title: "Valores",
-    description: "Qualidade, comprometimento, inovação, respeito ao cliente e valorização da equipe. Orgulhosamente nordestinos, 100% pernambucanos.",
+    description: "Qualidade, inovação, valorização da equipe. Orgulhosamente nordestinos.",
   },
 ];
 
 const videoStats = [
-  { value: "10.000m²", label: "Estrutura fabril" },
-  { value: "55k+", label: "Peças/mês" },
-  { value: "35+", label: "Anos de mercado" },
-  { value: "7", label: "Estados atendidos" },
+  { value: "10.000m²", label: "Parque Fabril" },
+  { value: "55k+", label: "Peças/Mês" },
+  { value: "35+", label: "Anos de Mercado" },
+  { value: "7", label: "Estados Atendidos" },
 ];
 
 const Sobre = () => {
@@ -91,30 +91,30 @@ const Sobre = () => {
         <div className="absolute inset-0 bg-center bg-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background" />
 
-        <div className="section-container relative">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="section-container relative py-24 md:py-32">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
             <span className="text-primary text-sm uppercase tracking-widest font-medium">
               Sobre a Indústria
             </span>
             <h1 className="section-title mt-4">
-              Uma indústria <span className="text-gradient">100% pernambucana</span>
+              Uma indústria <span className="text-gradient">avançada</span>
             </h1>
-            <p className="section-subtitle mx-auto mt-4">
-              Há mais de 35 anos transformando projetos em realidade. Estrutura industrial sólida para sustentar grandes marcas.
+            <p className="section-subtitle mx-auto mt-4 max-w-3xl leading-relaxed">
+              Há mais de três décadas, transformamos o mercado de móveis planejados no Nordeste. Evoluímos da marcenaria artesanal para uma das indústrias mais avançadas da região, unindo tradição e tecnologia de ponta.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="section-container">
+      {/* Story and DNA */}
+      <section className="section-container py-24">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="space-y-8">
               <h2 className="text-3xl font-display font-semibold">
-                Nossa História
+                Nossa História & DNA
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
                   A MBARROS Indústria de Móveis Planejados nasceu em Pernambuco com a missão de 
                   fortalecer o mercado de móveis planejados no Nordeste brasileiro.
@@ -124,27 +124,41 @@ const Sobre = () => {
                   qualidade, inovação e compromisso com nossos parceiros. Hoje, atendemos 
                   lojistas em todo o Brasil através do modelo White Label.
                 </p>
-                <p>
-                  Nossa equipe é formada por profissionais especializados que acompanham 
-                  as tendências do design de interiores e do mercado de móveis planejados, 
-                  unindo sofisticação, qualidade e praticidade em cada projeto.
-                </p>
               </div>
+
+              <div className="grid gap-6 mt-8">
+                {values.map((value) => (
+                  <div key={value.title} className="flex gap-4 items-start">
+                    <div className="shrink-0 inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-sm">
+                      <value.icon size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-display font-medium text-foreground">
+                        {value.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        {value.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
             </div>
 
             {/* Founders image */}
-            <div className="relative group rounded-sm overflow-hidden border border-border bg-black shadow-xl">
+            <div className="relative group rounded-sm overflow-hidden border border-border bg-black shadow-xl sticky top-24">
               {/* Glow */}
               <div className="absolute -inset-1 bg-primary/20 rounded-sm blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <img
                 src="/imagens_mbarros/donos_fundadores_fabrica.jpg"
                 alt="Fundadores da MBarros"
-                className="w-full aspect-[4/3] md:aspect-video object-cover object-[50%_28%] md:object-[50%_22%]"
+                className="w-full aspect-[4/3] md:aspect-[3/4] object-cover object-[50%_28%] md:object-[50%_22%]"
                 loading="lazy"
               />
               {/* Bottom caption */}
-              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-                <p className="text-white text-xs font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 right-0 px-6 py-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none">
+                <p className="text-white text-sm md:text-base font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Fundadores — visão e propósito
                 </p>
               </div>
@@ -155,12 +169,11 @@ const Sobre = () => {
       </section>
 
       {/* Vídeo Institucional */}
-      <section className="section-container bg-muted/20">
+      <section className="section-container bg-muted/30 py-24">
         <div className="max-w-5xl mx-auto">
-
           {/* Header */}
           <motion.div
-            className="text-center mb-10"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -171,7 +184,7 @@ const Sobre = () => {
               Conheça de perto
               <span className="w-8 h-px bg-primary inline-block" />
             </span>
-            <h2 className="section-title mt-2">
+            <h2 className="section-title mt-4">
               Nossa <span className="text-gradient">Estrutura</span>
             </h2>
             <p className="section-subtitle mx-auto mt-4">
@@ -188,10 +201,8 @@ const Sobre = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             onClick={handleVideoClick}
           >
-            {/* Glow */}
             <div className="absolute -inset-1 bg-primary/20 rounded-sm blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Container */}
             <div className="relative rounded-sm overflow-hidden border border-border bg-black shadow-2xl">
               <video
                 ref={videoRef}
@@ -213,11 +224,10 @@ const Sobre = () => {
                 aria-label="Vídeo institucional MBarros — apresentação da estrutura"
               />
 
-              {/* Play overlay */}
               <AnimatePresence>
                 {!isPlaying && (
                   <motion.div
-                    className="absolute inset-0 flex items-center justify-center bg-black/45 backdrop-blur-[2px]"
+                    className="absolute inset-0 flex items-center justify-center bg-[#1a232c]/50 backdrop-blur-[2px]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -235,8 +245,7 @@ const Sobre = () => {
                 )}
               </AnimatePresence>
 
-              {/* Bottom bar */}
-              <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-between pointer-events-none">
+              <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-between pointer-events-none">
                 <span className="text-white text-sm font-medium tracking-wide">
                   MBarros — Conheça nossa estrutura
                 </span>
@@ -253,16 +262,16 @@ const Sobre = () => {
 
           {/* Stats strip */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-px mt-3 bg-border rounded-sm overflow-hidden"
+            className="grid grid-cols-2 md:grid-cols-4 gap-px mt-6 bg-border rounded-sm overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             {videoStats.map((stat) => (
-              <div key={stat.label} className="bg-card text-center py-5 px-3">
-                <div className="stat-number text-2xl">{stat.value}</div>
-                <div className="stat-label text-xs mt-1">{stat.label}</div>
+              <div key={stat.label} className="bg-card text-center py-6 px-4">
+                <div className="font-semibold text-lg md:text-xl xl:text-2xl text-foreground/90">{stat.value}</div>
+                <div className="stat-label text-[11px] mt-1.5 uppercase tracking-wider text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -271,7 +280,7 @@ const Sobre = () => {
       </section>
 
       {/* Timeline (novo estilo) */}
-      <section className="section-container bg-card">
+      <section className="section-container bg-card py-24">
         <div className="max-w-6xl mx-auto">
           <Timeline
             title="Marcos que mostram como evoluímos em estrutura, processos e capacidade produtiva."
@@ -279,7 +288,7 @@ const Sobre = () => {
               title: t.year,
               content: (
                 <div className="card-industrial">
-                  <p className="text-foreground text-sm md:text-base font-normal mb-6">
+                  <p className="text-foreground text-sm xl:text-base font-normal mb-6 leading-relaxed">
                     {t.event}
                   </p>
 
@@ -299,31 +308,10 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="section-container bg-card">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="text-center space-y-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-sm">
-                  <value.icon size={32} className="text-primary" />
-                </div>
-                <h3 className="text-xl font-display font-semibold text-foreground">
-                  {value.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Team */}
-      <section className="section-container">
+      <section className="section-container py-24">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-sm mb-6">
               <Users size={32} className="text-primary" />
             </div>
@@ -336,24 +324,19 @@ const Sobre = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="card-industrial text-center">
-                <div className="stat-number text-3xl">100+</div>
-                <div className="stat-label">Colaboradores</div>
-              </div>
-              <div className="card-industrial text-center">
-                <div className="stat-number text-3xl">35+</div>
-                <div className="stat-label">Anos</div>
-              </div>
-              <div className="card-industrial text-center">
-                <div className="stat-number text-3xl">22</div>
-                <div className="stat-label">Presença em 22 cidades · 7 estados</div>
-              </div>
-              <div className="card-industrial text-center">
-                <div className="stat-number text-3xl">100%</div>
-                <div className="stat-label">Pernambucana</div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Minimalist Collab Stats next to text */}
+            <div className="space-y-8">
+              <p className="text-muted-foreground leading-relaxed">
+                Nossa equipe é formada por profissionais especializados que acompanham 
+                as tendências do design de interiores e do mercado de móveis planejados, 
+                unindo sofisticação, qualidade e praticidade em cada projeto.
+              </p>
+              
+              <div className="card-industrial inline-flex flex-col items-start p-6 bg-muted/40 border border-border">
+                <div className="text-4xl md:text-5xl font-display font-semibold text-primary mb-2">100+</div>
+                <div className="text-sm tracking-widest uppercase font-medium text-foreground">Colaboradores</div>
+                <div className="text-xs text-muted-foreground mt-2">Dedicados ao padrão de qualidade</div>
               </div>
             </div>
 
@@ -363,17 +346,17 @@ const Sobre = () => {
                 { src: seniorProfessional, alt: "Profissional sênior do Grupo MBarros", name: "Liderança", role: "Experiência & Visão" },
                 { src: cncOperator, alt: "Operador CNC do Grupo MBarros", name: "Operação", role: "Tecnologia & Precisão" },
               ].map((member) => (
-                <div key={member.name} className="relative rounded-sm overflow-hidden group h-64">
+                <div key={member.name} className="relative rounded-sm overflow-hidden group aspect-[3/4]">
                   <img
                     src={member.src}
                     alt={member.alt}
                     loading="lazy"
                     className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white text-sm font-semibold leading-tight">{member.name}</p>
-                    <p className="text-white/70 text-xs mt-0.5">{member.role}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p className="text-white text-base font-semibold leading-tight">{member.name}</p>
+                    <p className="text-white/80 text-xs mt-1">{member.role}</p>
                   </div>
                 </div>
               ))}

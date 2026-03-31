@@ -1,0 +1,13 @@
+const fs = require('fs');
+let f = fs.readFileSync('src/components/home/StructureSection.tsx', 'utf-8');
+f = f.replace(/from-\[\#1a232c\]\/95 via-\[\#1a232c\]\/80 to-\[\#1a232c\]\/95/g, 'from-background/95 via-background/80 to-background/95');
+f = f.replace(/bg-slate-900\/80 backdrop-blur-xl border border-slate-700\/50 p-8 rounded-2xl flex flex-col items-center/g, 'bg-card/70 backdrop-blur-xl border border-border/50 p-6 rounded-2xl flex flex-col items-center');
+f = f.replace(/w-16 h-16 rounded-full bg-primary\/20/g, 'w-12 h-12 rounded-full bg-primary/20');
+f = f.replace(/className="w-8 h-8"/g, 'className="w-6 h-6"');
+f = f.replace(/text-white font-display font-semibold text-xl mb-3/g, 'text-foreground font-display font-semibold text-lg mb-2');
+f = f.replace(/text-slate-300 text-sm leading-relaxed/g, 'text-muted-foreground text-sm leading-relaxed');
+f = f.replace(/text-white\/50 mb-2/g, 'text-primary/70 mb-2');
+f = f.replace(/text-white max-w-2xl mx-auto/g, 'text-foreground max-w-2xl mx-auto');
+f = f.replace(/text-white max-w-4xl mx-auto/g, 'text-foreground max-w-4xl mx-auto');
+f = f.replace(/text-white\/80 text-base md:text-lg leading-relaxed/g, 'text-foreground/80 text-base md:text-lg leading-relaxed');
+fs.writeFileSync('src/components/home/StructureSection.tsx', f);

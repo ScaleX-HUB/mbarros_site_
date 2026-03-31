@@ -11,46 +11,16 @@ import {
   Layers,
   Link2,
   PaintBucket,
+  Scissors,
+  Ruler,
   type LucideIcon,
 } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import productionPanelInspectionWide from "@/assets/production-panel-inspection-wide.png";
 import sprayPaintBooth from "@/assets/process-spray-paint-booth.png";
 import panelPositioning from "@/assets/production-panel-positioning.png";
-
-const materials = [
-  {
-    name: "MDF",
-    description: "Painel de alta densidade para peças estruturais e de acabamento fino",
-    icon: Layers,
-  },
-  {
-    name: "MDP",
-    description: "Resistência e versatilidade para painéis de larga escala",
-    icon: Grid3x3,
-  },
-  {
-    name: "Laca",
-    description: "Acabamento premium com alto brilho e durabilidade",
-    icon: PaintBucket,
-  },
-  {
-    name: "Vidro",
-    description: "Elegância e sofisticação para portas e detalhes especiais",
-    icon: Diamond,
-  },
-  {
-    name: "Alumínio",
-    description: "Perfis estruturais leves e resistentes à corrosão",
-    icon: Cog,
-  },
-  {
-    name: "Fita de Borda PUR",
-    description: "Colagem invisível com alta aderência e durabilidade",
-    icon: Link2,
-  },
-] as const satisfies ReadonlyArray<{ name: string; description: string; icon: LucideIcon }>;
 
 const galleryPhotos = [
   { src: productionPanelInspectionWide, alt: "Trabalhador posicionando painel MDF em máquina CNC", caption: "Linha de Produção" },
@@ -61,6 +31,51 @@ const galleryPhotos = [
 const AUTOPLAY_DELAY = 4500;
 
 const StructureSection = () => {
+  const { t } = useTranslation();
+
+  const materials = [
+    {
+      name: "Corte e Usinagem",
+      description: "Precisão milimétrica e encaixes perfeitos garantidos por maquinário de ponta.",
+      icon: Scissors,
+    },
+    {
+      name: "Fita de Borda",
+      description: "Colagem PUR com acabamento invisível e durabilidade extrema.",
+      icon: Ruler,
+    },
+    {
+      name: t("structure.item1.name"),
+      description: t("structure.item1.desc"),
+      icon: Layers,
+    },
+    {
+      name: t("structure.item2.name"),
+      description: t("structure.item2.desc"),
+      icon: Grid3x3,
+    },
+    {
+      name: t("structure.item3.name"),
+      description: t("structure.item3.desc"),
+      icon: PaintBucket,
+    },
+    {
+      name: t("structure.item4.name"),
+      description: t("structure.item4.desc"),
+      icon: Diamond,
+    },
+    {
+      name: t("structure.item5.name"),
+      description: t("structure.item5.desc"),
+      icon: Cog,
+    },
+    {
+      name: t("structure.item6.name"),
+      description: t("structure.item6.desc"),
+      icon: Link2,
+    },
+  ] as const satisfies ReadonlyArray<{ name: string; description: string; icon: LucideIcon }>;
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -74,7 +89,9 @@ const StructureSection = () => {
   const startTimer = useCallback(() => {
     if (prefersReducedMotion || !api) return;
     stopTimer();
-    timerRef.current = setInterval(() => api.scrollNext(), AUTOPLAY_DELAY);
+    timerRef.current = setInterval(() => {
+      api.scrollNext();
+    }, 3000);
   }, [api, prefersReducedMotion, stopTimer]);
 
   useEffect(() => {
@@ -90,172 +107,152 @@ const StructureSection = () => {
     return stopTimer;
   }, [isPaused, startTimer, stopTimer]);
 
-  return (
-    <section className="section-container bg-card">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-8 bg-primary"></span>
-              <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                ESTRUTURA FABRIL
-              </span>
-              <span className="h-px w-8 bg-primary"></span>
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold mt-4">
-            Tecnologia Europeia e Chinesa —{" "}
-            <span className="text-primary">qualidade padronizada.</span>
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6">
-            Nossa fábrica em Pernambuco possui 10.000 m² equipados com maquinário de última geração — Tecnologia Europeia e Chinesa. Isso garante agilidade, repetibilidade e um acabamento que posiciona sua marca no segmento premium.
-          </p>
+  const [galApi, setGalApi] = useState<CarouselApi>();
+  const [galCurrent, setGalCurrent] = useState(0);
+  const galTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto mt-12 text-center md:text-left">
-            <div className="bg-background/50 p-6 rounded-sm border border-border">
-              <h4 className="text-foreground font-semibold font-display text-lg mb-2">Corte e Usinagem</h4>
-              <p className="text-muted-foreground text-sm">Precisão milimétrica e encaixes perfeitos.</p>
-            </div>
-            <div className="bg-background/50 p-6 rounded-sm border border-border">
-              <h4 className="text-foreground font-semibold font-display text-lg mb-2">Fita de Borda</h4>
-              <p className="text-muted-foreground text-sm">Colagem PUR com acabamento invisível e durabilidade.</p>
-            </div>
-          </div>
+  const stopGalTimer = useCallback(() => {
+    if (galTimerRef.current) clearInterval(galTimerRef.current);
+  }, []);
+
+  const startGalTimer = useCallback(() => {
+    if (prefersReducedMotion || !galApi) return;
+    stopGalTimer();
+    galTimerRef.current = setInterval(() => galApi.scrollNext(), AUTOPLAY_DELAY);
+  }, [galApi, prefersReducedMotion, stopGalTimer]);
+
+  useEffect(() => {
+    if (!galApi) return;
+    const onSelectGal = () => setGalCurrent(galApi.selectedScrollSnap());
+    galApi.on("select", onSelectGal);
+    return () => { galApi.off("select", onSelectGal); };
+  }, [galApi]);
+
+  useEffect(() => {
+    if (!isPaused) startGalTimer();
+    else stopGalTimer();
+    return stopGalTimer;
+  }, [isPaused, startGalTimer, stopGalTimer]);
+
+
+  return (
+    <section className="bg-card w-full flex flex-col">
+      {/* Full Background Video Section with Cards */}
+      <div className="relative w-full min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <iframe
+            src="https://www.youtube.com/embed/t4DJTVCMAEg?autoplay=1&mute=1&loop=1&playlist=t4DJTVCMAEg&rel=0&modestbranding=1&controls=0&playsinline=1"
+            title="Processo Produtivo MBarros"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] md:w-[150vw] md:h-[150vh] min-w-[100vw] min-h-[100vh] -translate-x-1/2 -translate-y-1/2 object-cover opacity-80"
+            style={{ pointerEvents: "none" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/50 to-background/95 backdrop-blur-[1px]" />
         </div>
 
-        {/* Materials + Video */}
-        <div className="card-industrial">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-display font-semibold text-foreground">
-              Matérias-Primas de Qualidade
-            </h3>
-            <p className="text-muted-foreground text-sm md:text-base mt-3 max-w-2xl mx-auto">
-              Trabalhamos apenas com fornecedores homologados e materiais certificados, garantindo durabilidade e acabamento premium em cada peça produzida.
+        {/* Content over video */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16 text-foreground max-w-4xl mx-auto">
+            <div className="flex justify-center mb-6">
+              <div className="flex items-center gap-4">
+                <span className="h-px w-8 bg-primary"></span>
+                <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-sm">
+                  ESTRUTURA FABRIL
+                </span>
+                <span className="h-px w-8 bg-primary"></span>
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-display font-semibold mt-4 drop-shadow-md">
+              Tecnologia Europeia e Chinesa —{" "}
+              <span className="text-primary">qualidade padronizada.</span>
+            </h2>
+            <p className="text-foreground/80 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6">
+              Nossa fábrica em Pernambuco possui 10.000 m² equipados com maquinário de última geração. Isso garante agilidade, repetibilidade e um acabamento premium.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            {/* YouTube Video */}
-            <div className="relative aspect-video overflow-hidden rounded-sm shadow-2xl ring-1 ring-border">
-              <iframe
-                src="https://www.youtube.com/embed/t4DJTVCMAEg?autoplay=1&mute=1&loop=1&playlist=t4DJTVCMAEg&rel=0&modestbranding=1&controls=0&playsinline=1"
-                title="Matérias-Primas de Qualidade – MBarros Indústria"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-0"
-              />
-              {/* Subtle label overlay */}
-              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-                <p className="text-white text-xs font-medium tracking-wide">Processo produtivo MBarros</p>
-              </div>
-            </div>
-
-            {/* Materials list */}
-            <div className="flex flex-col gap-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {materials.map((material) => (
-                  <div
-                    key={material.name}
-                    className="flex items-start gap-3 p-4 bg-background rounded-sm border border-border hover:border-primary/50 transition-colors"
-                  >
-                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-primary/30 bg-primary/10 text-primary">
-                      <material.icon className="h-4 w-4" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <span className="text-sm font-display font-semibold text-foreground">
-                        {material.name}
-                      </span>
-                      <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
-                        {material.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground border-t border-border pt-4">
-                <span className="font-semibold text-foreground">Fornecedores homologados:</span>{" "}
-                Duratex e Placas do Brasil
-              </p>
-            </div>
+          <div className="text-center mb-10 mt-10">
+            <h3 className="text-sm uppercase tracking-[0.2em] font-bold text-primary/70 mb-2">Processo Produtivo MBarros</h3>
+            <h4 className="text-xl md:text-2xl font-display font-medium text-foreground max-w-2xl mx-auto">
+              Precisão, Matérias-Primas e Fornecedores Homologados
+            </h4>
           </div>
-        </div>
 
-        {/* Photo Carousel */}
-        <div
-          className="mt-12"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <Carousel
-            setApi={setApi}
-            opts={{ loop: true, align: "start" }}
-            className="w-full"
-            aria-label="Galeria da estrutura fabril MBarros"
-          >
-            <CarouselContent className="-ml-0">
-              {galleryPhotos.map((photo) => (
-                <CarouselItem key={photo.caption} className="pl-0 md:basis-1/2">
-                  <div className="relative overflow-hidden rounded-sm h-72 md:h-80 mx-1.5">
-                    <img
-                      src={photo.src}
-                      alt={photo.alt}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                    <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">
-                      {photo.caption}
-                    </span>
+          <div className="w-full h-full" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            <Carousel setApi={setApi} opts={{ loop: true, align: "center", dragFree: true }} className="w-full h-full">
+              <CarouselContent className="-ml-4 h-full py-4">
+              {materials.map((m, idx) => (
+                <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="h-full bg-card/30 backdrop-blur-md border border-border/30 p-5 rounded-xl text-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 shadow-xl">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4 text-primary">
+                      <m.icon className="w-6 h-6" />
+                    </div>
+                    <h5 className="text-foreground font-display font-semibold text-base mb-1">{m.name}</h5>
+                    <p className="text-muted-foreground text-xs leading-relaxed">{m.description} </p>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-
-            {/* Prev / Next buttons */}
-            <button
-              onClick={() => api?.scrollPrev()}
-              aria-label="Foto anterior"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-black/50 hover:bg-black/75 text-white backdrop-blur-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ChevronLeft size={22} />
+            
+            {/* Prev / Next buttons over video */}
+            <button onClick={() => api?.scrollPrev()} className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors">
+              <ChevronLeft size={24} />
             </button>
-            <button
-              onClick={() => api?.scrollNext()}
-              aria-label="Próxima foto"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-black/50 hover:bg-black/75 text-white backdrop-blur-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <ChevronRight size={22} />
+            <button onClick={() => api?.scrollNext()} className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors">
+              <ChevronRight size={24} />
             </button>
           </Carousel>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-4" role="tablist" aria-label="Selecionar slide">
-            {galleryPhotos.map((_, i) => (
+          
+          <div className="flex justify-center gap-2 mt-8">
+            {materials.map((_, i) => (
               <button
                 key={i}
-                role="tab"
-                aria-selected={current === i}
-                aria-label={`Slide ${i + 1}`}
                 onClick={() => api?.scrollTo(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-                  current === i ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
-                }`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-8 bg-primary" : "w-2 bg-white/30"}`}
               />
             ))}
           </div>
+          </div>
         </div>
+      </div>
 
-        {/* CTA */}
-        <div className="text-center mt-10">
-          <Button variant="heroBorder" size="lg" asChild>
-            <Link to="/estrutura">
-              Conheça nossa estrutura
-              <ArrowRight size={18} />
-            </Link>
-          </Button>
-        </div>
+      {/* Photo Carousel Area */}
+      <div className="max-w-6xl mx-auto px-4 py-16 w-full" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+        <Carousel setApi={setGalApi} opts={{ loop: true, align: "start" }} className="w-full">
+          <CarouselContent className="-ml-0">
+            {galleryPhotos.map((photo, i) => (
+              <CarouselItem key={i} className="pl-0 md:basis-1/2">
+                <div className="relative overflow-hidden rounded-sm h-72 md:h-80 mx-1.5 group">
+                  <img src={photo.src} alt={photo.alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <span className="absolute bottom-6 left-6 text-white text-lg font-medium tracking-wide">
+                    {photo.caption}
+                  </span>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          
+          <div className="flex justify-center gap-3 mt-6">
+            <button onClick={() => galApi?.scrollPrev()} className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-accent transition-colors">
+              <ChevronLeft size={20} />
+            </button>
+            <button onClick={() => galApi?.scrollNext()} className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-accent transition-colors">
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </Carousel>
+      </div>
+
+      {/* CTA */}
+      <div className="text-center pb-20">
+        <Button variant="heroBorder" size="lg" asChild>
+          <Link to="/estrutura">
+            Conheça nossa estrutura
+            <ArrowRight size={18} className="ml-2" />
+          </Link>
+        </Button>
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ const AuthoritySection = () => {
     {
       icon: Factory,
       value: 10000,
-      suffix: "m�",
+      suffix: "m²",
       label: t("authority.statParque"),
     },
     {
@@ -59,7 +59,7 @@ const AuthoritySection = () => {
 
         <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 flex flex-col lg:flex-row items-center justify-between gap-8 h-auto overflow-hidden relative">
           <div className="text-left max-w-lg z-10 flex-shrink-0">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("authority.capilaridade")}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Indústria 100% Nordestina · Orgulhosamente Pernambucana</p>
             <p className="mt-2 text-2xl font-display font-semibold text-foreground md:text-3xl">
               {t("authority.presenca")}
             </p>
@@ -83,7 +83,7 @@ const AuthoritySection = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 mb-4 bg-primary/10 rounded-sm group-hover:bg-primary/20 transition-colors">
                 <stat.icon size={24} className="text-primary" />
               </div>
-              <div className="stat-number text-3xl md:text-4xl lg:text-5xl">
+              <div className="stat-number text-2xl md:text-3xl lg:text-4xl">
                 <CountUp to={stat.value} />
                 <span className="text-xl md:text-2xl">{stat.suffix}</span>
               </div>

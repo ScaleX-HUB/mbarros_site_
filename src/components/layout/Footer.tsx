@@ -75,7 +75,7 @@ const Footer = () => {
               <li className="flex items-start gap-3.5 text-muted-foreground">
                 <MapPin size={18} className="mt-0.5 text-primary/70" />
                 <span className="text-sm leading-relaxed">
-                  Rua da Ind�stria, 123<br />
+                  Rua da Indústria, 123<br />
                   Distrito Industrial<br />
                   Pernambuco, PE
                 </span>
@@ -87,7 +87,7 @@ const Footer = () => {
           <div>
             <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide">Newsletter</h3>
             <p className="text-muted-foreground text-sm mb-4">
-              Receba novidades e tend�ncias do mercado moveleiro.
+              Receba novidades e tendências do mercado moveleiro.
             </p>
             <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
               <input
@@ -112,7 +112,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link to="/cookies" className="hover:text-primary transition-colors hover:underline underline-offset-4">
-              Pol�ticas de Cookies
+              Políticas de Cookies
             </Link>
             <a href="#" className="hover:text-primary transition-colors hover:underline underline-offset-4">
               Termos de Uso

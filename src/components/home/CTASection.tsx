@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const CTASection = () => {
+  const { t } = useTranslation();
   return (
     <section className="section-container">
       <div className="max-w-4xl mx-auto text-center">
@@ -16,25 +18,24 @@ const CTASection = () => {
 
           <div className="relative z-10 space-y-6">
             <h2 className="section-title">
-              Sua loja está pronta para{" "}
-              <span className="text-gradient">crescer com estrutura industrial?</span>
+              {t("cta.title1")}{" "}
+              <span className="text-gradient">{t("cta.title2")}</span>
             </h2>
             
             <p className="section-subtitle mx-auto">
-              Descubra como a parceria White Label pode transformar 
-              sua operação e impulsionar seus resultados.
+              {t("cta.desc")}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button variant="hero" size="lg" asChild>
                 <Link to="/seja-parceiro">
-                  Quero ser parceiro
+                  {t("cta.btnPartner")}
                   <ArrowRight size={18} />
                 </Link>
               </Button>
               <Button variant="heroBorder" size="lg" asChild>
                 <Link to="/contato">
-                  Fale com nosso time
+                  {t("cta.btnContact")}
                 </Link>
               </Button>
             </div>

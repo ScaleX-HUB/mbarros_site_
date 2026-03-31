@@ -5,7 +5,8 @@ import PartnershipSection from "@/components/home/PartnershipSection";
 import StructureSection from "@/components/home/StructureSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import DifferentialsSection from "@/components/home/DifferentialsSection";
-import CTASection from "@/components/home/CTASection";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+
 
 const Index = () => {
   return (
@@ -16,7 +17,8 @@ const Index = () => {
       <StructureSection />
       <ProjectsSection />
       <DifferentialsSection />
-      <CTASection />
+      <TestimonialsSection />
+
     </Layout>
   );
 };

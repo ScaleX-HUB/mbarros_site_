@@ -7,7 +7,7 @@
   width: 58px;
   z-index: 40;
   pointer-events: none;
-  opacity: 0.42;
+  opacity: 1;
 }
 
 .ruler {
@@ -22,13 +22,8 @@
   inset: 10px 0 10px 0;
 }
 
-.spine {
-  position: absolute;
-  right: 18px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: hsl(var(--foreground) / 0.2);
+.spine { 
+  display: none;
 }
 
 .ticks {
@@ -50,31 +45,30 @@
 .tick {
   display: block;
   height: 1px;
-  background: hsl(var(--foreground) / 0.2);
-  margin-right: 18px;
+  background: hsl(var(--foreground) / 0.3);
+  margin-right: 28px;
 }
 
 .tickSmall {
-  width: 6px;
+  width: 14px;
 }
 
 .tickMedium {
-  width: 9px;
+  width: 14px;
 }
 
 .tickLarge {
-  width: 14px;
-  height: 2px;
-  background: hsl(var(--foreground) / 0.34);
+  width: 24px;
+  background: hsl(var(--foreground) / 0.9);
 }
 
 .tickNumber {
   position: absolute;
   right: 0;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1;
-  font-weight: 500;
-  color: hsl(var(--foreground) / 0.45);
+  font-weight: 800;
+  color: hsl(var(--foreground) / 1);
   letter-spacing: 0.02em;
 }
 
@@ -89,8 +83,8 @@
 .indicatorLine {
   display: block;
   height: 2px;
-  width: 24px;
-  background: hsl(var(--primary) / 0.48);
+  width: 32px;
+  background: hsl(var(--primary) / 0.8);
 }
 
 @media (max-width: 640px) {
@@ -98,15 +92,11 @@
     right: 10px;
     height: 52vh;
     width: 52px;
-    opacity: 0.35;
+    opacity: 0.8;
   }
 
   .tickNumber {
     display: none;
-  }
-
-  .spine {
-    right: 16px;
   }
 
   .tick {
@@ -116,4 +106,38 @@
   .indicatorLine {
     width: 20px;
   }
+}
+
+.tickRow {
+  transition: all 0.3s ease;
+}
+
+.tickRow.active .tick {
+  background: hsl(var(--primary));
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.tickRow.active .tickLarge {
+  width: 48px;
+}
+
+.tickRow.active .tickSmall {
+  width: 24px;
+}
+
+.tickRow.active .tickNumber {
+  transform: scale(1.2);
+  color: hsl(var(--primary));
+  transition: all 0.3s ease;
+}
+
+.tickNumber {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.tickNumber:hover {
+  color: hsl(var(--primary));
+  transform: scale(1.2);
 }

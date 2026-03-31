@@ -52,7 +52,7 @@ const HeroSection = () => {
   }, [activeIndex, images, prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pb-48 lg:pb-32">
       {/* Background */}
       <div className="absolute inset-0">
         <AnimatePresence mode="sync" initial={false}>
@@ -88,7 +88,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 pb-32">
         <motion.div
           className="max-w-3xl mr-auto space-y-6 text-left relative"
           variants={staggerContainer}
@@ -98,44 +98,50 @@ const HeroSection = () => {
           {/* Subtle glow highlight behind text */}
           <div className="absolute -inset-10 bg-white/40 dark:bg-black/20 blur-3xl -z-10 rounded-full transition-colors duration-700" />
 
-          {/* Badge */}
-          <motion.div variants={fadeUpItem} className="inline-flex items-center gap-2 bg-primary/10 dark:bg-primary/20 backdrop-blur-sm border border-primary/30 dark:border-primary/40 px-4 py-2 rounded-full mb-2 shadow-[0_0_24px_rgba(255,189,74,0.1)]">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />      
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-foreground dark:text-white transition-colors duration-700">
-              {t("hero.badge")}
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1 variants={fadeUpItem} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-semibold leading-tight text-foreground dark:text-white drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)] transition-colors duration-700">
-            {t("hero.title1")}{" "}
-            <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">{t("hero.title2")}</span>
+            A melhor indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do nordeste</span>
           </motion.h1>
 
           {/* Subheadline */}
-          <motion.p variants={fadeUpItem} className="text-base md:text-lg text-foreground/90 dark:text-white/95 max-w-2xl drop-shadow-[0_4px_24px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] transition-colors duration-700">
-            {t("hero.subtitle")}
+          <motion.p variants={fadeUpItem} className="text-base md:text-lg text-foreground/90 dark:text-white/95 max-w-2xl drop-shadow-[0_4px_24px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] transition-colors duration-700">       
+            Para marcas que querem crescer. Focamos na produção efetiva para que você foque nas vendas.
           </motion.p>
 
-          {/* CTAs */}
-          <motion.div variants={fadeUpItem} className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-4 pt-2">
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/seja-parceiro">
-                {t("hero.ctaParceiro")}
-                <ArrowRight size={18} />
-              </Link>
-            </Button>
-            <Button variant="heroBorder" size="lg" asChild>
-              <Link to="/contato">
-                {t("hero.ctaContato")}
-              </Link>
-            </Button>
-          </motion.div>
+          
         </motion.div>
       </div>
 
+      
       {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-card to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background/90 to-transparent pointer-events-none" />
+
+      {/* Bottom Info Cards */}
+      <div className="absolute bottom-8 lg:bottom-12 left-0 right-0 w-full z-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={1} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Somos</h3>
+              <p className="text-white/90 text-sm leading-relaxed">
+                A trajetória de inovação e excelência que nos consolidou como a principal indústria do Nordeste.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={2} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Estrutura Fabril</h3>
+              <p className="text-white/90 text-sm leading-relaxed">
+                Conheça a infraestrutura de ponta que viabiliza nossa produção em larga escala com precisão.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={3} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Atendemos</h3>
+              <p className="text-white/90 text-sm leading-relaxed">
+                Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
     </section>
   );
 };

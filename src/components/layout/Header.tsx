@@ -193,6 +193,7 @@ const Header = () => {
                 compact
                 subtle
                 formClassName="rounded-full px-2"
+                hideDefaultSuggestions
               />
 
               {navItems.map((item) => (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,6 +22,7 @@ const WHATSAPP_URL =
   "https://wa.me/5581985592995?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20MBarros.";
 
 const Contato = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -37,7 +39,7 @@ const Contato = () => {
     // Simular envio
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
-    toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+    toast.success(t("contato.form.success"));
     setFormData({
       nome: "",
       email: "",
@@ -73,7 +75,7 @@ const Contato = () => {
             <div className="space-y-8">
               <div className="card-industrial">
                 <h2 className="text-xl font-display font-semibold text-foreground mb-2">
-                  Informações de Contato
+                  {t("contato.info.title1")} Contato
                 </h2>
                 <p className="text-muted-foreground text-sm mb-8">
                   Escolha o canal mais conveniente para falar com o time MBARROS.
@@ -85,7 +87,7 @@ const Contato = () => {
                       <MapPin size={20} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-foreground">Endereço</h3>
+                      <h3 className="font-medium text-foreground">{t("contato.info.address")}</h3>
                       <p className="text-muted-foreground text-sm mt-1">
                         Av. Benjamim, nº 205<br />
                         Fragoso – Paulista, PE<br />
@@ -125,7 +127,7 @@ const Contato = () => {
                       <Clock size={20} className="text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-foreground">Horário de Atendimento</h3>
+                      <h3 className="font-medium text-foreground">{t("contato.info.hours")}</h3>
                       <p className="text-muted-foreground text-sm mt-1">
                         Segunda a Sexta: 8h às 18h<br />
                         Sábado: 8h às 12h
@@ -196,7 +198,7 @@ const Contato = () => {
             {/* Form */}
             <div className="card-industrial lg:sticky lg:top-28">
               <h2 className="text-xl font-display font-semibold text-foreground mb-2">
-                Envie uma mensagem
+                {t("contato.form.title1")} mensagem
               </h2>
               <p className="text-sm text-muted-foreground mb-6">
                 Conte um pouco do seu cenário e nossa equipe comercial retorna com o melhor direcionamento.

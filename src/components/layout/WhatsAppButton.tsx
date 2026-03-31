@@ -1,6 +1,6 @@
 const WhatsAppButton = () => {
   const whatsappNumber = "5581985592995";
-  const message = "Ol·! Gostaria de saber mais sobre a parceria White Label da MBarros.";
+  const message = "Ol√°! Gostaria de saber mais sobre a parceria White Label da MBarros.";
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
