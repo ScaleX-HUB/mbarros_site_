@@ -1,35 +1,40 @@
 import { Factory, Users, Package, MapPin, Building2 } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
 import { BrazilMap } from "@/components/ui/brazil-map";
+import { useTranslation } from "react-i18next";
 
-const stats = [
-  {
-    icon: Factory,
-    value: 10000,
-    suffix: "m²",
-    label: "Parque Fabril",
-  },
-  {
-    icon: Package,
-    value: 55000,
-    suffix: "+",
-    label: "Peças por Mês",
-  },
-  {
-    icon: Building2,
-    value: 22,
-    suffix: "",
-    label: "Cidades com Presença",
-  },
-  {
-    icon: MapPin,
-    value: 7,
-    suffix: "",
-    label: "Estados Ativos",
-  },
-];
+
 
 const AuthoritySection = () => {
+  const { t } = useTranslation();
+
+  const stats = [
+    {
+      icon: Factory,
+      value: 10000,
+      suffix: "m�",
+      label: t("authority.statParque"),
+    },
+    {
+      icon: Package,
+      value: 55000,
+      suffix: "+",
+      label: t("authority.statPecas"),
+    },
+    {
+      icon: Building2,
+      value: 22,
+      suffix: "",
+      label: t("authority.statCidades"),
+    },
+    {
+      icon: MapPin,
+      value: 7,
+      suffix: "",
+      label: t("authority.statEstados"),
+    },
+  ];
+
   return (
     <section className="section-container bg-card">
       <div className="max-w-6xl mx-auto">
@@ -39,27 +44,27 @@ const AuthoritySection = () => {
             <div className="flex items-center gap-4">
               <span className="h-px w-8 bg-primary"></span>
               <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                NOSSA HISTÓRIA
+                {t("authority.badge")}
               </span>
               <span className="h-px w-8 bg-primary"></span>
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold mt-4">
-            Escala industrial com <span className="text-primary">controle de qualidade</span>
+            {t("authority.title1")} <span className="text-primary">{t("authority.title2")}</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
-            Estrutura sólida para sustentar o crescimento da sua marca, com destaque para a presença comercial em <span className="text-foreground font-semibold">22 cidades e 7 estados</span>. Tecnologia Europeia e Chinesa, processos padronizados.
+            {t("authority.desc1")} <span className="text-foreground font-semibold">{t("authority.highlight")}</span>{t("authority.desc2")}
           </p>
         </div>
 
         <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 flex flex-col lg:flex-row items-center justify-between gap-8 h-auto overflow-hidden relative">
           <div className="text-left max-w-lg z-10 flex-shrink-0">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Capilaridade Comercial</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("authority.capilaridade")}</p>
             <p className="mt-2 text-2xl font-display font-semibold text-foreground md:text-3xl">
-              Presença em 22 cidades e 7 estados
+              {t("authority.presenca")}
             </p>
             <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-              Operação estruturada para atender lojistas com proximidade regional e capacidade industrial consistente.
+              {t("authority.presencaDesc")}
             </p>
           </div>
           <div className="flex-1 w-full max-w-[400px] flex items-center justify-center -my-16 pointer-events-none opacity-90">
@@ -95,3 +100,4 @@ const AuthoritySection = () => {
 };
 
 export default AuthoritySection;
+

@@ -9,49 +9,43 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
-
-const benefits = [
-  "Sua marca, nossa estrutura industrial",
-  "Sem taxa de franquia",
-  "Entrega média em até 20 dias úteis",
-  "Suporte técnico especializado",
-  "Tecnologia Europeia e Chinesa na produção",
-  "Treinamentos e capacitação",
-];
-
-const steps = [
-  {
-    number: "1",
-    title: "Você Projeta",
-    description: "Sua equipe desenvolve o design e valida com o cliente usando o software Promob.",
-    icon: DraftingCompass,
-  },
-  {
-    number: "2",
-    title: "Nós Validamos",
-    description: "O projeto passa por nosso time de engenharia para revisão e otimização produtiva.",
-    icon: ClipboardCheck,
-  },
-  {
-    number: "3",
-    title: "Nós Produzimos",
-    description: "A fábrica assume a produção utilizando maquinário com Tecnologia Europeia e Chinesa e matéria-prima premium.",
-    icon: Cog,
-  },
-  {
-    number: "4",
-    title: "Seu Cliente Recebe",
-    description: "Entregamos o projeto finalizado com precisão, agilidade e pronto para montagem.",
-    icon: PackageCheck,
-  },
-] as const satisfies ReadonlyArray<{
-  number: string;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}>;
+import { useTranslation } from "react-i18next";
 
 const PartnershipSection = () => {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      number: "1",
+      title: t("partnership.step1Title"),
+      description: t("partnership.step1Desc"),
+      icon: DraftingCompass,
+    },
+    {
+      number: "2",
+      title: t("partnership.step2Title"),
+      description: t("partnership.step2Desc"),
+      icon: ClipboardCheck,
+    },
+    {
+      number: "3",
+      title: t("partnership.step3Title"),
+      description: t("partnership.step3Desc"),
+      icon: Cog,
+    },
+    {
+      number: "4",
+      title: t("partnership.step4Title"),
+      description: t("partnership.step4Desc"),
+      icon: PackageCheck,
+    },
+  ] as const satisfies ReadonlyArray<{
+    number: string;
+    title: string;
+    description: string;
+    icon: LucideIcon;
+  }>;
+
   return (
     <section className="section-container bg-background">
       <div className="max-w-6xl mx-auto text-center">
@@ -60,7 +54,7 @@ const PartnershipSection = () => {
           <div className="flex items-center gap-4">
             <span className="h-px w-8 bg-primary"></span>
             <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-              A Parceria
+              {t("partnership.badge")}
             </span>
             <span className="h-px w-8 bg-primary"></span>
           </div>
@@ -68,15 +62,12 @@ const PartnershipSection = () => {
 
         {/* Title & Description */}
         <h2 className="text-4xl md:text-5xl font-display font-semibold mb-6">
-          <span className="text-foreground">O modelo</span>{" "}
-          <span className="text-primary">White Label</span>
+          <span className="text-foreground">{t("partnership.title1")}</span>{" "}
+          <span className="text-primary">{t("partnership.title2")}</span>
         </h2>
-        
+
         <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg leading-relaxed mb-20">
-          Trabalhamos nos bastidores para que a sua marca brilhe de frente.<br className="hidden md:inline" />
-          Com o modelo de parceria industrial da MBARROS, sua loja vende<br className="hidden md:inline" />
-          projetos assinados com o seu nome, fabricados com tecnologia<br className="hidden md:inline" />
-          Europeia e Chinesa.
+          {t("partnership.desc")}
         </p>
 
         {/* Steps Grid */}
@@ -126,3 +117,4 @@ const PartnershipSection = () => {
 };
 
 export default PartnershipSection;
+

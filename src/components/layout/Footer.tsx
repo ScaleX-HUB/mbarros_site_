@@ -1,197 +1,122 @@
 import { Link } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
-import { MapPin, Phone, Mail, Instagram, Linkedin, Facebook } from "lucide-react";
-import logoMbarros from "@/assets/logo-mbarros.png";
-import { Button } from "@/components/ui/button";
-import { getCookieConsent, onCookieConsentChange, requestCookieConsentReview } from "@/lib/cookie-consent";
+import { Mail, MapPin, Phone, Instagram, Facebook, LayoutDashboard } from "lucide-react";
+import Logo from "./Logo";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-  const [canLoadMap, setCanLoadMap] = useState(false);
-
-  const mapQuery = useMemo(
-    () => "Av. Benjamim, nº 205, Fragoso – Paulista, PE, CEP 53402-010",
-    [],
-  );
-
-  const mapEmbedUrl = useMemo(
-    () => `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`,
-    [mapQuery],
-  );
-
-  const mapLinkUrl = useMemo(
-    () => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`,
-    [mapQuery],
-  );
-
-  useEffect(() => {
-    const existing = getCookieConsent();
-    setCanLoadMap(Boolean(existing?.marketing || existing?.analytics));
-    return onCookieConsentChange((prefs) => {
-      setCanLoadMap(Boolean(prefs.marketing || prefs.analytics));
-    });
-  }, []);
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container mx-auto px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo e Descrição */}
+    <footer className="bg-background pt-20 pb-10 border-t border-border">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand & About */}
           <div className="space-y-6">
-            <img 
-              src={logoMbarros} 
-              alt="MBarros Indústria" 
-              className="h-10 w-auto"
-            />
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Estrutura industrial para marcas que querem crescer. Indústria de móveis planejados especializada em White Label para lojistas de alto padrão.
+            <Link to="/" className="inline-block transition-opacity hover:opacity-80">
+              <Logo />
+            </Link>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
+              {t("footer.sobreText")}
             </p>
             <div className="flex gap-4">
-              <a 
-                href="https://instagram.com/mbarrosind" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
+              <a href="https://instagram.com/mbarros.mrp" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:-translate-y-1" aria-label="Instagram">
+                <Instagram size={18} />
               </a>
-              <a 
-                href="https://linkedin.com/company/mbarros-industria-de-moveis" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
+              <a href="#" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 transform hover:-translate-y-1" aria-label="Facebook">
+                <Facebook size={18} />
               </a>
             </div>
           </div>
 
-          {/* Links Rápidos */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-foreground font-display font-semibold mb-6">Navegação</h4>
-            <nav className="flex flex-col gap-3">
-              <Link to="/sobre" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Sobre a Indústria
-              </Link>
-              <Link to="/estrutura" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Estrutura Fabril
-              </Link>
-              <Link to="/white-label" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                White Label
-              </Link>
-              <Link to="/projetos" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Projetos
-              </Link>
-              <Link to="/blog" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Blog
-              </Link>
-            </nav>
+            <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide flex items-center gap-2">
+              <LayoutDashboard size={18} className="text-primary"/>
+              {t("footer.links")}
+            </h3>
+            <ul className="space-y-3.5">
+              {[
+                { name: t("header.sobre"), path: "/sobre" },
+                { name: t("header.projetos"), path: "/projetos" },
+                { name: "Estrutura", path: "/estrutura" },
+                { name: t("header.sejaParceiro"), path: "/seja-parceiro" },
+                { name: t("header.blog"), path: "/blog" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-muted-foreground hover:text-primary text-sm flex items-center gap-2 transition-colors group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors"></span>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Institucional */}
+          {/* Connect */}
           <div>
-            <h4 className="text-foreground font-display font-semibold mb-6">Institucional</h4>
-            <nav className="flex flex-col gap-3">
-              <Link to="/seja-parceiro" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Seja um Parceiro
-              </Link>
-              <Link to="/trabalhe-conosco" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Trabalhe Conosco
-              </Link>
-              <Link to="/representantes" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Representantes
-              </Link>
-              <Link to="/contato" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Contato
-              </Link>
-              <Link to="/cookies" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                Política de Cookies
-              </Link>
-            </nav>
+            <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide">{t("footer.contato")}</h3>
+            <ul className="space-y-4">
+              <li>
+                <a href="mailto:contato@mbarros.com.br" className="flex items-start gap-3.5 text-muted-foreground hover:text-primary transition-colors group">
+                  <Mail size={18} className="mt-0.5 text-primary/70 group-hover:text-primary transition-colors" />
+                  <span className="text-sm">contato@mbarros.com.br</span>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+5581985592995" className="flex items-start gap-3.5 text-muted-foreground hover:text-primary transition-colors group">
+                  <Phone size={18} className="mt-0.5 text-primary/70 group-hover:text-primary transition-colors" />
+                  <span className="text-sm">(81) 98559-2995</span>
+                </a>
+              </li>
+              <li className="flex items-start gap-3.5 text-muted-foreground">
+                <MapPin size={18} className="mt-0.5 text-primary/70" />
+                <span className="text-sm leading-relaxed">
+                  Rua da Ind�stria, 123<br />
+                  Distrito Industrial<br />
+                  Pernambuco, PE
+                </span>
+              </li>
+            </ul>
           </div>
 
-          {/* Contato */}
+          {/* Newsletter */}
           <div>
-            <h4 className="text-foreground font-display font-semibold mb-6">Contato</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Phone size={18} className="text-primary flex-shrink-0" />
-                <a href="tel:5581985592995" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  (81) 98559-2995
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-primary flex-shrink-0" />
-                <a href="mailto:comercial@mbarrosind.com.br" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  comercial@mbarrosind.com.br
-                </a>
-              </div>
-
-              <div className="pt-2">
-                <div className="flex items-start gap-3">
-                  <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
-                  <p className="text-muted-foreground text-sm">
-                    Av. Benjamim, nº 205<br />
-                    Fragoso – Paulista, PE<br />
-                    CEP 53402-010
-                  </p>
-                </div>
-
-                <div className="mt-3 overflow-hidden rounded-sm border border-border bg-background/40">
-                  {canLoadMap ? (
-                    <iframe
-                      title="Localização da fábrica no Google Maps"
-                      src={mapEmbedUrl}
-                      className="h-36 w-full opacity-90"
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    />
-                  ) : (
-                    <div className="p-3">
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        Para carregar o mapa, habilite cookies opcionais.
-                      </p>
-                      <div className="mt-3 flex flex-wrap items-center gap-2">
-                        <Button variant="outline" size="sm" asChild>
-                          <a href={mapLinkUrl} target="_blank" rel="noopener noreferrer">
-                            Abrir no Google Maps
-                          </a>
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => requestCookieConsentReview()}
-                        >
-                          Preferências de cookies
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+            <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide">Newsletter</h3>
+            <p className="text-muted-foreground text-sm mb-4">
+              Receba novidades e tend�ncias do mercado moveleiro.
+            </p>
+            <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                className="w-full bg-secondary border-none rounded-sm px-4 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-primary transition-shadow"
+                required
+              />
+              <button
+                type="submit"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm rounded-sm px-4 py-3 transition-colors"
+              >
+                Assinar
+              </button>
+            </form>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} MBarros Indústria. Todos os direitos reservados.
-            </p>
-            <p className="text-muted-foreground text-sm">
-              100% Pernambucana
-            </p>
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-sm text-center md:text-left">
+            &copy; {currentYear} MBARROS {t("footer.direitos")}.
+          </p>
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <Link to="/cookies" className="hover:text-primary transition-colors hover:underline underline-offset-4">
+              Pol�ticas de Cookies
+            </Link>
+            <a href="#" className="hover:text-primary transition-colors hover:underline underline-offset-4">
+              Termos de Uso
+            </a>
           </div>
         </div>
       </div>
@@ -200,3 +125,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
