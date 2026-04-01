@@ -52,7 +52,7 @@ const HeroSection = () => {
   }, [activeIndex, images, prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pb-48 lg:pb-32">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pb-44 sm:pb-48 lg:pb-32">
       {/* Background */}
       <div className="absolute inset-0">
         <AnimatePresence mode="sync" initial={false}>
@@ -117,27 +117,34 @@ const HeroSection = () => {
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background/90 to-transparent pointer-events-none" />
 
       {/* Bottom Info Cards */}
-      <div className="absolute bottom-8 lg:bottom-12 left-0 right-0 w-full z-20">
+      <div className="absolute bottom-6 md:bottom-8 lg:bottom-12 left-0 right-0 w-full z-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={1} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Somos</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
+          {/* Mobile: horizontal scroll strip */}
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 md:grid md:grid-cols-3 md:overflow-visible md:snap-none md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={1} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Quem Somos</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
                 A trajetória de inovação e excelência que nos consolidou como a principal indústria do Nordeste.
               </p>
             </motion.div>
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={2} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Estrutura Fabril</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={2} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Estrutura Fabril</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
                 Conheça a infraestrutura de ponta que viabiliza nossa produção em larga escala com precisão.
               </p>
             </motion.div>
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={3} className="bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-3 text-lg">Quem Atendemos</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-sm leading-relaxed">
+            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={3} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Quem Atendemos</h3>
+              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
                 Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.
               </p>
             </motion.div>
+          </div>
+          {/* Mobile scroll hint dots */}
+          <div className="flex md:hidden justify-center gap-2 mt-3">
+            <span className="w-6 h-1 rounded-full bg-white/70" />
+            <span className="w-2 h-1 rounded-full bg-white/30" />
+            <span className="w-2 h-1 rounded-full bg-white/30" />
           </div>
         </div>
       </div>

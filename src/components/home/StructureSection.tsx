@@ -139,13 +139,24 @@ const StructureSection = () => {
     <section className="bg-card w-full flex flex-col">
       {/* Full Background Video Section with Cards */}
       <div className="relative w-full min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+        {/* Background – Mobile: static image fallback (YouTube iframe blocks autoplay on iOS) */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none md:hidden">
+          <img
+            src={productionPanelInspectionWide}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/50 to-background/95" />
+        </div>
+
+        {/* Background Video – Desktop only */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none hidden md:block">
           <iframe
             src="https://www.youtube.com/embed/t4DJTVCMAEg?autoplay=1&mute=1&loop=1&playlist=t4DJTVCMAEg&rel=0&modestbranding=1&controls=0&playsinline=1"
             title="Processo Produtivo MBarros"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            className="absolute top-1/2 left-1/2 w-[200vw] h-[200vh] md:w-[150vw] md:h-[150vh] min-w-[100vw] min-h-[100vh] -translate-x-1/2 -translate-y-1/2 object-cover opacity-80"
+            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] min-w-[100vw] min-h-[100vh] -translate-x-1/2 -translate-y-1/2 object-cover opacity-80"
             style={{ pointerEvents: "none" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/50 to-background/95 backdrop-blur-[1px]" />
