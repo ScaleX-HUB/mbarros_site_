@@ -6,7 +6,7 @@ s = s.replace(/text-4xl md:text-5xl lg:text-6xl/g, 'text-3xl md:text-4xl lg:text
 s = s.replace(/text-lg text-muted-foreground/g, 'text-base text-muted-foreground');
 
 // Founders image
-const imgTarget = /<img\s*src=\{MBARROS_IMAGES\[0\]\.src\}\s*alt="Gestores da empresa em frente a uma máquina CNC iluminada"\s*className="w-full h-full object-cover"\s*\/>/;
+const imgTarget = /<img\s*src=\{MBARROS_IMAGES\[0\]\.src\}\s*alt="Gestores da empresa em frente a uma mï¿½quina CNC iluminada"\s*className="w-full h-full object-cover"\s*\/>/;
 s = s.replace(imgTarget, `<div className="relative group rounded-sm overflow-hidden border border-border bg-black shadow-xl w-full h-full">
               <div className="absolute -inset-1 bg-primary/20 rounded-sm blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               <img
@@ -17,12 +17,12 @@ s = s.replace(imgTarget, `<div className="relative group rounded-sm overflow-hid
               />
               <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
                 <p className="text-white text-xs font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Fundadores — visão e propósito
+                  Fundadores ï¿½ visï¿½o e propï¿½sito
                 </p>
               </div>
             </div>`);
 
-const midTarget = /<\/div>\s*<\/div>\s*<\/section>\s*\{\/\* Valores \(Brought together with Missão e Visão conceptually\) \*\/\}\s*<section className="py-20 bg-background">\s*<div className="container mx-auto px-4 text-center">\s*<div className="mb-16">\s*<h2 className="text-3xl font-display font-bold">Nossos Valores<\/h2>\s*<p className="text-muted-foreground mt-4">Os pilares que sustentam a MBARROS todos os dias\.<\/p>\s*<\/div>/;
+const midTarget = /<\/div>\s*<\/div>\s*<\/section>\s*\{\/\* Valores \(Brought together with Missï¿½o e Visï¿½o conceptually\) \*\/\}\s*<section className="py-20 bg-background">\s*<div className="container mx-auto px-4 text-center">\s*<div className="mb-16">\s*<h2 className="text-3xl font-display font-bold">Nossos Valores<\/h2>\s*<p className="text-muted-foreground mt-4">Os pilares que sustentam a MBARROS todos os dias\.<\/p>\s*<\/div>/;
 
 s = s.replace(midTarget, `</div>
           
@@ -39,7 +39,7 @@ const timelineNewCode = `      {/* Timeline com Efeito */}
       <section className="bg-muted/10 w-full pb-20">
         <Timeline
           title="A Linha do Tempo"
-          description="Nossa evolução e marcos importantes ao longo das últimas duas décadas."
+          description="Nossa evoluï¿½ï¿½o e marcos importantes ao longo das ï¿½ltimas duas dï¿½cadas."
           data={timeline.map((item) => ({
             title: item.year,
             content: (

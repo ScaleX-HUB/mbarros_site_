@@ -10,27 +10,27 @@ import cncOperator from "@/assets/team-operator-cnc-monitor.png";
 const timeline = [
   {
     year: "2005",
-    event: "Primeiros passos: estrutura inicial da empresa em Pernambuco",
+    event: "O Grupo MBarros iniciou sua trajetória em um galpão de 200m², em Olinda, com 12 colaboradores e uma estrutura simples. Atuando no mobiliário residencial, já se destacava pelo uso de uma seccionadora de tecnologia avançada para a época, mesmo com produção ainda manual, dando início à sua evolução industrial.",
     image: "/imagens_mbarros/historico/2005.jpeg",
   },
   {
     year: "2008",
-    event: "Crescimento e consolidação no mercado nordestino",
+    event: "Com a operação mais madura, o Grupo MBarros ampliou a capacidade produtiva, fortaleceu sua presença no mercado nordestino e consolidou uma reputação baseada em acabamento, confiança e compromisso com a entrega.",
     image: "/imagens_mbarros/historico/2008.jpeg",
   },
   {
     year: "2010",
-    event: "Modernização do parque fabril e aumento da capacidade produtiva",
+    event: "A modernização do parque fabril acelerou a virada industrial da empresa, com novos equipamentos, mais precisão nos processos e aumento consistente da produtividade para atender projetos com mais escala.",
     image: "/imagens_mbarros/historico/2010.jpeg",
   },
   {
     year: "2012",
-    event: "Ampliação da estrutura e expansão das operações",
+    event: "A estrutura foi ampliada para acompanhar o crescimento da demanda, com evolução operacional, maior organização produtiva e expansão do alcance comercial junto a lojistas e parceiros.",
     image: "/imagens_mbarros/historico/2012.jpeg",
   },
   {
     year: "2023",
-    event: "Nova unidade fabril com 10.000m² e painéis solares — referência industrial no Nordeste",
+    event: "A nova unidade fabril de 10.000m², equipada com painéis solares e tecnologia de ponta, marca um novo ciclo do Grupo MBarros: mais capacidade, mais eficiência e uma operação pronta para sustentar o crescimento dos lojistas parceiros.",
     image: "/imagens_mbarros/historico/2023.png",
   },
 ];
@@ -39,17 +39,17 @@ const values = [
   {
     icon: Target,
     title: "Missão",
-    description: "Transformar os sonhos dos clientes em ambientes personalizados com matérias-primas de qualidade.",
+    description: "Nossa principal missão é transformar os sonhos de nossos clientes em uma realidade personalizada, com foco nas melhores matérias-primas do mercado.",
   },
   {
     icon: Factory,
     title: "Visão",
-    description: "Ser referência nacional em móveis planejados White Label, fortalecendo parceiros.",
+    description: "Nossa visão é impulsionar o crescimento dos nossos lojistas, oferecendo soluções em móveis planejados com alto padrão de qualidade, suporte especializado e as melhores matérias-primas do mercado, garantindo mais competitividade, confiança e resultados em cada projeto vendido.",
   },
   {
     icon: Award,
     title: "Valores",
-    description: "Qualidade, inovação, valorização da equipe. Orgulhosamente nordestinos.",
+    description: "Sustentabilidade, excelência, inovação, parceria com o lojista, compromisso com resultados e ética em cada etapa — valores que fortalecem relações, impulsionam vendas e constroem negócios sólidos no mercado de móveis planejados.",
   },
 ];
 
@@ -57,7 +57,7 @@ const videoStats = [
   { value: "10.000m²", label: "Parque Fabril" },
   { value: "55k+", label: "Peças/Mês" },
   { value: "35+", label: "Anos de Mercado" },
-  { value: "7", label: "Estados Atendidos" },
+  { value: "22", label: "Cidades Atendidas" },
 ];
 
 const Sobre = () => {
@@ -100,7 +100,7 @@ const Sobre = () => {
               Uma indústria <span className="text-gradient">avançada</span>
             </h1>
             <p className="section-subtitle mx-auto mt-4 max-w-3xl leading-relaxed">
-              Há mais de três décadas, transformamos o mercado de móveis planejados no Nordeste. Evoluímos da marcenaria artesanal para uma das indústrias mais avançadas da região, unindo tradição e tecnologia de ponta.
+              Há mais de três décadas, transformamos experiência produtiva em estrutura industrial para fortalecer lojistas, elevar o padrão de qualidade e ampliar resultados com segurança.
             </p>
           </div>
         </div>
@@ -116,13 +116,13 @@ const Sobre = () => {
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  A MBARROS Indústria de Móveis Planejados nasceu em Pernambuco com a missão de 
-                  fortalecer o mercado de móveis planejados no Nordeste brasileiro.
+                  Fundado por Severino Marcone e Francisca Marcone, o Grupo MBarros nasceu em Pernambuco com uma visão clara: construir uma operação sólida, confiável e preparada para transformar marcenaria em escala industrial.
                 </p>
                 <p>
-                  Ao longo de mais de três décadas, construímos uma trajetória marcada pela 
-                  qualidade, inovação e compromisso com nossos parceiros. Hoje, atendemos 
-                  lojistas em todo o Brasil através do modelo White Label.
+                  O Grupo MBarros iniciou sua trajetória em um galpão de 200m², em Olinda, com 12 colaboradores e uma estrutura simples. Atuando no mobiliário residencial, já se destacava pelo uso de uma seccionadora de tecnologia avançada para a época, mesmo com produção ainda manual, dando início à sua evolução industrial.
+                </p>
+                <p>
+                  De lá para cá, a empresa ampliou estrutura, processos e capacidade produtiva, incorporando tecnologia europeia e chinesa, engenharia aplicada e uma operação preparada para atender lojistas com mais previsibilidade, qualidade e competitividade.
                 </p>
               </div>
 
@@ -159,7 +159,7 @@ const Sobre = () => {
               {/* Bottom caption */}
               <div className="absolute bottom-0 left-0 right-0 px-6 py-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none">
                 <p className="text-white text-sm md:text-base font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Fundadores — visão e propósito
+                  Severino Marcone e Francisca Marcone — fundadores do Grupo MBarros
                 </p>
               </div>
             </div>

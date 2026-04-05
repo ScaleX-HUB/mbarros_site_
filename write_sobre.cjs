@@ -17,22 +17,22 @@ const timeline = [
   },
   {
     year: "2008",
-    event: "Crescimento e consolidação no mercado nordestino",
+    event: "Crescimento e consolidaï¿½ï¿½o no mercado nordestino",
     image: "/imagens_mbarros/historico/2008.jpeg",
   },
   {
     year: "2010",
-    event: "Modernização do parque fabril e aumento da capacidade produtiva",
+    event: "Modernizaï¿½ï¿½o do parque fabril e aumento da capacidade produtiva",
     image: "/imagens_mbarros/historico/2010.jpeg",
   },
   {
     year: "2012",
-    event: "Ampliação da estrutura e expansão das operações",
+    event: "Ampliaï¿½ï¿½o da estrutura e expansï¿½o das operaï¿½ï¿½es",
     image: "/imagens_mbarros/historico/2012.jpeg",
   },
   {
     year: "2023",
-    event: "Nova unidade fabril com 10.000m² e painéis solares — referência industrial no Nordeste",
+    event: "Nova unidade fabril com 10.000mï¿½ e painï¿½is solares ï¿½ referï¿½ncia industrial no Nordeste",
     image: "/imagens_mbarros/historico/2023.png",
   },
 ];
@@ -40,24 +40,24 @@ const timeline = [
 const values = [
   {
     icon: Target,
-    title: "Missão",
-    description: "Transformar os sonhos dos clientes em ambientes personalizados com matérias-primas de qualidade.",
+    title: "Missï¿½o",
+    description: "Transformar os sonhos dos clientes em ambientes personalizados com matï¿½rias-primas de qualidade.",
   },
   {
     icon: Factory,
-    title: "Visão",
-    description: "Ser referência nacional em móveis planejados White Label, fortalecendo parceiros.",
+    title: "Visï¿½o",
+    description: "Ser referï¿½ncia nacional em mï¿½veis planejados White Label, fortalecendo parceiros.",
   },
   {
     icon: Award,
     title: "Valores",
-    description: "Qualidade, inovação, valorização da equipe. Orgulhosamente nordestinos.",
+    description: "Qualidade, inovaï¿½ï¿½o, valorizaï¿½ï¿½o da equipe. Orgulhosamente nordestinos.",
   },
 ];
 
 const videoStats = [
-  { value: "10.000m²", label: "Parque Fabril" },
-  { value: "55k+", label: "Peças/Mês" },
+  { value: "10.000mï¿½", label: "Parque Fabril" },
+  { value: "55k+", label: "Peï¿½as/Mï¿½s" },
   { value: "35+", label: "Anos de Mercado" },
   { value: "7", label: "Estados Atendidos" },
 ];
@@ -96,13 +96,13 @@ const Sobre = () => {
         <div className="section-container relative py-24 md:py-32">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <span className="text-primary text-sm uppercase tracking-widest font-medium">
-              Sobre a Indústria
+              Sobre a Indï¿½stria
             </span>
             <h1 className="section-title mt-4">
-              Uma indústria <span className="text-gradient">avançada</span>
+              Uma indï¿½stria <span className="text-gradient">avanï¿½ada</span>
             </h1>
             <p className="section-subtitle mx-auto mt-4 max-w-3xl leading-relaxed">
-              Há mais de três décadas, transformamos o mercado de móveis planejados no Nordeste. Evoluímos da marcenaria artesanal para uma das indústrias mais avançadas da região, unindo tradição e tecnologia de ponta.
+              Hï¿½ mais de trï¿½s dï¿½cadas, transformamos o mercado de mï¿½veis planejados no Nordeste. Evoluï¿½mos da marcenaria artesanal para uma das indï¿½strias mais avanï¿½adas da regiï¿½o, unindo tradiï¿½ï¿½o e tecnologia de ponta.
             </p>
           </div>
         </div>
@@ -114,17 +114,17 @@ const Sobre = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
               <h2 className="text-3xl font-display font-semibold">
-                Nossa História & DNA
+                Nossa Histï¿½ria & DNA
               </h2>
               <div className="space-y-5 text-muted-foreground leading-relaxed">
                 <p>
-                  A MBARROS Indústria de Móveis Planejados nasceu em Pernambuco com a missão de 
-                  fortalecer o mercado de móveis planejados no Nordeste brasileiro.
+                  A MBARROS Indï¿½stria de Mï¿½veis Planejados nasceu em Pernambuco com a missï¿½o de 
+                  fortalecer o mercado de mï¿½veis planejados no Nordeste brasileiro.
                 </p>
                 <p>
-                  Ao longo de mais de três décadas, construímos uma trajetória marcada pela 
-                  qualidade, inovação e compromisso com nossos parceiros. Hoje, atendemos 
-                  lojistas em todo o Brasil através do modelo White Label.
+                  Ao longo de mais de trï¿½s dï¿½cadas, construï¿½mos uma trajetï¿½ria marcada pela 
+                  qualidade, inovaï¿½ï¿½o e compromisso com nossos parceiros. Hoje, atendemos 
+                  lojistas em todo o Brasil atravï¿½s do modelo White Label.
                 </p>
               </div>
 
@@ -161,7 +161,7 @@ const Sobre = () => {
               {/* Bottom caption */}
               <div className="absolute bottom-0 left-0 right-0 px-6 py-5 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none">
                 <p className="text-white text-sm md:text-base font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Fundadores — visão e propósito
+                  Fundadores ï¿½ visï¿½o e propï¿½sito
                 </p>
               </div>
             </div>
@@ -170,7 +170,7 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Vídeo Institucional */}
+      {/* Vï¿½deo Institucional */}
       <section className="section-container bg-muted/30 py-24">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
@@ -183,14 +183,14 @@ const Sobre = () => {
           >
             <span className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-medium">
               <span className="w-8 h-px bg-primary inline-block" />
-              Conheça de perto
+              Conheï¿½a de perto
               <span className="w-8 h-px bg-primary inline-block" />
             </span>
             <h2 className="section-title mt-4">
               Nossa <span className="text-gradient">Estrutura</span>
             </h2>
             <p className="section-subtitle mx-auto mt-4">
-              Veja como funciona nossa indústria e o que nos torna referência no Nordeste.
+              Veja como funciona nossa indï¿½stria e o que nos torna referï¿½ncia no Nordeste.
             </p>
           </motion.div>
 
@@ -223,7 +223,7 @@ const Sobre = () => {
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
-                aria-label="Vídeo institucional MBarros — apresentação da estrutura"
+                aria-label="Vï¿½deo institucional MBarros ï¿½ apresentaï¿½ï¿½o da estrutura"
               />
 
               <AnimatePresence>
@@ -249,7 +249,7 @@ const Sobre = () => {
 
               <div className="absolute bottom-0 left-0 right-0 px-5 py-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-between pointer-events-none">
                 <span className="text-white text-sm font-medium tracking-wide">
-                  MBarros — Conheça nossa estrutura
+                  MBarros ï¿½ Conheï¿½a nossa estrutura
                 </span>
                 <button
                   className="text-white/80 hover:text-white transition-colors pointer-events-auto"
@@ -285,7 +285,7 @@ const Sobre = () => {
       <section className="section-container bg-card py-24">
         <div className="max-w-6xl mx-auto">
           <Timeline
-            title="Marcos que mostram como evoluímos em estrutura, processos e capacidade produtiva."
+            title="Marcos que mostram como evoluï¿½mos em estrutura, processos e capacidade produtiva."
             data={timeline.map((t) => ({
               title: t.year,
               content: (
@@ -318,11 +318,11 @@ const Sobre = () => {
               <Users size={32} className="text-primary" />
             </div>
             <h2 className="section-title">
-              Equipe <span className="text-gradient">própria</span>
+              Equipe <span className="text-gradient">prï¿½pria</span>
             </h2>
             <p className="section-subtitle mx-auto mt-4">
-              Toda a equipe de produção e montagem é composta por funcionários da própria empresa,
-              contribuindo para manter o padrão de qualidade e controle sobre todos os processos de fabricação.
+              Toda a equipe de produï¿½ï¿½o e montagem ï¿½ composta por funcionï¿½rios da prï¿½pria empresa,
+              contribuindo para manter o padrï¿½o de qualidade e controle sobre todos os processos de fabricaï¿½ï¿½o.
             </p>
           </div>
 
@@ -330,23 +330,23 @@ const Sobre = () => {
             {/* Minimalist Collab Stats next to text */}
             <div className="space-y-8">
               <p className="text-muted-foreground leading-relaxed">
-                Nossa equipe é formada por profissionais especializados que acompanham 
-                as tendências do design de interiores e do mercado de móveis planejados, 
-                unindo sofisticação, qualidade e praticidade em cada projeto.
+                Nossa equipe ï¿½ formada por profissionais especializados que acompanham 
+                as tendï¿½ncias do design de interiores e do mercado de mï¿½veis planejados, 
+                unindo sofisticaï¿½ï¿½o, qualidade e praticidade em cada projeto.
               </p>
               
               <div className="card-industrial inline-flex flex-col items-start p-6 bg-muted/40 border border-border">
                 <div className="text-4xl md:text-5xl font-display font-semibold text-primary mb-2">100+</div>
                 <div className="text-sm tracking-widest uppercase font-medium text-foreground">Colaboradores</div>
-                <div className="text-xs text-muted-foreground mt-2">Dedicados ao padrão de qualidade</div>
+                <div className="text-xs text-muted-foreground mt-2">Dedicados ao padrï¿½o de qualidade</div>
               </div>
             </div>
 
             {/* Team photo cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { src: seniorProfessional, alt: "Profissional sênior do Grupo MBarros", name: "Liderança", role: "Experiência & Visão" },
-                { src: cncOperator, alt: "Operador CNC do Grupo MBarros", name: "Operação", role: "Tecnologia & Precisão" },
+                { src: seniorProfessional, alt: "Profissional sï¿½nior do Grupo MBarros", name: "Lideranï¿½a", role: "Experiï¿½ncia & Visï¿½o" },
+                { src: cncOperator, alt: "Operador CNC do Grupo MBarros", name: "Operaï¿½ï¿½o", role: "Tecnologia & Precisï¿½o" },
               ].map((member) => (
                 <div key={member.name} className="relative rounded-sm overflow-hidden group aspect-[3/4]">
                   <img

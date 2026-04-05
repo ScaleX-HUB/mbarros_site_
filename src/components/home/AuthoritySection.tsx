@@ -1,9 +1,8 @@
-import { Factory, Users, Package, MapPin, Building2 } from "lucide-react";
+import { Factory, Package, Building2, CalendarDays, ArrowRight } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
-import { BrazilMap } from "@/components/ui/brazil-map";
+import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-
-
+import { Link } from "react-router-dom";
 
 const AuthoritySection = () => {
   const { t } = useTranslation();
@@ -28,10 +27,25 @@ const AuthoritySection = () => {
       label: t("authority.statCidades"),
     },
     {
-      icon: MapPin,
-      value: 7,
+      icon: CalendarDays,
+      value: 35,
       suffix: "",
-      label: t("authority.statEstados"),
+      label: t("authority.statAnos"),
+    },
+  ];
+
+  const previewHighlights = [
+    {
+      value: t("authority.previewHighlight1Value"),
+      label: t("authority.previewHighlight1Label"),
+    },
+    {
+      value: t("authority.previewHighlight2Value"),
+      label: t("authority.previewHighlight2Label"),
+    },
+    {
+      value: t("authority.previewHighlight3Value"),
+      label: t("authority.previewHighlight3Label"),
     },
   ];
 
@@ -57,18 +71,35 @@ const AuthoritySection = () => {
           </p>
         </div>
 
-        <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 flex flex-col lg:flex-row items-center justify-between gap-8 h-auto overflow-hidden relative">
-          <div className="text-left max-w-lg z-10 flex-shrink-0">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Indústria 100% Nordestina · Orgulhosamente Pernambucana</p>
-            <p className="mt-2 text-2xl font-display font-semibold text-foreground md:text-3xl">
-              {t("authority.presenca")}
+        <div className="mb-10 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="rounded-sm border border-primary/20 bg-primary/5 p-8 md:p-10">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+              {t("authority.previewBadge")}
             </p>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-              {t("authority.presencaDesc")}
-            </p>
+            <h3 className="mt-3 text-2xl font-display font-semibold text-foreground md:text-3xl max-w-2xl">
+              {t("authority.previewTitle")}
+            </h3>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground max-w-2xl">
+              <p>{t("authority.previewText1")}</p>
+              <p>{t("authority.previewText2")}</p>
+            </div>
+            <div className="mt-7">
+              <Button variant="heroBorder" size="lg" asChild>
+                <Link to="/sobre">
+                  {t("authority.previewCta")}
+                  <ArrowRight size={18} />
+                </Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex-1 w-full max-w-[400px] flex items-center justify-center -my-16 pointer-events-none opacity-90">
-            <BrazilMap />
+
+          <div className="grid gap-4">
+            {previewHighlights.map((item) => (
+              <div key={item.label} className="card-industrial min-h-[116px] flex flex-col justify-between text-left">
+                <span className="text-3xl font-display font-semibold text-primary">{item.value}</span>
+                <p className="text-sm leading-relaxed text-muted-foreground">{item.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 

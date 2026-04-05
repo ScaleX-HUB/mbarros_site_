@@ -1,0 +1,27 @@
+name: VPS Auto Deploy
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      DOKKU_APP_NAME: ${{ vars.DOKKU_APP_NAME }}
+    steps:
+      - name: SSH Trigger Dokku Git Sync
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: 157.173.118.98
+          username: converseia
+          password: ${{ secrets.VPS_OS_PASSWORD }}
+          script: |
+            if [ -z "$DOKKU_APP_NAME" ]; then
+              echo "DOKKU_APP_NAME nao definido nas variaveis do repositorio."
+              exit 1
+            fi
+            COMMIT_NAME=$(printf '%s' "${{ github.event.head_commit.message }}" | head -n 1)
+            if [ -z "$COMMIT_NAME" ]; then COMMIT_NAME="${{ github.sha }}"; fi
+            echo ${{ secrets.VPS_OS_PASSWORD }} | sudo -S dokku config:set --no-restart "$DOKKU_APP_NAME" DEPLOYED_BRANCH=main DEPLOYED_REPO_URL=https://github.com/${{ github.repository }}.git DEPLOYED_COMMIT_SHA=${{ github.sha }} DEPLOYED_COMMIT_NAME="$COMMIT_NAME" DEPLOYED_COMMIT_URL=https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+            echo ${{ secrets.VPS_OS_PASSWORD }} | sudo -S dokku git:sync --build "$DOKKU_APP_NAME" https://x-access-token:${{ secrets.GITHUB_DOKKU_TOKEN }}@github.com/${{ github.repository }}.git main
