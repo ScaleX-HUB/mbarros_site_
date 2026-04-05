@@ -24,6 +24,27 @@ const fadeUpItem: Variants = {
   show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.2, ease: "easeOut" } },
 };
 
+const heroCards = [
+  {
+    title: "Quem Somos",
+    description: "A trajetória de inovação e excelência que nos consolidou como a principal indústria do Nordeste.",
+    href: "/sobre",
+    cta: "Conhecer a história",
+  },
+  {
+    title: "Estrutura Fabril",
+    description: "Conheça a infraestrutura de ponta que viabiliza nossa produção em larga escala com precisão.",
+    href: "/estrutura",
+    cta: "Ver a estrutura",
+  },
+  {
+    title: "Quem Atendemos",
+    description: "Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.",
+    href: "/white-label",
+    cta: "Entender o modelo",
+  },
+] as const;
+
 const HeroSection = () => {
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
@@ -121,24 +142,45 @@ const HeroSection = () => {
         <div className="container mx-auto px-4 md:px-6">
           {/* Mobile: horizontal scroll strip */}
           <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 md:grid md:grid-cols-3 md:overflow-visible md:snap-none md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={1} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Quem Somos</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
-                A trajetória de inovação e excelência que nos consolidou como a principal indústria do Nordeste.
-              </p>
-            </motion.div>
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={2} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Estrutura Fabril</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
-                Conheça a infraestrutura de ponta que viabiliza nossa produção em larga escala com precisão.
-              </p>
-            </motion.div>
-            <motion.div variants={fadeUpItem} initial="hidden" animate="show" custom={3} className="flex-shrink-0 snap-start w-[82vw] md:w-auto bg-[#4a2b16]/40 dark:bg-[#4a2b16]/50 backdrop-blur-md border-white/10 p-4 md:p-6 lg:p-8 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] border border-primary/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-foreground dark:text-white font-bold tracking-wide uppercase mb-2 text-sm md:text-lg">Quem Atendemos</h3>
-              <p className="text-foreground/90 dark:text-white/90 text-xs md:text-sm leading-relaxed">
-                Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.
-              </p>
-            </motion.div>
+            {heroCards.map((card, index) => {
+              return (
+                <motion.div
+                  key={card.title}
+                  variants={fadeUpItem}
+                  initial="hidden"
+                  animate="show"
+                  custom={index + 1}
+                  whileHover={{ y: -8, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                  className="flex-shrink-0 snap-start w-[78vw] md:w-auto"
+                >
+                  <Link
+                    to={card.href}
+                    className="group relative flex h-full min-h-[168px] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-[linear-gradient(180deg,rgba(106,62,34,0.54),rgba(74,43,22,0.76))] p-4 md:p-5 lg:p-6 shadow-[0_10px_40px_-10px_rgba(65,36,18,0.38)] backdrop-blur-md transition-all duration-300 hover:border-primary/45 hover:shadow-[0_18px_60px_-18px_rgba(65,36,18,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                  >
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.22),transparent_38%),linear-gradient(180deg,rgba(146,90,50,0.06),rgba(74,43,22,0.14))] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+
+                    <div className="relative z-10 flex h-full flex-col">
+                      <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-foreground dark:text-white md:text-[15px]">
+                        {card.title}
+                      </h3>
+
+                      <p className="text-xs leading-relaxed text-foreground/90 dark:text-white/90 md:text-[13px]">
+                        {card.description}
+                      </p>
+
+                      <div className="mt-auto pt-5">
+                        <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary transition-transform duration-300 group-hover:translate-x-1 md:text-xs">
+                          {card.cta}
+                          <ArrowRight size={16} />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
           {/* Mobile scroll hint dots */}
           <div className="flex md:hidden justify-center gap-2 mt-3">

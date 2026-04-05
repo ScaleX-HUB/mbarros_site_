@@ -1,5 +1,6 @@
 import { Factory, Package, Building2, CalendarDays, ArrowRight } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
+import { BrazilMap } from "@/components/ui/brazil-map";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -34,25 +35,9 @@ const AuthoritySection = () => {
     },
   ];
 
-  const previewHighlights = [
-    {
-      value: t("authority.previewHighlight1Value"),
-      label: t("authority.previewHighlight1Label"),
-    },
-    {
-      value: t("authority.previewHighlight2Value"),
-      label: t("authority.previewHighlight2Label"),
-    },
-    {
-      value: t("authority.previewHighlight3Value"),
-      label: t("authority.previewHighlight3Label"),
-    },
-  ];
-
   return (
     <section className="section-container bg-card">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
             <div className="flex items-center gap-4">
@@ -67,43 +52,71 @@ const AuthoritySection = () => {
             {t("authority.title1")} <span className="text-primary">{t("authority.title2")}</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
-            {t("authority.desc1")} <span className="text-foreground font-semibold">{t("authority.highlight")}</span>{t("authority.desc2")}
+            {t("authority.desc1")} <span className="text-foreground font-semibold">{t("authority.highlight")}</span>
+            {t("authority.desc2")}
           </p>
         </div>
 
-        <div className="mb-10 grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
-          <div className="rounded-sm border border-primary/20 bg-primary/5 p-8 md:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              {t("authority.previewBadge")}
-            </p>
-            <h3 className="mt-3 text-2xl font-display font-semibold text-foreground md:text-3xl max-w-2xl">
-              {t("authority.previewTitle")}
-            </h3>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground max-w-2xl">
-              <p>{t("authority.previewText1")}</p>
-              <p>{t("authority.previewText2")}</p>
-            </div>
-            <div className="mt-7">
-              <Button variant="heroBorder" size="lg" asChild>
-                <Link to="/sobre">
-                  {t("authority.previewCta")}
-                  <ArrowRight size={18} />
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid gap-4">
-            {previewHighlights.map((item) => (
-              <div key={item.label} className="card-industrial min-h-[116px] flex flex-col justify-between text-left">
-                <span className="text-3xl font-display font-semibold text-primary">{item.value}</span>
-                <p className="text-sm leading-relaxed text-muted-foreground">{item.label}</p>
+        <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 md:p-10 lg:p-12">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                {t("authority.previewBadge")}
+              </p>
+              <h3 className="mt-3 text-2xl font-display font-semibold text-foreground md:text-3xl max-w-2xl">
+                {t("authority.previewTitle")}
+              </h3>
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground max-w-2xl">
+                <p>{t("authority.previewText1")}</p>
+                <p>{t("authority.previewText2")}</p>
               </div>
-            ))}
+
+              <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-sm border border-border/70 bg-background/80 p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                    {t("authority.presenca")}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {t("authority.presencaDesc")}
+                  </p>
+                </div>
+                <div className="rounded-sm border border-border/70 bg-background/80 p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                    {t("authority.securityTitle")}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {t("authority.securityDesc")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-7">
+                <Button variant="heroBorder" size="lg" asChild>
+                  <Link to="/sobre">
+                    {t("authority.previewCta")}
+                    <ArrowRight size={18} />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="rounded-sm border border-border/70 bg-background/80 p-6">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                {t("authority.mapBadge")}
+              </p>
+              <p className="mt-2 text-xl font-display font-semibold text-foreground md:text-2xl">
+                {t("authority.mapTitle")}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-md">
+                {t("authority.mapDesc")}
+              </p>
+              <div className="mt-6 flex items-center justify-center rounded-sm border border-border/60 bg-card/70 px-4 py-6 opacity-90">
+                <BrazilMap />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <div
@@ -123,7 +136,6 @@ const AuthoritySection = () => {
           ))}
         </div>
 
-        {/* Divider */}
         <div className="divider-brand mt-16" />
       </div>
     </section>
