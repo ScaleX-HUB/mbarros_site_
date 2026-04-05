@@ -140,6 +140,7 @@
   body {
     @apply bg-background text-foreground antialiased font-normal;
     font-family: var(--font-body);
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -162,21 +163,21 @@
 
   /* Section Styles */
   .section-container {
-    @apply container mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32;
+    @apply container mx-auto px-4 md:px-6 lg:px-8 py-14 md:py-24 lg:py-32;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold mb-4;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4;
     font-family: var(--font-display);
   }
 
   .section-subtitle {
-    @apply text-lg text-muted-foreground max-w-3xl;
+    @apply text-base md:text-lg text-muted-foreground max-w-3xl;
   }
 
   /* Card Styles */
   .card-industrial {
-    @apply bg-card border border-border rounded-sm p-6 md:p-8;
+    @apply bg-card border border-border rounded-sm p-5 md:p-8;
     box-shadow: var(--shadow-card);
   }
 
@@ -187,7 +188,7 @@
 
   /* Stats Block */
   .stat-number {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold;
     background: var(--gradient-brand);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

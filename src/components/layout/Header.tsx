@@ -38,7 +38,7 @@ const Header = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span
-                className="relative block h-14 w-[13.125rem] md:h-16 md:w-[15rem] lg:h-20 lg:w-[18.75rem]"
+                className="relative block h-12 w-[11rem] sm:h-14 sm:w-[13.125rem] md:h-16 md:w-[15rem] lg:h-20 lg:w-[18.75rem]"
                 aria-label="MBarros Indústria"
               >
                 <img
@@ -186,7 +186,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden py-6 border-t border-border animate-fade-in">
+          <nav className="lg:hidden py-5 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               <SiteSearch
                 placeholder={t("header.busque")}
@@ -201,7 +201,7 @@ const Header = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-sm uppercase tracking-wider font-medium py-2 transition-colors duration-300 hover:text-primary ${
+                  className={`rounded-lg border border-transparent bg-background/70 px-3 py-3 text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:border-primary/20 hover:text-primary ${
                     location.pathname === item.path 
                       ? "text-primary" 
                       : "text-muted-foreground"
@@ -225,7 +225,7 @@ const Header = () => {
                 <ThemeToggle />
               </div>
 
-              <Button variant="hero" className="mt-4" asChild>
+              <Button variant="hero" className="mt-2 w-full" asChild>
                 <Link to="/seja-parceiro" onClick={() => setIsMenuOpen(false)}>
                   {t("header.sejaParceiro")}
                 </Link>

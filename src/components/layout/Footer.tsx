@@ -3,14 +3,17 @@ import { Mail, MapPin, Phone, Instagram, Facebook, LayoutDashboard } from "lucid
 import logoMbarros from "@/assets/logo-mbarros.png";
 import { useTranslation } from "react-i18next";
 
+const GOOGLE_SHARE_MAP_URL = "https://share.google/pd4EntLe3cMk1VBr4";
+const FOOTER_ADDRESS = "Av. Benjamim, nº 205, Fragoso - Paulista, PE, CEP 53402-010";
+
 const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-background pt-20 pb-10 border-t border-border">
+    <footer className="bg-background pt-16 md:pt-20 pb-8 md:pb-10 border-t border-border">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 md:gap-12 mb-12 md:mb-16">
           {/* Brand & About */}
           <div className="space-y-6">
             <Link to="/" className="inline-block transition-opacity hover:opacity-80">
@@ -61,9 +64,9 @@ const Footer = () => {
             <h3 className="text-foreground font-semibold font-display mb-6 tracking-wide">{t("footer.contato")}</h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:contato@mbarros.com.br" className="flex items-start gap-3.5 text-muted-foreground hover:text-primary transition-colors group">
+                <a href="mailto:comercial@mbarrosind.com.br" className="flex items-start gap-3.5 text-muted-foreground hover:text-primary transition-colors group">
                   <Mail size={18} className="mt-0.5 text-primary/70 group-hover:text-primary transition-colors" />
-                  <span className="text-sm">contato@mbarros.com.br</span>
+                  <span className="text-sm break-all">comercial@mbarrosind.com.br</span>
                 </a>
               </li>
               <li>
@@ -72,13 +75,20 @@ const Footer = () => {
                   <span className="text-sm">(81) 98559-2995</span>
                 </a>
               </li>
-              <li className="flex items-start gap-3.5 text-muted-foreground">
-                <MapPin size={18} className="mt-0.5 text-primary/70" />
-                <span className="text-sm leading-relaxed">
-                  Rua da Indústria, 123<br />
-                  Distrito Industrial<br />
-                  Pernambuco, PE
-                </span>
+              <li>
+                <a
+                  href={GOOGLE_SHARE_MAP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3.5 text-muted-foreground hover:text-primary transition-colors group"
+                >
+                  <MapPin size={18} className="mt-0.5 text-primary/70 group-hover:text-primary transition-colors" />
+                  <span className="text-sm leading-relaxed underline-offset-4 group-hover:underline">
+                    Av. Benjamim, nº 205<br />
+                    Fragoso - Paulista, PE<br />
+                    CEP 53402-010
+                  </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -106,11 +116,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-border pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
           <p className="text-muted-foreground text-sm text-center md:text-left">
             &copy; {currentYear} MBARROS {t("footer.direitos")}.
           </p>
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-sm text-muted-foreground text-center">
             <Link to="/cookies" className="hover:text-primary transition-colors hover:underline underline-offset-4">
               Políticas de Cookies
             </Link>

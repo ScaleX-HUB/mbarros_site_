@@ -156,10 +156,10 @@ const HeroSection = () => {
                 >
                   <Link
                     to={card.href}
-                    className="group relative flex h-full min-h-[168px] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-[linear-gradient(180deg,rgba(106,62,34,0.54),rgba(74,43,22,0.76))] p-4 md:p-5 lg:p-6 shadow-[0_10px_40px_-10px_rgba(65,36,18,0.38)] backdrop-blur-md transition-all duration-300 hover:border-primary/45 hover:shadow-[0_18px_60px_-18px_rgba(65,36,18,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                    className="group relative flex h-full min-h-[168px] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-[linear-gradient(180deg,rgba(255,249,242,0.82),rgba(184,136,95,0.34))] p-4 md:p-5 lg:p-6 shadow-[0_10px_40px_-10px_rgba(124,74,44,0.18)] backdrop-blur-md transition-all duration-300 hover:border-primary/45 hover:shadow-[0_18px_60px_-18px_rgba(124,74,44,0.26)] dark:bg-[linear-gradient(180deg,rgba(106,62,34,0.54),rgba(74,43,22,0.76))] dark:shadow-[0_10px_40px_-10px_rgba(65,36,18,0.38)] dark:hover:shadow-[0_18px_60px_-18px_rgba(65,36,18,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
                   >
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.22),transparent_38%),linear-gradient(180deg,rgba(146,90,50,0.06),rgba(74,43,22,0.14))] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
-                    <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-125" />
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.18),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(146,90,50,0.08))] opacity-80 transition-opacity duration-300 group-hover:opacity-100 dark:bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.22),transparent_38%),linear-gradient(180deg,rgba(146,90,50,0.06),rgba(74,43,22,0.14))]" />
+                    <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/8 blur-2xl transition-transform duration-500 group-hover:scale-125 dark:bg-primary/10" />
 
                     <div className="relative z-10 flex h-full flex-col">
                       <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-foreground dark:text-white md:text-[15px]">
