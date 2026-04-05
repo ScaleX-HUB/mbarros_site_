@@ -100,7 +100,7 @@ const Sobre = () => {
               Uma indústria <span className="text-gradient">avançada</span>
             </h1>
             <p className="section-subtitle mx-auto mt-4 max-w-3xl leading-relaxed">
-              Há mais de três décadas, transformamos experiência produtiva em estrutura industrial para fortalecer lojistas, elevar o padrão de qualidade e ampliar resultados com segurança.
+              Há mais de três décadas, evoluímos até nos consolidarmos como a indústria mais avançada da região.
             </p>
           </div>
         </div>

@@ -121,7 +121,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1 variants={fadeUpItem} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-semibold leading-tight text-foreground dark:text-white drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)] transition-colors duration-700">
-            A melhor indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do NORDESTE</span>
+            A maior indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do NORDESTE</span>
           </motion.h1>
 
           {/* Subheadline */}
