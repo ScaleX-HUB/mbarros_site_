@@ -38,6 +38,56 @@ const ScrollToTop = () => {
   return null;
 };
 
+const ScrollReveal = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -24px 0px" }
+    );
+
+    const timer = setTimeout(() => {
+      const vh = window.innerHeight;
+
+      document.querySelectorAll("section").forEach((section) => {
+        const container =
+          (section.querySelector(":scope > div") as HTMLElement) ?? section;
+
+        let stagger = 0;
+        Array.from(container.children).forEach((child) => {
+          const el = child as HTMLElement;
+          const rect = el.getBoundingClientRect();
+          if (rect.top > vh * 0.9) {
+            el.classList.add("reveal-item");
+            el.style.transitionDelay = `${stagger * 100}ms`;
+            observer.observe(el);
+            stagger++;
+          }
+        });
+      });
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+      document.querySelectorAll(".reveal-item").forEach((el) => {
+        el.classList.remove("reveal-item", "reveal-visible");
+        (el as HTMLElement).style.transitionDelay = "";
+      });
+    };
+  }, [location.pathname]);
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
@@ -46,11 +96,13 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <ScrollReveal />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/estrutura" element={<Navigate to="/sobre" replace />} />
-            <Route path="/white-label" element={<WhiteLabel />} />
+            <Route path="/white-label" element={<Navigate to="/parceiro" replace />} />
+            <Route path="/parceiro" element={<WhiteLabel />} />
             <Route path="/projetos" element={<Projetos />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/seja-parceiro" element={<SejaParceiro />} />

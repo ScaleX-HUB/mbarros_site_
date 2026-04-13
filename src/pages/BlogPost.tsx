@@ -28,7 +28,7 @@ const BlogPost = () => {
             <span className="text-sm font-medium uppercase tracking-widest text-primary">
               {post.category}
             </span>
-            <h1 className="section-title">{post.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-display font-semibold leading-snug">{post.title}</h1>
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="h-4 w-4" />
               {formatBlogDate(post.date)}
@@ -75,8 +75,8 @@ const BlogPost = () => {
               <Link to="/blog" className="block text-muted-foreground transition-colors hover:text-primary">
                 Ir para todos os artigos
               </Link>
-              <Link to="/white-label" className="block text-muted-foreground transition-colors hover:text-primary">
-                Conhecer o modelo White Label
+              <Link to="/parceiro" className="block text-muted-foreground transition-colors hover:text-primary">
+                Conhecer o modelo Parceiro
               </Link>
               <Link to="/seja-parceiro" className="block text-muted-foreground transition-colors hover:text-primary">
                 Falar sobre parceria

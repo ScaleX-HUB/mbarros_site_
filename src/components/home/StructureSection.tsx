@@ -9,8 +9,6 @@ import {
   Diamond,
   Grid3x3,
   Layers,
-  Link2,
-  PaintBucket,
   Scissors,
   Ruler,
   type LucideIcon,
@@ -18,14 +16,11 @@ import {
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import productionPanelInspectionWide from "@/assets/production-panel-inspection-wide.png";
-import sprayPaintBooth from "@/assets/process-spray-paint-booth.png";
-import panelPositioning from "@/assets/production-panel-positioning.png";
 
 const galleryPhotos = [
-  { src: productionPanelInspectionWide, alt: "Trabalhador posicionando painel MDF em máquina CNC", caption: "Linha de Produção" },
-  { src: sprayPaintBooth, alt: "Cabine de pintura industrial", caption: "Cabine de Pintura" },
-  { src: panelPositioning, alt: "Posicionamento de painel MDF na máquina", caption: "Posicionamento de Painéis" },
+  { src: "/imagens_mbarros/pessoa_operando_maquina_fabrica_nova.png", alt: "Operador de máquina na fábrica MBarros", caption: "Operação Industrial" },
+  { src: "/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png", alt: "Equipe trabalhando na nova fábrica MBarros", caption: "Equipe em Ação" },
+  { src: "/imagens_mbarros/maquina_industria.webp", alt: "Maquinário industrial MBarros", caption: "Maquinário de Ponta" },
 ];
 
 const AUTOPLAY_DELAY = 4500;
@@ -55,11 +50,6 @@ const StructureSection = () => {
       icon: Grid3x3,
     },
     {
-      name: t("structure.item3.name"),
-      description: t("structure.item3.desc"),
-      icon: PaintBucket,
-    },
-    {
       name: t("structure.item4.name"),
       description: t("structure.item4.desc"),
       icon: Diamond,
@@ -68,11 +58,6 @@ const StructureSection = () => {
       name: t("structure.item5.name"),
       description: t("structure.item5.desc"),
       icon: Cog,
-    },
-    {
-      name: t("structure.item6.name"),
-      description: t("structure.item6.desc"),
-      icon: Link2,
     },
   ] as const satisfies ReadonlyArray<{ name: string; description: string; icon: LucideIcon }>;
 
@@ -139,27 +124,18 @@ const StructureSection = () => {
     <section className="bg-card w-full flex flex-col">
       {/* Full Background Video Section with Cards */}
       <div className="relative w-full min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
-        {/* Background – Mobile: static image fallback (YouTube iframe blocks autoplay on iOS) */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none md:hidden">
-          <img
-            src={productionPanelInspectionWide}
-            alt=""
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none">
+          <video
+            src="/videos/IMG_8483.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
+            className="absolute inset-0 w-full h-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/50 to-background/95" />
-        </div>
-
-        {/* Background Video – Desktop only */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none hidden md:block">
-          <iframe
-            src="https://www.youtube.com/embed/t4DJTVCMAEg?autoplay=1&mute=1&loop=1&playlist=t4DJTVCMAEg&rel=0&modestbranding=1&controls=0&playsinline=1"
-            title="Processo Produtivo MBarros"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            className="absolute top-1/2 left-1/2 w-[150vw] h-[150vh] min-w-[100vw] min-h-[100vh] -translate-x-1/2 -translate-y-1/2 object-cover opacity-80"
-            style={{ pointerEvents: "none" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/50 to-background/95 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/50 to-background/90" />
         </div>
 
         {/* Content over video */}
@@ -228,36 +204,29 @@ const StructureSection = () => {
         </div>
       </div>
 
-      {/* Photo Carousel Area */}
-      <div className="max-w-6xl mx-auto px-4 py-16 w-full" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-        <Carousel setApi={setGalApi} opts={{ loop: true, align: "start" }} className="w-full">
-          <CarouselContent className="-ml-0">
-            {galleryPhotos.map((photo, i) => (
-              <CarouselItem key={i} className="pl-0 md:basis-1/2">
-                <div className="relative overflow-hidden rounded-sm h-72 md:h-80 mx-1.5 group">
-                  <img src={photo.src} alt={photo.alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <span className="absolute bottom-6 left-6 text-white text-lg font-medium tracking-wide">
-                    {photo.caption}
-                  </span>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          
-          <div className="flex justify-center gap-3 mt-6">
-            <button onClick={() => galApi?.scrollPrev()} className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-accent transition-colors">
-              <ChevronLeft size={20} />
-            </button>
-            <button onClick={() => galApi?.scrollNext()} className="w-10 h-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-accent transition-colors">
-              <ChevronRight size={20} />
-            </button>
+      {/* Photo Grid */}
+      <div className="max-w-6xl mx-auto px-4 pb-10 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="relative overflow-hidden rounded-lg col-span-2 md:col-span-1 row-span-2 h-64 md:h-full group">
+            <img src={galleryPhotos[0].src} alt={galleryPhotos[0].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[0].caption}</span>
           </div>
-        </Carousel>
+          <div className="relative overflow-hidden rounded-lg h-44 md:h-auto group">
+            <img src={galleryPhotos[1].src} alt={galleryPhotos[1].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[1].caption}</span>
+          </div>
+          <div className="relative overflow-hidden rounded-lg h-44 md:h-auto group">
+            <img src={galleryPhotos[2].src} alt={galleryPhotos[2].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[2].caption}</span>
+          </div>
+        </div>
       </div>
 
       {/* CTA */}
-      <div className="text-center pb-20">
+      <div className="text-center pb-16">
         <Button variant="heroBorder" size="lg" asChild>
           <Link to="/estrutura">
             Conheça nossa estrutura

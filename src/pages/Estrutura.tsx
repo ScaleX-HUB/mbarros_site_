@@ -1,30 +1,48 @@
 import Layout from "@/components/layout/Layout";
-import { Cog, Scissors, Settings, Package, Truck, Shield } from "lucide-react";
-import sandingPortrait from "@/assets/process-sanding-grid-portrait.png";
-import finishingComponents from "@/assets/process-finishing-components.png";
+import { Box, Cog, Layers, Package, Scissors, Settings, Shield, Truck, Workflow, Wrench } from "lucide-react";
 import panelPositioning from "@/assets/production-panel-positioning.png";
 import cncOperator from "@/assets/team-operator-cnc-monitor.png";
 
 const equipment = [
   {
-    icon: Scissors,
-    title: "Máquinas de Corte",
-    description: "Equipamentos com Tecnologia Europeia e Chinesa para corte de painéis com mínimo desperdício e máxima qualidade.",
+    icon: Cog,
+    title: "CNC e centro de usinagem",
+    description: "Centro de usinagem CNC com Tecnologia Europeia e Chinesa para furação precisa, cortes repetidos e encaixes perfeitos.",
   },
   {
     icon: Settings,
-    title: "Fita de Borda",
-    description: "Máquinas automáticas com Tecnologia Europeia e Chinesa para aplicação de fita de borda com acabamento impecável.",
+    title: "Coladeira de borda",
+    description: "Máquinas automáticas para aplicação de fita de borda com colagem de alta aderência e acabamento impecável.",
   },
   {
-    icon: Cog,
-    title: "Usinagem e Furação",
-    description: "Centro de usinagem CNC com Tecnologia Europeia e Chinesa para furação precisa e encaixes perfeitos.",
+    icon: Scissors,
+    title: "Seccionadora",
+    description: "Equipamento de corte de alta precisão para painéis MDF e MDP com mínimo desperdício de material.",
+  },
+  {
+    icon: Workflow,
+    title: "Centro de furos",
+    description: "Furação automatizada em série para encaixes, dobøe ferragens, garantindo padronização em cada peça.",
+  },
+  {
+    icon: Layers,
+    title: "Estrutura metálica e vidro",
+    description: "Capacidade produtiva para integrar estruturas metálicas e vidro em projetos corporativos e especiais.",
+  },
+  {
+    icon: Wrench,
+    title: "Metalurgia Própria",
+    description: "Estrutura própria de metalurgia para produção de componentes metálicos com rastreabilidade e padrão industrial.",
   },
   {
     icon: Package,
-    title: "Móveis Curvos",
-    description: "Estrutura especializada com Tecnologia Europeia e Chinesa para produção de peças curvas e designs diferenciados.",
+    title: "Embalagem industrial e rastreabilidade",
+    description: "Embalagem padronizada com identificação de cada item para garantir integridade, organização e rastreabilidade na entrega.",
+  },
+  {
+    icon: Box,
+    title: "Linha de móveis corporativos",
+    description: "Linha dedicada à produção de móveis para ambientes corporativos, com alto padrão de acabamento e escala industrial.",
   },
 ];
 
@@ -66,11 +84,13 @@ const Estrutura = () => {
             Estrutura Fabril
           </span>
           <h1 className="section-title mt-4">
-            Parque fabril <span className="text-gradient">moderno e eficiente</span>
+            Tecnologia, precisão e <span className="text-gradient">escala produtiva</span>
           </h1>
           <p className="section-subtitle mx-auto mt-4">
-            Mais de 10.000m² equipados com Tecnologia Europeia e Chinesa para 
-            produzir mais de 55.000 peças por mês.
+            Nossa operação reúne tecnologia de ponta, processos industrializados e uma equipe especializada para garantir alto padrão em cada peça.
+          </p>
+          <p className="section-subtitle mx-auto mt-3">
+            Da usinagem à embalagem final, tudo é pensado para assegurar rastreabilidade, precisão e consistência.
           </p>
         </div>
       </section>
@@ -111,9 +131,9 @@ const Estrutura = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {equipment.map((item) => (
-              <div key={item.title} className="card-industrial flex gap-6 items-start">
+              <div key={item.title} className="card-industrial flex gap-4 items-start">
                 <div className="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-sm flex items-center justify-center">
                   <item.icon size={28} className="text-primary" />
                 </div>
@@ -185,8 +205,8 @@ const Estrutura = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
-              { src: sandingPortrait, alt: "Trabalhador realizando acabamento em perfis", caption: "Acabamento de Precisão" },
-              { src: finishingComponents, alt: "Acabamento em série de componentes", caption: "Produção Seriada" },
+              { src: "/imagens_mbarros/pessoa_operando_maquina_fabrica_nova.png", alt: "Operador de máquina na fábrica MBarros", caption: "Operação Industrial" },
+              { src: "/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png", alt: "Equipe trabalhando na nova fábrica MBarros", caption: "Equipe em Ação" },
               { src: panelPositioning, alt: "Posicionamento de painel MDF na máquina", caption: "Linha de Produção" },
               { src: cncOperator, alt: "Operador acompanhando painel CNC", caption: "Operação CNC" },
             ].map((photo) => (

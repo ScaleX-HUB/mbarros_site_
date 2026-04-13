@@ -1,5 +1,3 @@
-import { MBARROS_IMAGES } from "@/lib/mbarros-images";
-
 export const blogPosts = [
   {
     id: 1,
@@ -9,7 +7,7 @@ export const blogPosts = [
       "Descubra as principais tendências que estão moldando o mercado de móveis planejados este ano.",
     date: "2024-01-15",
     category: "Tendências",
-    image: MBARROS_IMAGES[0]?.src ?? "",
+    image: "/imagens_mbarros/FOTO%20DA%20INDUSTRIA%20-%20ATUALIZADA%20(1).png",
   },
   {
     id: 2,
@@ -19,7 +17,7 @@ export const blogPosts = [
       "Critérios essenciais para avaliar antes de firmar parceria com uma indústria de móveis.",
     date: "2024-01-10",
     category: "Negócios",
-    image: MBARROS_IMAGES[1]?.src ?? "",
+    image: "/imagens_mbarros/maquina_industria.webp",
   },
   {
     id: 3,
@@ -29,7 +27,7 @@ export const blogPosts = [
       "Entenda por que a escolha das matérias-primas impacta diretamente na satisfação do cliente.",
     date: "2024-01-05",
     category: "Qualidade",
-    image: MBARROS_IMAGES[2]?.src ?? "",
+    image: "/imagens_mbarros/pessoa_operando_maquina_fabrica_nova.png",
   },
   {
     id: 4,
@@ -39,7 +37,7 @@ export const blogPosts = [
       "Dicas práticas para aproveitar ao máximo o software de projetos e reduzir erros.",
     date: "2023-12-28",
     category: "Tecnologia",
-    image: MBARROS_IMAGES[3]?.src ?? "",
+    image: "/imagens_mbarros/trabalhador_na_maquina_industria.webp",
   },
   {
     id: 5,
@@ -49,7 +47,7 @@ export const blogPosts = [
       "Análise do cenário atual e as oportunidades para lojistas na região.",
     date: "2023-12-20",
     category: "Mercado",
-    image: MBARROS_IMAGES[0]?.src ?? "",
+    image: "/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png",
   },
   {
     id: 6,
@@ -59,7 +57,7 @@ export const blogPosts = [
       "Comparativo entre os dois modelos e quando cada um faz mais sentido.",
     date: "2023-12-15",
     category: "Negócios",
-    image: MBARROS_IMAGES[1]?.src ?? "",
+    image: "/imagens_mbarros/trabalhador_observando_planta_na_industria.webp",
   },
 ] as const;
 

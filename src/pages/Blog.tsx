@@ -30,16 +30,13 @@ const Blog = () => {
     <Layout>
       {/* Hero */}
       <section className="bg-card/60 border-b border-border/60">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-5">
           <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
             Blog
           </p>
-          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
+          <h1 className="text-xl md:text-2xl font-display font-semibold mt-1.5 text-foreground">
             Conteúdo para lojistas
           </h1>
-          <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-2xl">
-            Artigos, tendências e insights sobre o mercado de móveis planejados.
-          </p>
         </div>
       </section>
 

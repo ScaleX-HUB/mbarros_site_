@@ -28,10 +28,10 @@ const staticPages: SearchSuggestion[] = [
     keywords: ["sobre", "historia", "estrutura", "empresa", "pernambuco"],
   },
   {
-    id: "page-white-label",
-    title: "White Label",
+    id: "page-parceiro",
+    title: "Parceiro",
     description: "Modelo de parceria industrial para lojistas e marcas de moveis planejados.",
-    path: "/white-label",
+    path: "/parceiro",
     type: "page",
     keywords: ["white label", "mdf", "mdp", "laca", "aluminio", "vidro"],
   },
@@ -115,7 +115,7 @@ const SEARCH_ENTRIES: SearchSuggestion[] = [
 
 const DEFAULT_SUGGESTION_IDS = [
   "page-projetos",
-  "page-white-label",
+  "page-parceiro",
   "page-blog",
   "page-contato",
   "category-residenciais",

@@ -24,7 +24,7 @@ const Header = () => {
   const navItems = [
     { label: "Home", path: "/" },
     { label: t("header.sobre"), path: "/sobre" },
-    { label: "White Label", path: "/white-label" },
+    { label: "Parceiro", path: "/parceiro" },
     { label: t("header.projetos"), path: "/projetos" },
     { label: t("header.blog"), path: "/blog" },
     { label: t("header.contato"), path: "/contato" },
@@ -83,13 +83,13 @@ const Header = () => {
               </Link>
 
               <Link
-                to="/white-label"
+                to="/parceiro"
                 onMouseEnter={() => setActive(null)}
                 className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === "/white-label" ? "text-primary" : "text-muted-foreground"
+                  location.pathname === "/parceiro" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                White Label
+                Parceiro
               </Link>
 
               <MenuItem

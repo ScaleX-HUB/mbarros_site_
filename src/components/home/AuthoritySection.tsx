@@ -1,9 +1,10 @@
-import { Factory, Package, Building2, CalendarDays, ArrowRight } from "lucide-react";
+import { Factory, Package, Building2, CalendarDays } from "lucide-react";
 import { CountUp } from "@/components/ui/count-up";
 import { BrazilMap } from "@/components/ui/brazil-map";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const AuthoritySection = () => {
   const { t } = useTranslation();
@@ -36,107 +37,102 @@ const AuthoritySection = () => {
   ];
 
   return (
-    <section className="section-container bg-card">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-8 bg-primary"></span>
-              <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                {t("authority.badge")}
-              </span>
-              <span className="h-px w-8 bg-primary"></span>
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold mt-4">
-            {t("authority.title1")} <span className="text-primary">{t("authority.title2")}</span>
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-4">
-            {t("authority.desc1")} <span className="text-foreground font-semibold">{t("authority.highlight")}</span>
-            {t("authority.desc2")}
-          </p>
-        </div>
+    <section className="py-14 md:py-24 bg-background">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
 
-        <div className="mb-10 rounded-sm border border-primary/20 bg-primary/5 p-8 md:p-10 lg:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                {t("authority.previewBadge")}
-              </p>
-              <h3 className="mt-3 text-2xl font-display font-semibold text-foreground md:text-3xl max-w-2xl">
-                {t("authority.previewTitle")}
-              </h3>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground max-w-2xl">
-                <p>{t("authority.previewText1")}</p>
-                <p>{t("authority.previewText2")}</p>
-              </div>
+          {/* Main card — image + content snap together */}
+          <div className="overflow-hidden shadow-[0_8px_48px_rgba(0,0,0,0.13)] border border-border/40">
 
-              <div className="mt-7 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-sm border border-border/70 bg-background/80 p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                    {t("authority.presenca")}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {t("authority.presencaDesc")}
-                  </p>
-                </div>
-                <div className="rounded-sm border border-border/70 bg-background/80 p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                    {t("authority.securityTitle")}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {t("authority.securityDesc")}
-                  </p>
-                </div>
-              </div>
+            {/* Factory image — slides down */}
+            <motion.div
+              className="relative overflow-hidden"
+              style={{ height: "clamp(160px, 20vw, 260px)" }}
+              initial={{ y: -32, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <img
+                src="/imagens_mbarros/FOTO%20DA%20INDUSTRIA%20-%20ATUALIZADA%20(1).png"
+                alt="Parque fabril MBarros"
+                className="w-full h-full object-cover object-[50%_78%]"
+              />
+              {/* Gradient blending into card below */}
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-card" />
+            </motion.div>
 
-              <div className="mt-7">
-                <Button variant="heroBorder" size="lg" asChild>
-                  <Link to="/sobre">
-                    {t("authority.previewCta")}
-                    <ArrowRight size={18} />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-
-            <div className="rounded-sm border border-border/70 bg-background/80 p-6">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                {t("authority.mapBadge")}
-              </p>
-              <p className="mt-2 text-xl font-display font-semibold text-foreground md:text-2xl">
-                {t("authority.mapTitle")}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-md">
-                {t("authority.mapDesc")}
-              </p>
-              <div className="mt-6 flex items-center justify-center rounded-sm border border-border/60 bg-card/70 px-4 py-6 opacity-90">
+            {/* Content row — slides up to meet image */}
+            <motion.div
+              className="grid md:grid-cols-[44%_56%] bg-card"
+              initial={{ y: 32, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Left: map — same background, softer separator */}
+              <div className="flex items-center justify-center border-r border-border/30 px-6 pt-0 pb-8 md:px-10 md:pb-10">
                 <BrazilMap />
               </div>
-            </div>
+
+              {/* Right: text */}
+              <div className="flex flex-col justify-center gap-5 px-8 py-10 md:px-12 md:py-14 lg:px-16">
+                <h2
+                  className="font-display font-bold uppercase tracking-wider text-foreground leading-tight"
+                  style={{ fontSize: "clamp(1.7rem, 3vw, 2.6rem)" }}
+                >
+                  {t("authority.badge")}
+                </h2>
+
+                <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground">
+                  <p>{t("authority.previewText1")}</p>
+                  <p>{t("authority.previewText2")}</p>
+                </div>
+
+                <div className="pt-1">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    className="rounded-none font-bold tracking-widest uppercase"
+                    asChild
+                  >
+                    <Link to="/sobre">
+                      {t("authority.previewCta")}
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
-        </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="card-industrial text-center group"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 mb-4 bg-primary/10 rounded-sm group-hover:bg-primary/20 transition-colors">
-                <stat.icon size={24} className="text-primary" />
+          {/* Stats strip */}
+          <motion.div
+            className="grid grid-cols-2 lg:grid-cols-4 gap-px mt-10 bg-border overflow-hidden border border-border/40"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-card text-center py-8 px-4 group hover:bg-muted/40 transition-colors"
+              >
+                <div className="inline-flex items-center justify-center w-10 h-10 mb-3 bg-primary/10 rounded-sm group-hover:bg-primary/20 transition-colors">
+                  <stat.icon size={20} className="text-primary" />
+                </div>
+                <div className="stat-number text-2xl md:text-3xl lg:text-4xl">
+                  <CountUp to={stat.value} />
+                  <span className="text-xl md:text-2xl">{stat.suffix}</span>
+                </div>
+                <div className="stat-label text-xs">{stat.label}</div>
               </div>
-              <div className="stat-number text-2xl md:text-3xl lg:text-4xl">
-                <CountUp to={stat.value} />
-                <span className="text-xl md:text-2xl">{stat.suffix}</span>
-              </div>
-              <div className="stat-label text-xs">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </motion.div>
 
-        <div className="divider-brand mt-16" />
+          <div className="divider-brand mt-16" />
+        </div>
       </div>
     </section>
   );

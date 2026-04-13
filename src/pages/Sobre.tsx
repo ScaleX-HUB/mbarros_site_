@@ -9,8 +9,12 @@ import cncOperator from "@/assets/team-operator-cnc-monitor.png";
 
 const timeline = [
   {
+    year: "1990",
+    event: "Seu Severino Marcone começou na marcenaria em 1990, plantando a semente do que se tornaria o Grupo MBarros. Com trabalho artesanal e visão de futuro, essa pequena marcenaria em Pernambuco seria o ponto de partida de uma grande indústria.",
+  },
+  {
     year: "2005",
-    event: "O Grupo MBarros iniciou sua trajetória em um galpão de 200m², em Olinda, com 12 colaboradores e uma estrutura simples. Atuando no mobiliário residencial, já se destacava pelo uso de uma seccionadora de tecnologia avançada para a época, mesmo com produção ainda manual, dando início à sua evolução industrial.",
+    event: "O Grupo MBarros consolidou sua presença em Olinda atuando no mobiliário residencial, já se destacando pelo uso de uma seccionadora de tecnologia avançada para a época. Mesmo com produção ainda parcialmente manual, o compromisso com qualidade marcava o início da sua evolução industrial.",
     image: "/imagens_mbarros/historico/2005.jpeg",
   },
   {
@@ -119,7 +123,7 @@ const Sobre = () => {
                   Fundado por Severino Marcone e Francisca Marcone, o Grupo MBarros nasceu em Pernambuco com uma visão clara: construir uma operação sólida, confiável e preparada para transformar marcenaria em escala industrial.
                 </p>
                 <p>
-                  O Grupo MBarros iniciou sua trajetória em um galpão de 200m², em Olinda, com 12 colaboradores e uma estrutura simples. Atuando no mobiliário residencial, já se destacava pelo uso de uma seccionadora de tecnologia avançada para a época, mesmo com produção ainda manual, dando início à sua evolução industrial.
+                  O Grupo MBarros iniciou sua trajetória como uma pequena marcenaria em Olinda, já se destacando pelo uso de uma seccionadora de tecnologia avançada para a época. Mesmo com produção ainda manual, o compromisso com qualidade estava presente desde o início, dando início à sua evolução industrial.
                 </p>
                 <p>
                   De lá para cá, a empresa ampliou estrutura, processos e capacidade produtiva, incorporando tecnologia europeia e chinesa, engenharia aplicada e uma operação preparada para atender lojistas com mais previsibilidade, qualidade e competitividade.
@@ -292,6 +296,7 @@ const Sobre = () => {
                     {t.event}
                   </p>
 
+                  {t.image && (
                   <img
                     src={t.image}
                     alt={`Estrutura ${t.year}`}
@@ -301,6 +306,7 @@ const Sobre = () => {
                       (e.currentTarget as HTMLImageElement).style.display = "none";
                     }}
                   />
+                  )}
                 </div>
               ),
             }))}

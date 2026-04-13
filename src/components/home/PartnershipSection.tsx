@@ -60,15 +60,11 @@ const PartnershipSection = () => {
           </div>
         </div>
 
-        {/* Title & Description */}
-        <h2 className="text-4xl md:text-5xl font-display font-semibold mb-6">
+        {/* Title */}
+        <h2 className="text-3xl md:text-4xl font-display font-semibold mb-10">
           <span className="text-foreground">{t("partnership.title1")}</span>{" "}
           <span className="text-primary">{t("partnership.title2")}</span>
         </h2>
-
-        <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg leading-relaxed mb-20">
-          {t("partnership.desc")}
-        </p>
 
         {/* Steps Grid */}
         <div className="relative">

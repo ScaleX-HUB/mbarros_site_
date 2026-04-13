@@ -36,7 +36,7 @@ export const pt = {
     mapDesc: "O mapa reforça a abrangência da operação MBarros e mostra como tradição, estrutura e segurança comercial sustentam o crescimento dos nossos parceiros.",
     previewBadge: "Da origem à autoridade",
     previewTitle: "A MBarros nasceu em Pernambuco e transformou tradição produtiva em estrutura industrial para gerar confiança, segurança e escala.",
-    previewText1: "O Grupo MBarros começou em um galpão de 200m², em Olinda, com 12 colaboradores e atuação no mobiliário residencial, já demonstrando visão técnica e compromisso com qualidade.",
+    previewText1: "O Grupo MBarros começou como uma pequena marcenaria em Olinda, com atuação no mobiliário residencial, já demonstrando visão técnica e compromisso com qualidade desde os primeiros dias.",
     previewText2: "Hoje, essa base evoluiu para uma operação industrial robusta, com processos padronizados, controle de qualidade e suporte especializado para lojistas que precisam crescer com previsibilidade.",
     previewCta: "Saiba mais sobre nossa história",
     statParque: "Parque Fabril",
@@ -48,16 +48,16 @@ export const pt = {
   partnership: {
     badge: "A Parceria",
     title1: "O modelo",
-    title2: "White Label",
-    desc: "Trabalhamos nos bastidores para que a sua marca brilhe de frente. Com o modelo de parceria industrial da MBARROS, sua loja vende projetos assinados com o seu nome, fabricados com tecnologia Europeia e Chinesa.",
+    title2: "Parceiro",
+    desc: "",
     step1Title: "Você Projeta",
-    step1Desc: "Sua equipe desenvolve o design e valida com o cliente usando o software Promob.",
-    step2Title: "Nós Validamos",
-    step2Desc: "O projeto passa por nosso time de engenharia para revisão e otimização produtiva.",
+    step1Desc: "Sua equipe desenvolve o design e valida com o cliente usando o Promob.",
+    step2Title: "Alinhamento Comercial",
+    step2Desc: "Definimos condições comerciais e termos da parceria de forma transparente.",
     step3Title: "Nós Produzimos",
-    step3Desc: "A fábrica assume a produção utilizando maquinário de ponta e matéria-prima premium.",
-    step4Title: "Seu Cliente Recebe",
-    step4Desc: "Entregamos o projeto finalizado com precisão, agilidade e pronto para montagem."
+    step3Desc: "A fábrica assume a produção com maquinário de ponta e matéria-prima premium.",
+    step4Title: "Lojista Retira na Fábrica",
+    step4Desc: "O lojista retira o material diretamente na indústria e coordena a montagem."
   },
   structure: {
     badge: "PARQUE FABRIL",
@@ -71,10 +71,9 @@ export const pt = {
     rawDesc: "Trabalhamos apenas com insumos de alta qualidade para garantir acabamento impecável.",
     item1: { name: "MDF", desc: "Painel de alta densidade para peças estruturais e de acabamento fino" },
     item2: { name: "MDP", desc: "Resistência e versatilidade para painéis de larga escala" },
-    item3: { name: "Laca", desc: "Acabamento premium com alto brilho e durabilidade" },
+    item3: { name: "Metalurgia Própria", desc: "Estrutura própria de metalurgia para componentes metálicos com rastreabilidade industrial" },
     item4: { name: "Vidro", desc: "Elegância e sofisticação para portas e detalhes especiais" },
-    item5: { name: "Alumínio", desc: "Perfis estruturais leves e resistentes à corrosão" },
-    item6: { name: "Fita de Borda PUR", desc: "Colagem invisível com alta aderência e durabilidade" }
+    item5: { name: "Alumínio", desc: "Perfis estruturais leves e resistentes à corrosão" }
   },
   projects: {
     badge: "PORTFÓLIO",
@@ -95,13 +94,13 @@ export const pt = {
     item2: { title: "Padronização Completa", desc: "Assegure que cada projeto saia com o mesmo nível altíssimo de qualidade, sempre." },
     item3: { title: "Redução Tributária", desc: "Aproveite os benefícios fiscais de atuar em parceria com uma operação industrial estruturada." },
     item4: { title: "Sem Taxa de Franquia", desc: "Você é dono da sua marca. Não cobramos royalties ou taxas sobre seu faturamento." },
-    item5: { title: "Suporte Master", desc: "Nossa equipe de engenharia e suporte garante atendimento técnico e revisão para seus projetos no Promob." },
+    item5: { title: "Suporte Master", desc: "Suporte técnico e comercial próximo, com treinamento completo no software Promob para otimização dos projetos." },
     item6: { title: "Possibilidade de Escala", desc: "Venda mais sem precisar investir centenas de milhares em expansão de marcenaria e equipes base." }
   },
   cta: {
     title1: "Sua loja está pronta para",
     title2: " crescer com estrutura industrial?",
-    desc: "Descubra como a parceria White Label pode transformar sua operação e impulsionar seus resultados.",
+    desc: "Descubra como a parceria industrial pode transformar sua operação e impulsionar seus resultados.",
     btnPartner: "Quero ser parceiro",
     btnContact: "Fale com nosso time"
   },
@@ -113,7 +112,7 @@ export const pt = {
     missao: "Missão",
     missaoText: "Oferecer soluções em móveis planejados alto padrão de forma industrial e customizada, sendo a parceira estratégica ideal para lojistas que buscam escalar seus negócios com qualidade, pontualidade e padronização.",
     visao: "Visão",
-    visaoText: "Ser a Indústria White Label de móveis referência no Brasil, reconhecida pela tecnologia empregada nos processos e pelo zelo absoluto com o sucesso dos nossos parceiros comerciais.",
+    visaoText: "Ser a indústria de móveis planejados referência no Brasil, reconhecida pela tecnologia empregada nos processos e pelo zelo absoluto com o sucesso dos nossos parceiros comerciais.",
     valores: "Valores",
     valoresText: "Qualidade Excepcional, Transparência, Foco no Parceiro, Inovação Constante e Sustentabilidade Integrada.",
     teamBadge: "NOSSO TIME",
@@ -158,7 +157,7 @@ export const pt = {
   },
   footer: {
     sobre: "Sobre nós",
-    sobreText: "Indústria de móveis planejados alto padrão focada no modelo White Label para lojistas.",
+    sobreText: "Indústria de móveis planejados alto padrão focada na parceria industrial para lojistas.",
     links: "Links Rápidos",
     contato: "Contato",
     direitos: "Todos os direitos reservados"

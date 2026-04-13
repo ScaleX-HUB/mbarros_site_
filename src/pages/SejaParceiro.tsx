@@ -94,10 +94,10 @@ const SejaParceiro = () => {
                   Tem dúvidas?
                 </h3>
                 <p className="text-muted-foreground text-sm mb-4">
-                  Veja como funciona o modelo White Label antes de concluir o cadastro.
+                  Veja como funciona o modelo Parceiro antes de concluir o cadastro.
                 </p>
                 <Button variant="outline" size="sm" asChild>
-                  <Link to="/white-label">
+                  <Link to="/parceiro">
                     Saiba mais
                     <ArrowRight size={14} />
                   </Link>

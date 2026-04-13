@@ -36,7 +36,7 @@ export const es = {
     mapDesc: "El mapa refuerza el alcance de la operación MBarros y muestra cómo tradición, estructura y seguridad comercial sostienen el crecimiento de nuestros socios.",
     previewBadge: "Del origen a la autoridad",
     previewTitle: "MBarros nació en Pernambuco y transformó tradición productiva en estructura industrial para ofrecer confianza, seguridad y escala.",
-    previewText1: "El Grupo MBarros comenzó en un galpón de 200m², en Olinda, con 12 colaboradores y actuación en mobiliario residencial, ya demostrando visión técnica y compromiso con la calidad.",
+    previewText1: "El Grupo MBarros comenzó como una pequeña carpintería en Olinda, con actuación en mobiliario residencial, ya demostrando visión técnica y compromiso con la calidad desde los primeros días.",
     previewText2: "Hoy, esa base evolucionó hacia una operación industrial robusta, con procesos estandarizados, control de calidad y soporte especializado para minoristas que necesitan crecer con previsibilidad.",
     previewCta: "Conozca más sobre nuestra historia",
     statParque: "Planta de Fabricación",
@@ -48,16 +48,16 @@ export const es = {
   partnership: {
     badge: "La Asociación",
     title1: "El modelo",
-    title2: "White Label",
+    title2: "Modelo Socio",
     desc: "Trabajamos entre bastidores para que su marca brille. Con el modelo de asociación industrial de MBARROS, su tienda vende proyectos firmados con su nombre, fabricados con tecnología europea y china.",
     step1Title: "Usted Diseña",
     step1Desc: "Su equipo desarrolla el diseño y lo valida con el cliente usando el software Promob.",
-    step2Title: "Nosotros Validamos",
-    step2Desc: "El proyecto pasa por nuestro equipo de ingeniería para su revisión y optimización de producción.",
+    step2Title: "Alineamiento Comercial",
+    step2Desc: "Alineamos términos comerciales, formato de operación y expectativas para definir los términos de la asociación de forma transparente.",
     step3Title: "Nosotros Producimos",
     step3Desc: "La fábrica asume la producción utilizando maquinaria de última generación y materias primas premium.",
-    step4Title: "Su Cliente Recibe",
-    step4Desc: "Entregamos el proyecto terminado con precisión, agilidad y listo para su montaje."
+    step4Title: "Minorista Recoge en Fábrica",
+    step4Desc: "El minorista recoge el pedido directamente en la fábrica y coordina la instalación con el cliente final."
   },
   structure: {
     badge: "PLANTA DE PRODUCCIÓN",
@@ -71,10 +71,9 @@ export const es = {
     rawDesc: "Trabajamos solo con insumos de alta calidad para garantizar un acabado impecable.",
     item1: { name: "MDF", desc: "Panel de alta densidad para piezas estructurales y de acabado fino" },
     item2: { name: "MDP", desc: "Resistencia y versatilidad para paneles a gran escala" },
-    item3: { name: "Laca", desc: "Acabado premium con alto brillo y durabilidad" },
+    item3: { name: "Metalurgia Propia", desc: "Instalación propia de metalurgia para componentes metálicos con trazabilidad industrial" },
     item4: { name: "Vidrio", desc: "Elegancia y sofisticación para puertas y detalles especiales" },
-    item5: { name: "Aluminio", desc: "Perfiles estructurales ligeros y resistentes a la corrosión" },
-    item6: { name: "Canteado PUR", desc: "Pegado invisible con alta adherencia y durabilidad" }
+    item5: { name: "Aluminio", desc: "Perfiles estructurales ligeros y resistentes a la corrosión" }
   },
   projects: {
     badge: "PORTAFOLIO",
@@ -95,13 +94,13 @@ export const es = {
     item2: { title: "Estandarización Completa", desc: "Asegure que cada proyecto salga con el mismo nivel de calidad altísimo, siempre." },
     item3: { title: "Reducción de Impuestos", desc: "Aproveche los beneficios fiscales al asociarse con una operación industrial estructurada." },
     item4: { title: "Sin Tarifa de Franquicia", desc: "Usted es dueño de su marca. No cobramos regalías ni tarifas sobre sus ingresos." },
-    item5: { title: "Soporte Master", desc: "Nuestro equipo de ingeniería y soporte garantiza atención técnica y revisión para sus proyectos en Promob." },
+    item5: { title: "Soporte Master", desc: "Soporte técnico y comercial cercano, con capacitación completa en el software Promob para la optimización de proyectos." },
     item6: { title: "Escalabilidad", desc: "Venda más sin necesidad de invertir cientos de miles en expansión de carpintería y equipos básicos." }
   },
   cta: {
     title1: "¿Su tienda está lista para",
     title2: " crecer con estructura industrial?",
-    desc: "Descubra cómo la asociación White Label puede transformar su operación e impulsar sus resultados.",
+    desc: "Descubra cómo la asociación industrial puede transformar su operación e impulsar sus resultados.",
     btnPartner: "Quiero ser socio",
     btnContact: "Hable con nuestro equipo"
   },
@@ -113,7 +112,7 @@ export const es = {
     missao: "Misión",
     missaoText: "Ofrecer soluciones en muebles a medida de alta gama de forma industrial y personalizada...",
     visao: "Visión",
-    visaoText: "Ser la Industria de Muebles White Label líder en Brasil...",
+    visaoText: "Ser la industria de muebles a medida líder en Brasil...",
     valores: "Valores",
     valoresText: "Calidad Excepcional, Transparencia, Enfoque en el Socio, Innovación Constante y Sostenibilidad...",
     teamBadge: "NUESTRO EQUIPO",
@@ -140,7 +139,7 @@ export const es = {
   },
   footer: {
     sobre: "Sobre nosotros",
-    sobreText: "Industria de muebles a medida de alta gama enfocada en el modelo White Label para minoristas.",
+    sobreText: "Industria de muebles a medida de alta gama enfocada en la asociación industrial para minoristas.",
     links: "Enlaces Rápidos",
     contato: "Contacto",
     direitos: "Todos los derechos reservados"

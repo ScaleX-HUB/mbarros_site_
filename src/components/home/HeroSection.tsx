@@ -40,9 +40,15 @@ const heroCards = [
   {
     title: "Quem Atendemos",
     description: "Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.",
-    href: "/white-label",
+    href: "/parceiro",
     cta: "Entender o modelo",
   },
+] as const;
+
+const heroKpis = [
+  "35 anos de mercado",
+  "10.000m² de parque fabril",
+  "Foco B2B",
 ] as const;
 
 const HeroSection = () => {
@@ -120,19 +126,23 @@ const HeroSection = () => {
           <div className="absolute -inset-10 bg-white/40 dark:bg-black/20 blur-3xl -z-10 rounded-full transition-colors duration-700" />
 
           {/* Headline */}
-          <motion.h1 variants={fadeUpItem} className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-semibold leading-tight text-foreground dark:text-white drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)] transition-colors duration-700">
-            A maior indústria de móveis planejados <span className="text-gradient drop-shadow-[0_4px_32px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.8)]">do NORDESTE</span>
+          <motion.h1
+            variants={fadeUpItem}
+            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground dark:text-white drop-shadow-md"
+          >
+            A maior indústria de móveis planejados do<br />
+            <motion.span
+              className="text-gradient"
+              initial={{ opacity: 0, filter: "blur(12px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+            >
+              NORDESTE
+            </motion.span>
           </motion.h1>
 
-          {/* Subheadline */}
-          <motion.p variants={fadeUpItem} className="text-base md:text-lg text-foreground/90 dark:text-white/95 max-w-2xl drop-shadow-[0_4px_24px_rgba(255,255,255,1)] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)] transition-colors duration-700">       
-            Para marcas que querem crescer. Focamos na produção efetiva para que você foque nas vendas.
-          </motion.p>
-
-          
-        </motion.div>
-      </div>
-
+          </motion.div>
+        </div>
       
       {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background/90 to-transparent pointer-events-none" />
@@ -156,24 +166,23 @@ const HeroSection = () => {
                 >
                   <Link
                     to={card.href}
-                    className="group relative flex h-full min-h-[168px] flex-col overflow-hidden rounded-2xl border border-primary/20 bg-[linear-gradient(180deg,rgba(255,249,242,0.82),rgba(184,136,95,0.34))] p-4 md:p-5 lg:p-6 shadow-[0_10px_40px_-10px_rgba(124,74,44,0.18)] backdrop-blur-md transition-all duration-300 hover:border-primary/45 hover:shadow-[0_18px_60px_-18px_rgba(124,74,44,0.26)] dark:bg-[linear-gradient(180deg,rgba(106,62,34,0.54),rgba(74,43,22,0.76))] dark:shadow-[0_10px_40px_-10px_rgba(65,36,18,0.38)] dark:hover:shadow-[0_18px_60px_-18px_rgba(65,36,18,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70"
+                    className="group relative flex h-full min-h-[120px] flex-col overflow-hidden rounded-xl border border-border/50 bg-background/60 p-4 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:bg-background/80 hover:shadow-md dark:bg-background/40 dark:hover:bg-background/60"
                   >
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.18),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(146,90,50,0.08))] opacity-80 transition-opacity duration-300 group-hover:opacity-100 dark:bg-[radial-gradient(circle_at_top_right,rgba(212,140,74,0.22),transparent_38%),linear-gradient(180deg,rgba(146,90,50,0.06),rgba(74,43,22,0.14))]" />
-                    <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/8 blur-2xl transition-transform duration-500 group-hover:scale-125 dark:bg-primary/10" />
+                    <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-primary/10 blur-2xl transition-transform duration-500 group-hover:scale-150" />
 
                     <div className="relative z-10 flex h-full flex-col">
-                      <h3 className="mb-2 text-sm font-bold uppercase tracking-[0.18em] text-foreground dark:text-white md:text-[15px]">
+                      <h3 className="mb-1.5 text-xs font-bold uppercase tracking-[0.18em] text-foreground dark:text-white">
                         {card.title}
                       </h3>
 
-                      <p className="text-xs leading-relaxed text-foreground/90 dark:text-white/90 md:text-[13px]">
+                      <p className="text-xs leading-relaxed text-foreground/80 dark:text-white/80">
                         {card.description}
                       </p>
 
-                      <div className="mt-auto pt-5">
-                        <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary transition-transform duration-300 group-hover:translate-x-1 md:text-xs">
+                      <div className="mt-auto pt-3">
+                        <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary transition-transform duration-300 group-hover:translate-x-1">
                           {card.cta}
-                          <ArrowRight size={16} />
+                          <ArrowRight size={14} />
                         </span>
                       </div>
                     </div>

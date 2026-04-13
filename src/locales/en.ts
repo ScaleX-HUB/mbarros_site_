@@ -36,7 +36,7 @@ export const en = {
     mapDesc: "The map reinforces the reach of MBarros' operation and shows how tradition, structure, and commercial reliability support our partners' growth.",
     previewBadge: "From origin to authority",
     previewTitle: "MBarros was born in Pernambuco and turned productive tradition into industrial structure to deliver trust, reliability, and scale.",
-    previewText1: "Grupo MBarros began in a 200m² warehouse in Olinda, with 12 employees and residential furniture production, already showing technical vision and commitment to quality.",
+    previewText1: "Grupo MBarros began as a small carpentry shop in Olinda, with residential furniture production, already showing technical vision and commitment to quality from the very start.",
     previewText2: "Today, that foundation has grown into a robust industrial operation, with standardized processes, quality control, and specialized support for retailers who need predictable growth.",
     previewCta: "Learn more about our history",
     statParque: "Manufacturing Plant",
@@ -48,16 +48,16 @@ export const en = {
   partnership: {
     badge: "The Partnership",
     title1: "The",
-    title2: "White Label model",
+    title2: "Partner model",
     desc: "We work behind the scenes so your brand shines upfront. With MBARROS's industrial partnership model, your store sells projects signed with your name, manufactured with European and Chinese technology.",
     step1Title: "You Design",
     step1Desc: "Your team develops the design and validates it with the client using Promob software.",
-    step2Title: "We Validate",
-    step2Desc: "The project goes through our engineering team for review and production optimization.",
+    step2Title: "Commercial Alignment",
+    step2Desc: "We align commercial terms, operating format, and expectations to define the partnership terms transparently.",
     step3Title: "We Produce",
     step3Desc: "The factory takes over production using state-of-the-art machinery and premium raw materials.",
-    step4Title: "Your Client Receives",
-    step4Desc: "We deliver the finished project with precision, agility, and ready for assembly."
+    step4Title: "Retailer Picks Up at Factory",
+    step4Desc: "The retailer collects the order directly at the factory and coordinates installation at the end client."
   },
   structure: {
     badge: "MANUFACTURING PLANT",
@@ -71,10 +71,9 @@ export const en = {
     rawDesc: "We work only with high-quality supplies to guarantee a flawless finish.",
     item1: { name: "MDF", desc: "High-density panel for structural and fine finishing parts" },
     item2: { name: "MDP", desc: "Strength and versatility for large-scale panels" },
-    item3: { name: "Lacquer", desc: "Premium finish with high gloss and durability" },
+    item3: { name: "In-house Metalwork", desc: "Own metalwork facility for metal components with industrial traceability" },
     item4: { name: "Glass", desc: "Elegance and sophistication for doors and special details" },
-    item5: { name: "Aluminum", desc: "Lightweight and corrosion-resistant structural profiles" },
-    item6: { name: "PUR Edge Banding", desc: "Invisible gluing with high adhesion and durability" }
+    item5: { name: "Aluminum", desc: "Lightweight and corrosion-resistant structural profiles" }
   },
   projects: {
     badge: "PORTFOLIO",
@@ -95,13 +94,13 @@ export const en = {
     item2: { title: "Complete Standardization", desc: "Ensure every project leaves with the exact same high level of quality, always." },
     item3: { title: "Tax Reduction", desc: "Take advantage of tax benefits by partnering with a structured industrial operation." },
     item4: { title: "No Franchise Fee", desc: "You own your brand. We do not charge royalties or fees on your revenue." },
-    item5: { title: "Master Support", desc: "Our engineering and support team guarantees technical assistance and review for your Promob projects." },
+    item5: { title: "Master Support", desc: "Dedicated technical and commercial support, including full training on Promob software for project optimization." },
     item6: { title: "Scalability", desc: "Sell more without needing to invest hundreds of thousands in woodworking expansion and basic teams." }
   },
   cta: {
     title1: "Is your store ready to",
     title2: " grow with industrial structure?",
-    desc: "Discover how the White Label partnership can transform your operation and boost your results.",
+    desc: "Discover how our industrial partnership can transform your operation and boost your results.",
     btnPartner: "I want to be a partner",
     btnContact: "Talk to our team"
   },
@@ -113,7 +112,7 @@ export const en = {
     missao: "Mission",
     missaoText: "To offer high-end custom furniture solutions in an industrial and customized way, being the ideal strategic partner for retailers seeking to scale their business with quality, punctuality, and standardization.",
     visao: "Vision",
-    visaoText: "To be the Leading White Label Furniture Industry in Brazil, recognized for the technology employed in its processes and the absolute zeal for the success of our commercial partners.",
+    visaoText: "To be the leading furniture industry in Brazil, recognized for the technology employed in its processes and the absolute zeal for the success of our commercial partners.",
     valores: "Values",
     valoresText: "Exceptional Quality, Transparency, Partner Focus, Constant Innovation, and Integrated Sustainability.",
     teamBadge: "OUR TEAM",
@@ -140,7 +139,7 @@ export const en = {
   },
   footer: {
     sobre: "About us",
-    sobreText: "High-end custom furniture industry focused on the White Label model for retailers.",
+    sobreText: "High-end custom furniture industry focused on industrial partnership for retailers.",
     links: "Quick Links",
     contato: "Contact",
     direitos: "All rights reserved"
