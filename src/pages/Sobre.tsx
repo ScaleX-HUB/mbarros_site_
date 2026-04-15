@@ -4,8 +4,9 @@ import { Timeline } from "@/components/ui/timeline";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import seniorProfessional from "@/assets/team-portrait-senior-professional.png";
-import cncOperator from "@/assets/team-operator-cnc-monitor.png";
+
+const seniorProfessional = "/imagens_mbarros/trabalhador_observando_planta_na_industria.webp";
+const cncOperator = "/imagens_mbarros/trabalhador_na_maquina_industria.webp";
 
 const timeline = [
   {

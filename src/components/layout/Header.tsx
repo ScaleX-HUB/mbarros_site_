@@ -9,7 +9,7 @@ import {
   MenuItem,
   ProductItem,
 } from "@/components/ui/navbar-menu";
-import { getCategoryCover } from "@/lib/project-images";
+import { getHomeCategoryCover } from "@/lib/project-gallery-home";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SiteSearch } from "@/components/search/SiteSearch";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
@@ -105,25 +105,31 @@ const Header = () => {
                   <ProductItem
                     title="Residenciais"
                     to="/projetos?categoria=residenciais"
-                    src={getCategoryCover("residenciais").src}
+                    src={getHomeCategoryCover("residenciais").src}
                     description="Cozinhas, dormitórios e ambientes completos."
                   />
                   <ProductItem
                     title="Corporativos"
                     to="/projetos?categoria=corporativos"
-                    src={getCategoryCover("corporativos").src}
+                    src={getHomeCategoryCover("corporativos").src}
                     description="Escritórios, recepções e salas de reunião."
                   />
                   <ProductItem
-                    title="Especiais"
-                    to="/projetos?categoria=especiais"
-                    src={getCategoryCover("especiais").src}
-                    description="Soluções sob medida para cada necessidade."
+                    title="Hospitalares"
+                    to="/projetos?categoria=hospitalares"
+                    src={getHomeCategoryCover("hospitalares").src}
+                    description="Projetos para ambientes de saude e clinicas."
+                  />
+                  <ProductItem
+                    title="Decorados"
+                    to="/projetos?categoria=decorados"
+                    src={getHomeCategoryCover("decorados").src}
+                    description="Ambientes decorados para apresentacao comercial."
                   />
                   <ProductItem
                     title="Ver todos"
                     to="/projetos"
-                    src={getCategoryCover("corporativos").src}
+                    src={getHomeCategoryCover("corporativos").src}
                     description="Conheça o portfólio completo."
                   />
                 </div>

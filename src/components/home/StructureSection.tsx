@@ -15,9 +15,11 @@ import {
 } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useReducedMotion } from "framer-motion";
-import productionPanelInspectionWide from "@/assets/production-panel-inspection-wide.png";
-import sprayPaintBooth from "@/assets/process-spray-paint-booth.png";
-import panelPositioning from "@/assets/production-panel-positioning.png";
+
+const productionPanelInspectionWide =
+  "/imagens_mbarros/trabalhador_observando_planta_na_industria.webp";
+const sprayPaintBooth = "/imagens_mbarros/trabalhador_na_maquina_industria.webp";
+const panelPositioning = "/imagens_mbarros/maquina_industria.webp";
 
 const materials = [
   {
