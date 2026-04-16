@@ -93,7 +93,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {galleryCategories.map((category, categoryIndex) => (
             <Link
               key={category.id}

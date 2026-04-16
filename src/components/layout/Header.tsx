@@ -127,6 +127,12 @@ const Header = () => {
                     description="Ambientes decorados para apresentacao comercial."
                   />
                   <ProductItem
+                    title="Especiais"
+                    to="/projetos?categoria=especiais"
+                    src={getHomeCategoryCover("especiais").src}
+                    description="Solucoes sob medida para projetos unicos."
+                  />
+                  <ProductItem
                     title="Ver todos"
                     to="/projetos"
                     src={getHomeCategoryCover("corporativos").src}
