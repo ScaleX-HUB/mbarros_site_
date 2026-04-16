@@ -3,54 +3,63 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { PROJECT_CATEGORY_IMAGES, type ProjectCategory } from "@/lib/project-images";
-import { useTranslation } from "react-i18next";
+import { HOME_PROJECT_CATEGORIES } from "@/lib/project-gallery-home";
 
-
+const categories = [
+  {
+    id: "residenciais",
+    title: "Projetos Residenciais",
+    description: "Cozinhas, dormitórios, salas e espaços personalizados para residências.",
+  },
+  {
+    id: "corporativos",
+    title: "Projetos Corporativos",
+    description: "Escritórios, ambientes empresariais e espaços de trabalho funcionais.",
+  },
+  {
+    id: "especiais",
+    title: "Projetos Especiais",
+    description: "Soluções personalizadas para necessidades específicas e projetos únicos.",
+  },
+];
 
 const ProjectsSection = () => {
-  const { t } = useTranslation();
-
-  const categories = [
-    {
-      id: "residenciais",
-      title: t("projects.cat1.title"),
-      description: t("projects.cat1.desc"),
-    },
-    {
-      id: "corporativos",
-      title: t("projects.cat2.title"),
-      description: t("projects.cat2.desc"),
-    },
-    {
-      id: "especiais",
-      title: t("projects.cat3.title"),
-      description: t("projects.cat3.desc"),
-    },
-  ];
   const prefersReducedMotion = useReducedMotion();
-  const categoryIds = useMemo(
-    () => categories.map((c) => c.id as ProjectCategory),
+  const galleryCategories = useMemo(
+    () => (HOME_PROJECT_CATEGORIES.length > 0 ? HOME_PROJECT_CATEGORIES : categories),
     []
   );
+  const categoryIds = useMemo(
+    () => galleryCategories.map((category) => category.id),
+    [galleryCategories]
+  );
 
-  const [activeImageIndexByCategory, setActiveImageIndexByCategory] = useState(() => {
-    const initial: Record<ProjectCategory, number> = {
-      residenciais: 0,
-      corporativos: 0,
-      especiais: 0,
-    };
-    return initial;
-  });
+  const [activeImageIndexByCategory, setActiveImageIndexByCategory] = useState<Record<string, number>>(() =>
+    categoryIds.reduce<Record<string, number>>(
+      (acc, categoryId) => ({ ...acc, [categoryId]: 0 }),
+      {}
+    )
+  );
 
   useEffect(() => {
+    setActiveImageIndexByCategory((prev) =>
+      categoryIds.reduce<Record<string, number>>(
+        (acc, categoryId) => ({ ...acc, [categoryId]: prev[categoryId] ?? 0 }),
+        {}
+      )
+    );
+  }, [categoryIds]);
+
+  useEffect(() => {
+    if (categoryIds.length === 0) return;
     if (prefersReducedMotion) return;
 
     const id = window.setInterval(() => {
       setActiveImageIndexByCategory((prev) => {
         const next = { ...prev };
         for (const categoryId of categoryIds) {
-          const total = PROJECT_CATEGORY_IMAGES[categoryId].length;
+          const total =
+            galleryCategories.find((category) => category.id === categoryId)?.covers.length ?? 0;
           next[categoryId] = total <= 1 ? 0 : (prev[categoryId] + 1) % total;
         }
         return next;
@@ -58,7 +67,7 @@ const ProjectsSection = () => {
     }, 5500);
 
     return () => window.clearInterval(id);
-  }, [categoryIds, prefersReducedMotion]);
+  }, [categoryIds, galleryCategories, prefersReducedMotion]);
 
   return (
     <section className="section-container">
@@ -69,7 +78,7 @@ const ProjectsSection = () => {
             <div className="flex items-center gap-4">
               <span className="h-px w-8 bg-primary"></span>
               <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                {t("projects.badge")}
+                PORTFÓLIO
               </span>
               <span className="h-px w-8 bg-primary"></span>
             </div>
@@ -84,8 +93,8 @@ const ProjectsSection = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {categories.map((category) => (
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {galleryCategories.map((category, categoryIndex) => (
             <Link
               key={category.id}
               to={`/projetos?categoria=${category.id}`}
@@ -94,21 +103,34 @@ const ProjectsSection = () => {
               {/* Image */}
               <div className="absolute inset-0 bg-secondary">
                 <AnimatePresence mode="wait">
+                  {(() => {
+                    const categoryImages = category.covers;
+                    const activeIndex = activeImageIndexByCategory[category.id] ?? 0;
+                    const activeImage = categoryImages[activeIndex] ?? categoryImages[0];
+
+                    if (!activeImage) return null;
+
+                    const isFirstCardInitial = categoryIndex === 0 && activeIndex === 0;
+
+                    return (
                   <motion.img
-                    key={`${category.id}-${activeImageIndexByCategory[category.id as ProjectCategory]}`}
-                    src={
-                      PROJECT_CATEGORY_IMAGES[category.id as ProjectCategory][
-                        activeImageIndexByCategory[category.id as ProjectCategory]
-                      ]?.src
-                    }
+                    key={`${category.id}-${activeIndex}`}
+                    src={activeImage.src}
                     alt={category.title}
+                    width={activeImage.width ?? 600}
+                    height={activeImage.height ?? 750}
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-500"
                     initial={{ opacity: 0, scale: 1.02 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.01 }}
                     transition={{ duration: 0.9, ease: "easeOut" }}
-                    loading="lazy"
+                    loading={isFirstCardInitial ? "eager" : "lazy"}
+                    fetchPriority={isFirstCardInitial ? "high" : "auto"}
+                    decoding="async"
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
                   />
+                    );
+                  })()}
                 </AnimatePresence>
               </div>
 
@@ -136,7 +158,7 @@ const ProjectsSection = () => {
         <div className="text-center mt-12">
           <Button variant="hero" size="lg" asChild>
             <Link to="/projetos">
-              {t("projects.btn")}
+              Ver todos os projetos
               <ArrowRight size={18} />
             </Link>
           </Button>

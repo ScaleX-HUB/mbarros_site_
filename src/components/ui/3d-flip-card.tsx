@@ -5,6 +5,11 @@ import { cn } from "@/lib/utils";
 export interface CardImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
+  thumbSrc?: string;
+  thumbWidth?: number;
+  thumbHeight?: number;
 }
 
 export interface CardStack3DProps {
@@ -12,6 +17,7 @@ export interface CardStack3DProps {
   className?: string;
   cardWidth?: number;
   cardHeight?: number;
+  adjacentMode?: "peek" | "hidden";
   spacing?: {
     x?: number;
     y?: number;
@@ -23,20 +29,24 @@ export interface CardStack3DProps {
   allowDeselect?: boolean;
 }
 
-interface CardProps extends CardImage {
+interface CardProps extends Omit<CardImage, "width" | "height"> {
   index: number;
   isHovered: boolean;
   isMobile: boolean;
   isFront?: boolean;
   frontCardIndex: number | null;
   onClick: (index: number) => void;
-  width: number;
-  height: number;
+  cardBoxWidth: number;
+  cardBoxHeight: number;
+  imageWidth?: number;
+  imageHeight?: number;
+  adjacentMode: "peek" | "hidden";
   spacing: { x?: number; y?: number };
 }
 
 const Card = ({
   src,
+  thumbSrc,
   alt,
   index,
   isHovered,
@@ -44,20 +54,45 @@ const Card = ({
   isFront,
   frontCardIndex,
   onClick,
-  width,
-  height,
+  cardBoxWidth,
+  cardBoxHeight,
+  imageWidth,
+  imageHeight,
+  thumbWidth,
+  thumbHeight,
+  adjacentMode,
   spacing,
 }: CardProps) => {
+  const shouldUseThumb = !isFront && Boolean(thumbSrc);
+  const resolvedSrc = shouldUseThumb ? thumbSrc! : src;
+  const resolvedWidth = shouldUseThumb
+    ? thumbWidth ?? imageWidth ?? cardBoxWidth
+    : imageWidth ?? cardBoxWidth;
+  const resolvedHeight = shouldUseThumb
+    ? thumbHeight ?? imageHeight ?? cardBoxHeight
+    : imageHeight ?? cardBoxHeight;
+
   return (
     <motion.div
       className={cn("absolute overflow-hidden rounded-xl shadow-lg", isFront && "z-20")}
       style={{
-        width,
-        height,
+        width: cardBoxWidth,
+        height: cardBoxHeight,
         transformStyle: "preserve-3d",
         transformOrigin: isMobile ? "top center" : "left center",
         zIndex: isFront ? 20 : 5 - index,
-        filter: isFront || frontCardIndex === null ? "none" : "blur(5px)",
+        filter:
+          isFront || frontCardIndex === null || adjacentMode === "hidden"
+            ? "none"
+            : "blur(8px)",
+        opacity:
+          !isFront && frontCardIndex !== null && adjacentMode === "peek"
+            ? 0.4
+            : 1,
+        pointerEvents:
+          !isFront && frontCardIndex !== null && adjacentMode === "hidden"
+            ? "none"
+            : "auto",
       }}
       initial={{
         rotateY: 0,
@@ -68,24 +103,44 @@ const Card = ({
       }}
       animate={
         isFront
-          ? {
-              scale: 1.2,
-              rotateY: 0,
-              x: 0,
-              y: isMobile ? 0 : -50,
-              z: 50,
-              boxShadow: "0px 15px 40px rgba(0, 0, 0, 0.5)",
-            }
-          : frontCardIndex !== null
+          ? adjacentMode === "hidden"
             ? {
-                rotateY: isMobile ? 0 : -10,
-                x: isMobile ? 0 : index * 10,
-                y: isMobile ? index * 10 : index * -6,
-                z: index * 10,
-                scale: 0.98,
-                boxShadow: `6px 10px 18px rgba(0, 0, 0, ${0.15 + index * 0.04})`,
-                transition: { type: "spring", stiffness: 260, damping: 26 },
+                scale: 1,
+                rotateY: 0,
+                x: 0,
+                y: 0,
+                z: 20,
+                boxShadow: "0px 12px 30px rgba(0, 0, 0, 0.45)",
               }
+            : {
+                scale: 1.2,
+                rotateY: 0,
+                x: 0,
+                y: isMobile ? 0 : -50,
+                z: 50,
+                boxShadow: "0px 15px 40px rgba(0, 0, 0, 0.5)",
+              }
+          : frontCardIndex !== null
+            ? adjacentMode === "hidden"
+              ? {
+                  rotateY: 0,
+                  x: 0,
+                  y: 0,
+                  z: 0,
+                  scale: 1,
+                  opacity: 0,
+                  boxShadow: "none",
+                  transition: { duration: 0.18, ease: "easeOut" },
+                }
+              : {
+                  rotateY: isMobile ? 0 : -10,
+                  x: isMobile ? 0 : index * 10,
+                  y: isMobile ? index * 10 : index * -6,
+                  z: index * 10,
+                  scale: 0.98,
+                  boxShadow: `6px 10px 18px rgba(0, 0, 0, ${0.15 + index * 0.04})`,
+                  transition: { type: "spring", stiffness: 260, damping: 26 },
+                }
           : isHovered
             ? {
                 rotateY: isMobile ? 0 : -45,
@@ -118,7 +173,17 @@ const Card = ({
       }
       onClick={() => onClick(index)}
     >
-      <img src={src} alt={alt} className="h-full w-full object-cover rounded-xl" loading="lazy" />
+      <img
+        src={resolvedSrc}
+        alt={alt}
+        width={resolvedWidth}
+        height={resolvedHeight}
+        className="h-full w-full object-cover rounded-xl"
+        loading={isFront ? "eager" : "lazy"}
+        fetchPriority={isFront ? "high" : "auto"}
+        decoding="async"
+        draggable={false}
+      />
     </motion.div>
   );
 };
@@ -128,6 +193,7 @@ export function CardStack3D({
   className,
   cardWidth = 320,
   cardHeight = 192,
+  adjacentMode = "peek",
   spacing = { x: 50, y: 50 },
   defaultFrontIndex = null,
   frontIndex,
@@ -183,27 +249,33 @@ export function CardStack3D({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {images.map((image, index) => (
-          <Card
-            key={`${image.src}-${index}`}
-            {...image}
-            index={index}
-            isHovered={isHovered}
-            isMobile={isMobile}
-            isFront={currentFrontIndex === index}
-            frontCardIndex={currentFrontIndex}
-            onClick={(idx) => {
-              if (currentFrontIndex === idx) {
-                setFrontIndex(allowDeselect ? null : idx);
-                return;
-              }
-              setFrontIndex(idx);
-            }}
-            width={cardWidth}
-            height={cardHeight}
-            spacing={spacing}
-          />
-        ))}
+        {images.map((image, index) => {
+          const { width: imgWidth, height: imgHeight, ...rest } = image;
+          return (
+            <Card
+              key={`${image.src}-${index}`}
+              {...rest}
+              imageWidth={imgWidth}
+              imageHeight={imgHeight}
+              index={index}
+              isHovered={isHovered}
+              isMobile={isMobile}
+              isFront={currentFrontIndex === index}
+              frontCardIndex={currentFrontIndex}
+              onClick={(idx) => {
+                if (currentFrontIndex === idx) {
+                  setFrontIndex(allowDeselect ? null : idx);
+                  return;
+                }
+                setFrontIndex(idx);
+              }}
+              cardBoxWidth={cardWidth}
+              cardBoxHeight={cardHeight}
+              adjacentMode={adjacentMode}
+              spacing={spacing}
+            />
+          );
+        })}
       </div>
     </div>
   );

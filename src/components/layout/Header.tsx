@@ -9,7 +9,7 @@ import {
   MenuItem,
   ProductItem,
 } from "@/components/ui/navbar-menu";
-import { getCategoryCover } from "@/lib/project-images";
+import { getHomeCategoryCover } from "@/lib/project-gallery-home";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SiteSearch } from "@/components/search/SiteSearch";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
@@ -33,12 +33,12 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20 md:h-24 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <div className="flex items-center justify-between h-20 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span
-                className="relative block h-12 w-[11rem] sm:h-14 sm:w-[13.125rem] md:h-16 md:w-[15rem] lg:h-20 lg:w-[18.75rem]"
+                className="relative block h-12 w-[11.25rem] md:h-14 md:w-[13.125rem] lg:h-16 lg:w-[15rem]"
                 aria-label="MBarros Indústria"
               >
                 <img
@@ -105,25 +105,31 @@ const Header = () => {
                   <ProductItem
                     title="Residenciais"
                     to="/projetos?categoria=residenciais"
-                    src={getCategoryCover("residenciais").src}
+                    src={getHomeCategoryCover("residenciais").src}
                     description="Cozinhas, dormitórios e ambientes completos."
                   />
                   <ProductItem
                     title="Corporativos"
                     to="/projetos?categoria=corporativos"
-                    src={getCategoryCover("corporativos").src}
+                    src={getHomeCategoryCover("corporativos").src}
                     description="Escritórios, recepções e salas de reunião."
                   />
                   <ProductItem
-                    title="Especiais"
-                    to="/projetos?categoria=especiais"
-                    src={getCategoryCover("especiais").src}
-                    description="Soluções sob medida para cada necessidade."
+                    title="Hospitalares"
+                    to="/projetos?categoria=hospitalares"
+                    src={getHomeCategoryCover("hospitalares").src}
+                    description="Projetos para ambientes de saude e clinicas."
+                  />
+                  <ProductItem
+                    title="Decorados"
+                    to="/projetos?categoria=decorados"
+                    src={getHomeCategoryCover("decorados").src}
+                    description="Ambientes decorados para apresentacao comercial."
                   />
                   <ProductItem
                     title="Ver todos"
                     to="/projetos"
-                    src={getCategoryCover("corporativos").src}
+                    src={getHomeCategoryCover("corporativos").src}
                     description="Conheça o portfólio completo."
                   />
                 </div>
@@ -186,14 +192,13 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="lg:hidden py-5 border-t border-border animate-fade-in">
+          <nav className="lg:hidden py-6 border-t border-border animate-fade-in">
             <div className="flex flex-col gap-4">
               <SiteSearch
                 placeholder={t("header.busque")}
                 compact
                 subtle
                 formClassName="rounded-full px-2"
-                hideDefaultSuggestions
               />
 
               {navItems.map((item) => (
@@ -201,7 +206,7 @@ const Header = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`rounded-lg border border-transparent bg-background/70 px-3 py-3 text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:border-primary/20 hover:text-primary ${
+                  className={`text-sm uppercase tracking-wider font-medium py-2 transition-colors duration-300 hover:text-primary ${
                     location.pathname === item.path 
                       ? "text-primary" 
                       : "text-muted-foreground"
@@ -225,7 +230,7 @@ const Header = () => {
                 <ThemeToggle />
               </div>
 
-              <Button variant="hero" className="mt-2 w-full" asChild>
+              <Button variant="hero" className="mt-4" asChild>
                 <Link to="/seja-parceiro" onClick={() => setIsMenuOpen(false)}>
                   {t("header.sejaParceiro")}
                 </Link>

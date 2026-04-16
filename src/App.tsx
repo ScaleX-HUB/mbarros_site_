@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
 import WhiteLabel from "./pages/WhiteLabel";
-import Projetos from "./pages/Projetos";
+import ProjetosGaleria from "./pages/ProjetosGaleria";
 import Contato from "./pages/Contato";
 import SejaParceiro from "./pages/SejaParceiro";
 import Blog from "./pages/Blog";
@@ -103,7 +103,7 @@ const App = () => (
             <Route path="/estrutura" element={<Navigate to="/sobre" replace />} />
             <Route path="/white-label" element={<Navigate to="/parceiro" replace />} />
             <Route path="/parceiro" element={<WhiteLabel />} />
-            <Route path="/projetos" element={<Projetos />} />
+            <Route path="/projetos" element={<ProjetosGaleria />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/seja-parceiro" element={<SejaParceiro />} />
             <Route path="/blog" element={<Blog />} />
