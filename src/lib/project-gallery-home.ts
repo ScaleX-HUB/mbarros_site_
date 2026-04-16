@@ -2,7 +2,8 @@ export type HomeProjectCategoryId =
   | "residenciais"
   | "corporativos"
   | "hospitalares"
-  | "decorados";
+  | "decorados"
+  | "especiais";
 
 export interface HomeProjectCategoryCover {
   src: string;
@@ -72,6 +73,18 @@ export const HOME_PROJECT_CATEGORIES: HomeProjectCategory[] = [
       { src: "/projetos/decorados/decorado-vivant-rio-ave/001-001-1-cover.webp" },
       { src: "/projetos/decorados/decorado-vivant-rio-ave/001-1-cover.webp" },
       { src: "/projetos/decorados/decorado-vivant-rio-ave/002-001-1-cover.webp" },
+    ],
+  },
+  {
+    id: "especiais",
+    title: "Projetos Especiais",
+    description: "Solucoes sob medida para necessidades especificas e projetos unicos.",
+    covers: [
+      { src: "/imagens_mbarros/projetos_especiais/aeroportorecife2.jpg" },
+      { src: "/imagens_mbarros/projetos_especiais/aeropotonatal2.jpg" },
+      {
+        src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-1.jpeg",
+      },
     ],
   },
 ];
