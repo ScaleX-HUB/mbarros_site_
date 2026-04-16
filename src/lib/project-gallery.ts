@@ -112,6 +112,12 @@ const toProjectMeta = (meta: GeneratedProjectCategoryMeta): ProjectCategoryMeta 
 
 const toProjectItem = (item: GeneratedProjectGalleryItem): ProjectGalleryItem => ({
   ...item,
+  title:
+    item.title === "Projetos Corporativos"
+      ? "Projeto Corporativo Geral"
+      : item.title === "Projeto Hospitalar Geral"
+      ? "Projeto Hospitalar Geral"
+      : item.title,
   category: item.category as ProjectCategory,
 });
 
@@ -162,9 +168,34 @@ const LEGACY_GALLERY_ITEMS: ProjectGalleryItem[] = Object.entries(LEGACY_CATEGOR
 
     if (!images?.length || !categoryMeta) return [];
 
+    const getLegacyTitle = (imageSrc: string, fallback: string) => {
+      const normalized = imageSrc.toLowerCase();
+
+      if (normalized.includes("casa-design-home-office")) return "Casa Design Home Office";
+      if (normalized.includes("casa-design-office")) return "Casa Design Office";
+      if (normalized.includes("casa-design-moveis-sala-reuniao")) {
+        return "Casa Design Sala de Reuniao";
+      }
+      if (normalized.includes("casa-design-sala-reuniao")) return "Casa Design Sala de Reuniao";
+      if (normalized.includes("photo-2017-01-30-17-42-15")) return "Recepcao Corporativa";
+      if (normalized.includes("photo-2017-01-30-17-38-45")) {
+        return "Recepcao Corporativa em Granito";
+      }
+      if (normalized.includes("aeroportorecife")) return "Aeroporto de Recife";
+      if (normalized.includes("aeropotonatal")) return "Aeroporto de Natal";
+      if (normalized.includes("planejados-1")) return "Recepcao Premium Ondulada";
+      if (normalized.includes("planejados-2")) return "Recepcao em MDF Ripado";
+      if (normalized.includes("planejados-3")) return "Recepcao Ondulada Frontal";
+      if (normalized.includes("planejados-6")) return "Espaco Corporativo Integrado";
+      if (normalized.includes("planejados-8")) return "Estacao de Trabalho Coletiva";
+      if (normalized.includes("planejados-9")) return "Instalacao Expositiva Especial";
+
+      return fallback;
+    };
+
     return images.map((image, index) => ({
       id: `legacy-${typedCategory}-${index + 1}`,
-      title: `${categoryMeta.label} ${index + 1}`,
+      title: getLegacyTitle(image.src, image.alt),
       category: typedCategory,
       image: image.src,
       imageWidth: image.width,
