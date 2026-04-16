@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Images } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import { cn } from "@/lib/utils";
 import { CardStack3D } from "@/components/ui/3d-flip-card";
@@ -33,8 +33,71 @@ const CATEGORY_LABEL_BY_ID = PROJECT_CATEGORY_META.reduce<Record<string, string>
   {}
 );
 
+/** Remove prefixos automáticos e duplicatas do título gerado. */
+const cleanTitle = (title: string): string =>
+  title
+    .replace(/^Ambientes?\s+/i, "")
+    .replace(/^Projetos?\s+/i, "")
+    .replace(/\b(\w+)\s+\1\b/gi, "$1") // "Decorado Decorado" → "Decorado"
+    .trim();
+
 const modalControlButtonClass =
   "h-12 w-12 min-h-12 min-w-12 rounded-full border border-white/25 bg-white/15 text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] backdrop-blur-[4px] transition-all duration-200 hover:scale-110 hover:bg-white/30 focus-visible:ring-2 focus-visible:ring-white/70";
+
+interface ProjectCardProps {
+  project: (typeof PROJECT_GALLERY_ITEMS)[number];
+  isAboveFold: boolean;
+  showCategory: boolean;
+  onOpen: () => void;
+}
+
+const ProjectCard = ({ project, isAboveFold, showCategory, onOpen }: ProjectCardProps) => (
+  <div className="group relative aspect-[4/3] overflow-hidden rounded-sm bg-secondary cursor-pointer" onClick={onOpen}>
+    <button
+      type="button"
+      className="sr-only"
+      aria-label={`Ver galeria: ${cleanTitle(project.title)}`}
+    />
+    <img
+      src={project.image}
+      alt={cleanTitle(project.title)}
+      width={project.imageWidth ?? 600}
+      height={project.imageHeight ?? 450}
+      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.04]"
+      loading={isAboveFold ? "eager" : "lazy"}
+      fetchPriority={isAboveFold ? "high" : "auto"}
+      decoding="async"
+      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+    />
+    {/* Gradiente base permanente */}
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+    {/* Overlay de hover */}
+    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
+    {/* Contagem de fotos — canto superior direito */}
+    {project.relatedImages.length > 1 && (
+      <div className="absolute top-3 right-3 flex items-center gap-1 bg-black/50 backdrop-blur-sm text-white/80 text-[10px] px-2 py-0.5 rounded-full">
+        <Images className="h-2.5 w-2.5" />
+        <span>{project.relatedImages.length}</span>
+      </div>
+    )}
+    {/* Texto do projeto */}
+    <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4 md:p-5">
+      {showCategory && (
+        <span className="inline-block text-primary text-[10px] uppercase tracking-[0.14em] font-semibold mb-1.5">
+          {CATEGORY_LABEL_BY_ID[project.category] ?? project.category}
+        </span>
+      )}
+      <h3 className="text-[15px] md:text-base font-display font-semibold text-white leading-snug drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+        {cleanTitle(project.title)}
+      </h3>
+      {/* Hint de galeria — aparece no hover */}
+      <p className="flex items-center gap-1 text-white/60 text-[11px] mt-2 translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        <Images className="h-3 w-3" />
+        ver galeria
+      </p>
+    </div>
+  </div>
+);
 
 const ProjetosGaleria = () => {
   const [searchParams] = useSearchParams();
@@ -95,98 +158,128 @@ const ProjetosGaleria = () => {
     setFrontIndex((prev) => (prev + 1) % selectedImagesCount);
   };
 
+  /** Quando em "todos", agrupa por categoria para evitar repetição de badges. */
+  const groupedProjects = useMemo(() => {
+    if (activeCategory !== "todos") return null;
+    const groups = new Map<string, typeof filteredProjects>();
+    for (const project of filteredProjects) {
+      const group = groups.get(project.category) ?? [];
+      group.push(project);
+      groups.set(project.category, group);
+    }
+    return Array.from(groups.entries()).map(([categoryId, items]) => ({
+      categoryId,
+      label: CATEGORY_LABEL_BY_ID[categoryId] ?? categoryId,
+      items,
+    }));
+  }, [activeCategory, filteredProjects]);
+
   return (
     <Layout>
-      <section className="section-container bg-card">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="text-primary text-sm uppercase tracking-widest font-medium">
-            Portfolio
-          </span>
-          <h1 className="section-title mt-4">
-            Projetos que <span className="text-gradient">transformam espacos</span>
+      {/* Hero compacto + filtros integrados */}
+      <section className="bg-card/50 border-b border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-5 md:pt-10 md:pb-0">
+          <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
+            Portfólio
+          </p>
+          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
+            Projetos que{" "}
+            <span className="text-primary">transformam espaços</span>
           </h1>
-          <p className="section-subtitle mx-auto mt-4">
-            Galeria atualizada a partir das pastas de projetos com imagens reais.
+          <p className="text-sm text-muted-foreground mt-1.5 max-w-xl">
+            Ambientes planejados com design, funcionalidade e acabamento de alto padrão.
           </p>
         </div>
-      </section>
 
-      <section className="py-8 border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2">
+        {/* Filtros — continuação natural do header */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          {searchTerm && (
+            <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3">
+              Resultados para{" "}
+              <span className="text-foreground font-medium">"{searchTerm}"</span>
+            </p>
+          )}
+          <div className="flex flex-wrap items-center gap-2">
             {CATEGORY_BUTTONS.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id as CategoryFilter)}
                 className={cn(
-                  "px-6 py-2 text-sm font-medium uppercase tracking-wider rounded-sm transition-all",
+                  "px-5 py-1.5 text-xs font-medium uppercase tracking-wider rounded-sm transition-all",
                   activeCategory === category.id
                     ? "bg-primary text-primary-foreground"
-                    : "bg-card text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/60"
                 )}
               >
                 {category.label}
               </button>
             ))}
+
           </div>
         </div>
       </section>
 
-      <section className="section-container">
+      {/* Grid de Projetos */}
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, index) => {
-              const isAboveFold = index < 3;
-              return (
-              <div
-                key={project.id}
-                className="group relative aspect-[4/3] overflow-hidden rounded-sm bg-secondary"
-              >
-                <button
-                  type="button"
-                  onClick={() => {
+
+          {/* Modo "Todos" — agrupado por categoria */}
+          {groupedProjects ? (
+            <div className="space-y-8">
+              {groupedProjects.map(({ categoryId, label, items }) => (
+                <div key={categoryId}>
+                  {/* Divisor de categoria — discreto */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-[11px] uppercase tracking-[0.16em] font-semibold text-muted-foreground">
+                      {label}
+                    </span>
+                    <span className="flex-1 h-px bg-border/60" />
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {items.map((project, index) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        isAboveFold={index < 3}
+                        showCategory={false}
+                        onOpen={() => {
+                          setSelectedProjectId(project.id);
+                          setIsStackOpen(true);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+              {groupedProjects.length === 0 && (
+                <div className="text-center py-16">
+                  <p className="text-muted-foreground">Nenhum projeto encontrado.</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Modo filtro específico — grid plano, sem badge de categoria */
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {filteredProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  isAboveFold={index < 3}
+                  showCategory={false}
+                  onOpen={() => {
                     setSelectedProjectId(project.id);
                     setIsStackOpen(true);
                   }}
-                  className="absolute inset-0 z-10"
-                  aria-label={`Ver imagens relacionadas: ${project.title}`}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    width={project.imageWidth ?? 600}
-                    height={project.imageHeight ?? 450}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-60 group-hover:scale-105 transition-all duration-500"
-                    loading={isAboveFold ? "eager" : "lazy"}
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    decoding="async"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  />
-                </button>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/95 via-background/70 to-transparent" />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-6">
-                  <span className="text-primary text-xs uppercase tracking-wider drop-shadow-sm">
-                    {CATEGORY_LABEL_BY_ID[project.category] ?? project.category}
-                  </span>
-                  <h3 className="text-lg font-display font-semibold text-foreground mt-1 drop-shadow-sm">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {project.description}
-                  </p>
+                />
+              ))}
+              {filteredProjects.length === 0 && (
+                <div className="col-span-full text-center py-16">
+                  <p className="text-muted-foreground">Nenhum projeto encontrado nesta categoria.</p>
                 </div>
-              </div>
-              );
-            })}
-          </div>
-
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
-                Nenhum projeto encontrado nesta categoria.
-              </p>
+              )}
             </div>
           )}
+
         </div>
       </section>
 

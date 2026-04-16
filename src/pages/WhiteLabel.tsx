@@ -38,56 +38,59 @@ const steps = [
 const WhiteLabel = () => {
   return (
     <Layout>
-      {/* Hero — split with full-height image */}
-      <section className="relative bg-card/60 border-b border-border/60 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-[1fr_440px] min-h-[420px] items-stretch">
-            {/* Text */}
-            <div className="flex flex-col justify-center py-12 md:py-16 lg:pr-14">
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-3 py-1 rounded-full mb-6 w-fit">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">Modelo Parceiro</span>
-              </div>
+      {/* Hero — imagem de fundo integrada com overlay */}
+      <section className="relative overflow-hidden border-b border-border/60 min-h-[420px] md:min-h-[500px] flex items-center">
+        {/* Imagem de fundo full-bleed */}
+        <div className="absolute inset-0">
+          <img
+            src="/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-center"
+            fetchPriority="high"
+          />
+          {/* Overlay escuro base para legibilidade */}
+          <div className="absolute inset-0 bg-black/55" />
+          {/* Gradiente lateral: reforça o lado do texto */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+        </div>
 
-              <h1 className="text-3xl sm:text-4xl font-display font-semibold leading-tight">
-                Para marcas que querem{" "}
-                <span className="text-gradient">crescer.</span>
-              </h1>
-
-              <p className="text-muted-foreground text-base mt-4 leading-relaxed max-w-md">
-                Focamos na produção para que você foque nas vendas. Sua marca no mercado, nossa estrutura por trás.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button variant="hero" size="default" asChild>
-                  <Link to="/seja-parceiro">
-                    Quero ser parceiro
-                    <ArrowRight size={16} />
-                  </Link>
-                </Button>
-                <Button variant="heroBorder" size="default" asChild>
-                  <Link to="/contato">Fale conosco</Link>
-                </Button>
-              </div>
+        {/* Conteúdo */}
+        <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+          <div className="max-w-lg">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-3 py-1 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">Modelo Parceiro</span>
             </div>
 
-            {/* Image — fills the column height */}
-            <div className="hidden lg:block relative overflow-hidden rounded-none">
-              <img
-                src="/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png"
-                alt="Equipe MBarros na fábrica"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-card/50 via-transparent to-transparent" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold leading-tight text-white">
+              Para marcas que querem{" "}
+              <span className="text-primary">crescer.</span>
+            </h1>
+
+            <p className="text-white/75 text-base mt-4 leading-relaxed">
+              Focamos na produção para que você foque nas vendas. Sua marca no mercado, nossa estrutura por trás.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <Button variant="hero" size="default" asChild>
+                <Link to="/seja-parceiro">
+                  Quero ser parceiro
+                  <ArrowRight size={16} />
+                </Link>
+              </Button>
+              <Button variant="heroBorder" size="default" asChild>
+                <Link to="/contato">Fale conosco</Link>
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Facts strip */}
-      <section className="border-b border-border/50 bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-7">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-4">
+      {/* Faixa de fatos */}
+      <section className="border-b border-border/50 bg-card/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-3.5">
             {facts.map((fact) => (
               <div key={fact} className="flex items-center gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
@@ -98,9 +101,10 @@ const WhiteLabel = () => {
         </div>
       </section>
 
-      {/* Steps */}
+      {/* Passos + CTA integrado */}
       <section className="section-container">
         <div className="max-w-5xl mx-auto">
+          {/* Header */}
           <div className="text-center mb-10 md:mb-12">
             <div className="flex justify-center mb-5">
               <div className="flex items-center gap-4">
@@ -113,49 +117,51 @@ const WhiteLabel = () => {
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-semibold mt-4">
               4 passos para{" "}
-              <span className="text-gradient">começar a parceria</span>
+              <span className="text-primary">começar a parceria</span>
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+          {/* Grid de passos */}
+          <div className="grid md:grid-cols-2 gap-4 md:gap-5">
             {steps.map((step, i) => (
-              <div key={step.number} className="rounded-xl border border-border bg-card/80 p-5 md:p-6 flex gap-4 md:gap-5 items-start group transition-all duration-300 hover:border-primary/40 hover:shadow-[0_12px_32px_-18px_rgba(0,0,0,0.22)]">
+              <div
+                key={step.number}
+                className="rounded-sm border border-border bg-card/80 p-5 md:p-6 flex gap-4 md:gap-5 items-start group transition-all duration-300 hover:border-primary/40 hover:bg-card"
+              >
                 <div className="flex flex-col items-center gap-1 shrink-0">
-                  <div className="flex items-center justify-center w-11 h-11 rounded-lg bg-primary/10 group-hover:bg-primary/18 transition-colors">
-                    <span className="text-primary font-display font-bold text-base leading-none">{step.number}</span>
+                  <div className="flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 group-hover:bg-primary/15 transition-colors">
+                    <span className="text-primary font-display font-bold text-sm leading-none">{step.number}</span>
                   </div>
                   {i < steps.length - 1 && (
-                    <div className="w-px h-4 bg-border hidden md:block" />
+                    <div className="w-px h-3 bg-border hidden md:block" />
                   )}
                 </div>
                 <div>
-                  <h3 className="text-base font-display font-semibold text-foreground mb-2">{step.title}</h3>
+                  <h3 className="text-sm font-display font-semibold text-foreground mb-1.5">{step.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="section-container bg-card">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="rounded-xl border border-primary/20 bg-primary/5 px-6 py-10 sm:px-10 sm:py-12">
-            <h2 className="text-2xl md:text-3xl font-display font-semibold">
-              Pronto para <span className="text-gradient">começar?</span>
-            </h2>
-            <p className="text-muted-foreground mt-3 max-w-md mx-auto text-sm">
-              Entre em contato e descubra como a MBarros pode impulsionar o crescimento da sua loja.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-7">
-              <Button variant="hero" size="default" asChild>
+          {/* CTA inline — integrado ao final da seção */}
+          <div className="mt-10 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div>
+              <p className="text-foreground font-semibold text-base font-display">
+                Pronto para crescer com estrutura?
+              </p>
+              <p className="text-muted-foreground text-sm mt-0.5">
+                Entre em contato e descubra como a MBarros pode impulsionar sua loja.
+              </p>
+            </div>
+            <div className="flex gap-2.5 shrink-0">
+              <Button variant="hero" size="sm" asChild>
                 <Link to="/seja-parceiro">
                   Quero ser parceiro
-                  <ArrowRight size={16} />
+                  <ArrowRight size={14} />
                 </Link>
               </Button>
-              <Button variant="heroBorder" size="default" asChild>
+              <Button variant="heroBorder" size="sm" asChild>
                 <Link to="/contato">Fale conosco</Link>
               </Button>
             </div>
