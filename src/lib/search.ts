@@ -1,5 +1,5 @@
 import { blogPosts } from "@/lib/blog-data";
-import { projects, projectCategories } from "@/lib/project-data";
+import { projects, projectCategories } from "@/lib/project-data-v2";
 
 export interface SearchSuggestion {
   id: string;
