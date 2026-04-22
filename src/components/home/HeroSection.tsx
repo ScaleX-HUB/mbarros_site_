@@ -128,11 +128,13 @@ const HeroSection = () => {
           {/* Headline */}
           <motion.h1
             variants={fadeUpItem}
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight text-foreground dark:text-white drop-shadow-md"
+              className="font-display font-bold leading-[0.95] text-foreground dark:text-white drop-shadow-md"
           >
-            A maior indústria de móveis planejados do<br />
+              <span className="block text-xl md:text-2xl lg:text-3xl font-semibold leading-tight">
+                A maior indústria de móveis planejados do
+              </span>
             <motion.span
-              className="text-gradient"
+                className="block text-5xl md:text-6xl lg:text-7xl text-gradient"
               initial={{ opacity: 0, filter: "blur(12px)", y: 10 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}

@@ -43,10 +43,10 @@ const WhiteLabel = () => {
         {/* Imagem de fundo full-bleed */}
         <div className="absolute inset-0">
           <img
-            src="/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png"
+            src="/imagens_mbarros/FOTO%20DA%20INDUSTRIA%20-%20ATUALIZADA%20(1).png"
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[50%_75%]"
             fetchPriority="high"
           />
           {/* Overlay escuro base para legibilidade */}

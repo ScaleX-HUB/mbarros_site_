@@ -52,22 +52,52 @@ const SejaParceiro = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-card/60 border-b border-border/60">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
-          <p className="text-primary text-[11px] uppercase tracking-[0.16em] font-medium">
-            Seja um Parceiro
+      <section className="relative overflow-hidden border-b border-border/60" style={{ minHeight: "clamp(260px, 38vw, 480px)" }}>
+        {/* Factory background image */}
+        <img
+          src="/imagens_mbarros/FOTO%20DA%20INDUSTRIA%20-%20ATUALIZADA%20(1).png"
+          alt="Parque fabril MBarros"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/30" />
+        {/* Bottom fade into page */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col justify-end h-full">
+          <p className="text-primary text-[11px] uppercase tracking-[0.2em] font-bold mb-3">
+            • Modelo Parceiro
           </p>
-          <h1 className="text-2xl md:text-3xl font-display font-semibold mt-2 text-foreground">
-            Cresça com estrutura industrial
+          <h1
+            className="font-display font-bold text-white leading-tight"
+            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+          >
+            Para marcas que<br />
+            querem <span className="text-primary">crescer.</span>
           </h1>
-          <p className="text-sm md:text-base text-muted-foreground mt-2 max-w-2xl">
-            Preencha o formulário para avaliarmos o perfil da sua loja e apresentar o modelo de parceria MBARROS.
+          <p className="text-white/70 mt-4 max-w-lg text-sm md:text-base leading-relaxed">
+            Focamos na produção para que você foque nas vendas. Sua marca no mercado, nossa estrutura por trás.
           </p>
+          <div className="flex flex-wrap gap-3 mt-7">
+            <a
+              href="#form-parceiro"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs px-7 py-3 hover:bg-primary/90 transition-colors"
+            >
+              Quero ser parceiro <ArrowRight size={14} />
+            </a>
+            <Link
+              to="/contato"
+              className="inline-flex items-center gap-2 border border-white/60 text-white font-bold uppercase tracking-widest text-xs px-7 py-3 hover:bg-white/10 transition-colors"
+            >
+              Fale conosco
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="section-container pt-8 md:pt-10">
+      <section id="form-parceiro" className="section-container pt-8 md:pt-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Sidebar */}

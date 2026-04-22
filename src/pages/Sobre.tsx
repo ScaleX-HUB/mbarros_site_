@@ -1,11 +1,10 @@
 ﻿import Layout from "@/components/layout/Layout";
-import { Factory, Users, Target, Award, Play, Maximize2 } from "lucide-react";
+import { Factory, Target, Award, Play, Maximize2 } from "lucide-react";
 import { Timeline } from "@/components/ui/timeline";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import seniorProfessional from "@/assets/team-portrait-senior-professional.png";
-import cncOperator from "@/assets/team-operator-cnc-monitor.png";
+
 
 const timeline = [
   {
@@ -314,62 +313,6 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-container py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-sm mb-6">
-              <Users size={32} className="text-primary" />
-            </div>
-            <h2 className="section-title">
-              Equipe <span className="text-gradient">própria</span>
-            </h2>
-            <p className="section-subtitle mx-auto mt-4">
-              Toda a equipe de produção e montagem é composta por funcionários da própria empresa,
-              contribuindo para manter o padrão de qualidade e controle sobre todos os processos de fabricação.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Minimalist Collab Stats next to text */}
-            <div className="space-y-8">
-              <p className="text-muted-foreground leading-relaxed">
-                Nossa equipe é formada por profissionais especializados que acompanham 
-                as tendências do design de interiores e do mercado de móveis planejados, 
-                unindo sofisticação, qualidade e praticidade em cada projeto.
-              </p>
-              
-              <div className="card-industrial inline-flex flex-col items-start p-6 bg-muted/40 border border-border">
-                <div className="text-4xl md:text-5xl font-display font-semibold text-primary mb-2">100+</div>
-                <div className="text-sm tracking-widest uppercase font-medium text-foreground">Colaboradores</div>
-                <div className="text-xs text-muted-foreground mt-2">Dedicados ao padrão de qualidade</div>
-              </div>
-            </div>
-
-            {/* Team photo cards */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { src: seniorProfessional, alt: "Profissional sênior do Grupo MBarros", name: "Liderança", role: "Experiência & Visão" },
-                { src: cncOperator, alt: "Operador CNC do Grupo MBarros", name: "Operação", role: "Tecnologia & Precisão" },
-              ].map((member) => (
-                <div key={member.name} className="relative rounded-sm overflow-hidden group aspect-[3/4]">
-                  <img
-                    src={member.src}
-                    alt={member.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-white text-base font-semibold leading-tight">{member.name}</p>
-                    <p className="text-white/80 text-xs mt-1">{member.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 };
