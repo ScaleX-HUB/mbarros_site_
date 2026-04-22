@@ -76,21 +76,18 @@ const ManufacturingSection = () => {
             <div className="flex items-center gap-4">
               <span className="h-px w-8 bg-primary" />
               <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                Capacidade Industrial
+                Diferenciais
               </span>
               <span className="h-px w-8 bg-primary" />
             </div>
           </div>
           <h2
-            className="font-display font-bold text-foreground leading-tight"
+            className="font-display font-bold text-foreground leading-tight mt-2"
             style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}
           >
-            Tudo o que sua loja precisa,{" "}
+            Diferenciais que sua loja precisa,{" "}
             <span className="text-gradient">produzido por nós</span>
           </h2>
-          <p className="mt-3 text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
-            Linha completa de produção sob o mesmo teto — do metal ao estofado, do vidro à tinta.
-          </p>
         </div>
 
         {/* Cards grid */}
