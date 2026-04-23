@@ -88,17 +88,18 @@ const HeroSection = () => {
             className="absolute inset-0 bg-center bg-cover"
             style={{
               backgroundImage: `url('${activeImage.src}')`,
-              backgroundPosition: activeImage.heroFocusPosition ?? "center",
+              backgroundPosition: activeImage.heroFocusPosition ?? "center center",
+              transformOrigin: "50% 50%",
             }}
-            initial={{ opacity: 0, scale: 1.05 }}
+            initial={{ opacity: 0, scale: 1.18 }}
             animate={{
               opacity: 1,
-              scale: 1.15,
+              scale: 1.0,
             }}
-            exit={{ opacity: 0, scale: 1.25 }}
+            exit={{ opacity: 0, scale: 0.96 }}
             transition={{
               opacity: { duration: 1.5, ease: "easeInOut" },
-              scale: { duration: 15, ease: "linear" },
+              scale: { duration: 12, ease: "easeOut" },
             }}
             aria-hidden="true"
           />

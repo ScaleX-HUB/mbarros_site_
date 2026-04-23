@@ -46,9 +46,9 @@ export const en = {
     statAnos: "Years in the Market"
   },
   partnership: {
-    badge: "The Partnership",
-    title1: "The",
-    title2: "Partner model",
+    badge: "Who We Serve",
+    title1: "Retailers who want to",
+    title2: "grow with industry",
     desc: "We work behind the scenes so your brand shines upfront. With MBARROS's industrial partnership model, your store sells projects signed with your name, manufactured with European and Chinese technology.",
     step1Title: "You Design",
     step1Desc: "Your team develops the design and validates it with the client using Promob software.",

@@ -46,9 +46,9 @@ export const pt = {
     statAnos: "Anos de Mercado"
   },
   partnership: {
-    badge: "A Parceria",
-    title1: "O modelo",
-    title2: "Parceiro",
+    badge: "Quem Atendemos",
+    title1: "Lojistas que querem",
+    title2: "crescer com indústria",
     desc: "",
     step1Title: "Você Projeta",
     step1Desc: "Sua equipe desenvolve o design e valida com o cliente usando o Promob.",

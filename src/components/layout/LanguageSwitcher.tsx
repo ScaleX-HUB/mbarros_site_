@@ -42,7 +42,6 @@ const FlagES = ({ className }: { className?: string }) => (
 const languages = [
   { code: "pt", label: "PT", name: "Português", Icon: FlagBR },
   { code: "en", label: "EN", name: "English", Icon: FlagEN },
-  { code: "es", label: "ES", name: "Español", Icon: FlagES },
 ];
 
 const LanguageSwitcher = ({ compact = false }: LanguageSwitcherProps) => {

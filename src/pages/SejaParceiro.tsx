@@ -66,17 +66,14 @@ const SejaParceiro = () => {
 
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col justify-end h-full">
-          <p className="text-primary text-[11px] uppercase tracking-[0.2em] font-bold mb-3">
-            • Modelo Parceiro
-          </p>
           <h1
-            className="font-display font-bold text-white leading-tight"
-            style={{ fontSize: "clamp(2rem, 4.5vw, 3.5rem)" }}
+            className="font-display font-bold text-white leading-[1.05]"
+            style={{ fontSize: "clamp(2.6rem, 7vw, 5.2rem)", maxWidth: "14ch" }}
           >
-            Para marcas que<br />
-            querem <span className="text-primary">crescer.</span>
+            Para marcas que querem{" "}
+            <span className="text-primary">crescer.</span>
           </h1>
-          <p className="text-white/70 mt-4 max-w-lg text-sm md:text-base leading-relaxed">
+          <p className="text-white/70 mt-3 max-w-lg text-sm md:text-base leading-relaxed">
             Focamos na produção para que você foque nas vendas. Sua marca no mercado, nossa estrutura por trás.
           </p>
           <div className="flex flex-wrap gap-3 mt-7">

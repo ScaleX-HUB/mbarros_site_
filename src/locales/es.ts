@@ -46,9 +46,9 @@ export const es = {
     statAnos: "Años en el Mercado"
   },
   partnership: {
-    badge: "La Asociación",
-    title1: "El modelo",
-    title2: "Modelo Socio",
+    badge: "A Quién Atendemos",
+    title1: "Tiendas que quieren",
+    title2: "crecer con industria",
     desc: "Trabajamos entre bastidores para que su marca brille. Con el modelo de asociación industrial de MBARROS, su tienda vende proyectos firmados con su nombre, fabricados con tecnología europea y china.",
     step1Title: "Usted Diseña",
     step1Desc: "Su equipo desarrolla el diseño y lo valida con el cliente usando el software Promob.",

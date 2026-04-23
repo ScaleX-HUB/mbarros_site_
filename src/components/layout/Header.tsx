@@ -25,6 +25,7 @@ const Header = () => {
     { label: "Home", path: "/" },
     { label: t("header.sobre"), path: "/sobre" },
     { label: "Parceiro", path: "/parceiro" },
+    { label: "Estrutura", path: "/estrutura" },
     { label: t("header.projetos"), path: "/projetos" },
     { label: t("header.blog"), path: "/blog" },
     { label: t("header.contato"), path: "/contato" },
@@ -76,7 +77,7 @@ const Header = () => {
                 to="/sobre"
                 onMouseEnter={() => setActive(null)}
                 className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === "/sobre" ? "text-primary" : "text-muted-foreground"
+                  location.pathname === "/sobre" ? "text-primary" : "text-foreground/90"
                 }`}
               >
                 {t("header.sobre")}
@@ -86,10 +87,20 @@ const Header = () => {
                 to="/parceiro"
                 onMouseEnter={() => setActive(null)}
                 className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === "/parceiro" ? "text-primary" : "text-muted-foreground"
+                  location.pathname === "/parceiro" ? "text-primary" : "text-foreground/90"
                 }`}
               >
                 Parceiro
+              </Link>
+
+              <Link
+                to="/estrutura"
+                onMouseEnter={() => setActive(null)}
+                className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
+                  location.pathname === "/estrutura" ? "text-primary" : "text-foreground/90"
+                }`}
+              >
+                Estrutura
               </Link>
 
               <MenuItem
@@ -145,7 +156,7 @@ const Header = () => {
                 to="/blog"
                 onMouseEnter={() => setActive(null)}
                 className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === "/blog" ? "text-primary" : "text-muted-foreground"
+                  location.pathname === "/blog" ? "text-primary" : "text-foreground/90"
                 }`}
               >
                 {t("header.blog")}
@@ -215,7 +226,7 @@ const Header = () => {
                   className={`text-sm uppercase tracking-wider font-medium py-2 transition-colors duration-300 hover:text-primary ${
                     location.pathname === item.path 
                       ? "text-primary" 
-                      : "text-muted-foreground"
+                      : "text-foreground/90"
                   }`}
                 >
                   {item.label}
@@ -223,14 +234,14 @@ const Header = () => {
               ))}
 
               <div className="pt-2 flex items-center justify-between">
-                <span className="text-sm uppercase tracking-wider font-medium text-muted-foreground">
+                <span className="text-sm uppercase tracking-wider font-medium text-foreground/80">
                   {t("header.idioma")}
                 </span>
                 <LanguageSwitcher compact />
               </div>
 
               <div className="pt-2 flex items-center justify-between">
-                <span className="text-sm uppercase tracking-wider font-medium text-muted-foreground">
+                <span className="text-sm uppercase tracking-wider font-medium text-foreground/80">
                   {t("header.tema")}
                 </span>
                 <ThemeToggle />

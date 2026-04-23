@@ -131,7 +131,6 @@ const AuthoritySection = () => {
             ))}
           </motion.div>
 
-          <div className="divider-brand mt-16" />
         </div>
       </div>
     </section>

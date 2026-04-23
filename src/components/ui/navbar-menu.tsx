@@ -35,7 +35,7 @@ export function MenuItem({
       <motion.span
         transition={{ duration: 0.3 }}
         className={cn(
-          "cursor-pointer text-sm uppercase tracking-wider font-medium text-muted-foreground hover:text-foreground",
+          "cursor-pointer text-sm uppercase tracking-wider font-medium text-foreground/90 hover:text-primary transition-colors duration-300",
           labelClassName
         )}
       >
@@ -144,7 +144,7 @@ export function HoveredLink({ children, className, ...rest }: HoveredLinkProps) 
     <Link
       {...rest}
       className={cn(
-        "text-muted-foreground hover:text-foreground transition-colors",
+        "text-foreground/85 dark:text-muted-foreground hover:text-foreground transition-colors",
         className
       )}
     >

@@ -17,6 +17,7 @@ import TrabalheConosco from "./pages/TrabalheConosco";
 import NotFound from "./pages/NotFound";
 import Cookies from "./pages/Cookies";
 import Busca from "./pages/Busca";
+import Estrutura from "./pages/Estrutura";
 
 const queryClient = new QueryClient();
 
@@ -100,7 +101,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
-            <Route path="/estrutura" element={<Navigate to="/sobre" replace />} />
+            <Route path="/estrutura" element={<Estrutura />} />
             <Route path="/white-label" element={<Navigate to="/parceiro" replace />} />
             <Route path="/parceiro" element={<WhiteLabel />} />
             <Route path="/projetos" element={<ProjetosGaleria />} />

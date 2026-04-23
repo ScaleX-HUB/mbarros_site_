@@ -1,74 +1,50 @@
 import {
-  Clock3,
-  Headset,
-  Landmark,
-  ShieldCheck,
-  TrendingUp,
-  Truck,
+  Cog,
+  Droplets,
+  Layers,
+  Leaf,
+  Lightbulb,
+  Maximize,
   Wrench,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 
 const differentials: ReadonlyArray<{ icon: LucideIcon; title: string }> = [
-  { icon: Clock3,      title: "Prazo médio de até 20 dias úteis" },
-  { icon: Truck,       title: "Menor custo logístico no Nordeste" },
-  { icon: Landmark,    title: "Menor carga tributária regional" },
-  { icon: Headset,     title: "Suporte técnico e comercial próximo" },
-  { icon: ShieldCheck, title: "Padrão industrial consistente" },
-  { icon: Wrench,      title: "Assistência rápida e reposição ágil" },
-  { icon: TrendingUp,  title: "Produção escalável para crescimento da loja" },
+  { icon: Wrench,    title: "Metalurgia" },
+  { icon: Layers,    title: "Estofado" },
+  { icon: Maximize,  title: "Portas de Vidro" },
+  { icon: Lightbulb, title: "Iluminação LED" },
+  { icon: Leaf,      title: "Orgânicos" },
+  { icon: Cog,       title: "Usinagens Especiais" },
+  { icon: Zap,       title: "Pintura Eletrostática" },
+  { icon: Droplets,  title: "Pintura Líquida" },
 ];
 
 const DifferentialsSection = () => {
   return (
-    <section className="relative section-container bg-card py-16 overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+    <section className="relative bg-background py-16 md:py-20 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="flex justify-center mb-5">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-8 bg-primary" />
-              <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                Vantagens para o lojista
-              </span>
-              <span className="h-px w-8 bg-primary" />
-            </div>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-display font-semibold mt-4">
-            Por que lojistas escolhem{" "}
-            <span className="text-gradient">a MBarros?</span>
-          </h2>
-        </div>
+        <h2 className="text-center font-display font-bold text-foreground uppercase tracking-[0.18em] mb-10 md:mb-12"
+            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)" }}>
+          Diferenciais dos nossos produtos
+        </h2>
 
-        {/* List */}
-        <div className="grid sm:grid-cols-2 gap-3">
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto">
           {differentials.map(({ icon: Icon, title }) => (
             <div
               key={title}
-              className="flex items-center gap-3 rounded-lg border border-border/60 bg-background/60 px-4 py-3"
+              className="group flex flex-col items-center justify-center text-center bg-primary hover:bg-primary/85 transition-colors duration-200 px-4 py-8 md:py-10 cursor-default gap-3"
             >
-              <div className="shrink-0 w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                <Icon size={16} strokeWidth={1.9} aria-hidden="true" />
-              </div>
-              <span className="text-sm font-medium text-foreground leading-snug">{title}</span>
+              <Icon size={22} strokeWidth={1.8} className="text-primary-foreground/80 group-hover:text-primary-foreground transition-colors" aria-hidden="true" />
+              <span className="font-display font-bold uppercase tracking-[0.12em] text-primary-foreground leading-snug"
+                    style={{ fontSize: "clamp(0.7rem, 1.4vw, 0.85rem)" }}>
+                {title}
+              </span>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 text-center flex flex-col sm:flex-row justify-center gap-3">
-          <a
-            href="/seja-parceiro"
-            className="inline-flex items-center justify-center text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 rounded-md px-8 transition-colors"
-          >
-            Quero ser parceiro
-          </a>
-          <a
-            href="/contato"
-            className="inline-flex items-center justify-center text-sm font-medium border border-input bg-transparent hover:bg-accent hover:text-accent-foreground h-10 rounded-md px-8 transition-colors"
-          >
-            Fale com nosso time
-          </a>
         </div>
       </div>
     </section>

@@ -1,11 +1,13 @@
 import Layout from "@/components/layout/Layout";
 import HeroSection from "@/components/home/HeroSection";
 import AuthoritySection from "@/components/home/AuthoritySection";
-import ManufacturingSection from "@/components/home/ManufacturingSection";
-import PartnershipSection from "@/components/home/PartnershipSection";
 import StructureSection from "@/components/home/StructureSection";
+import PartnershipSection from "@/components/home/PartnershipSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
+import DifferentialsSection from "@/components/home/DifferentialsSection";
+import CTASection from "@/components/home/CTASection";
+import SectionDivider from "@/components/home/SectionDivider";
 
 
 const Index = () => {
@@ -13,12 +15,17 @@ const Index = () => {
     <Layout>
       <HeroSection />
       <AuthoritySection />
-      <ManufacturingSection />
       <StructureSection />
+      <SectionDivider />
       <PartnershipSection />
+      <SectionDivider />
       <ProjectsSection />
+      <SectionDivider />
       <TestimonialsSection />
-
+      <SectionDivider />
+      <DifferentialsSection />
+      <SectionDivider />
+      <CTASection />
     </Layout>
   );
 };

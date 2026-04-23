@@ -1,115 +1,97 @@
-import { useState, useCallback, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
+import { Quote } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const testimonials = [
   {
     name: "Carlos Eduardo",
-    role: "Proprietário de Loja, PE",
-    text: "Desde que começamos a operar com a indústria MBarros, nossa capacidade de entrega dobrou. A precisão do maquinário deles nos dá a segurança que precisávamos para focar na venda.",
+    role: "Proprietário de Loja — PE",
+    text: "Desde que começamos a operar com a MBarros, nossa capacidade de entrega dobrou. A precisão do maquinário deles nos dá a segurança que precisávamos para focar na venda.",
   },
   {
     name: "Mariana Silva",
-    role: "Arquiteta, PB",
-    text: "O acabamento e os encaixes das peças são simplesmente impecáveis. A tecnologia europeia aplicada na marcenaria faz toda diferença no resultado final do projeto do cliente.",
+    role: "Arquiteta — PB",
+    text: "O acabamento e os encaixes das peças são simplesmente impecáveis. A tecnologia europeia aplicada na marcenaria faz toda diferença no resultado final do projeto.",
   },
   {
     name: "Ricardo Mendonça",
-    role: "Construtora Horizonte, RN",
+    role: "Construtora Horizonte — RN",
     text: "Trabalhar em parceria com a MBarros no modelo White Label escalou nossos negócios. Entregamos móveis de alto padrão nas nossas obras em tempo recorde.",
-  }
-,
-  {
-    name: "Carlos Eduardo",
-    role: "Proprietário de Loja, PE",
-    text: "Desde que começamos a operar com a indústria MBarros, nossa capacidade de entrega dobrou. A precisão do maquinário deles nos dá a segurança que precisávamos para focar na venda.",
   },
-  {
-    name: "Mariana Silva",
-    role: "Arquiteta, PB",
-    text: "O acabamento e os encaixes das peças são simplesmente impecáveis. A tecnologia europeia aplicada na marcenaria faz toda diferença no resultado final do projeto do cliente.",
-  },
-  {
-    name: "Ricardo Mendonça",
-    role: "Construtora Horizonte, RN",
-    text: "Trabalhar em parceria com a MBarros no modelo White Label escalou nossos negócios. Entregamos móveis de alto padrão nas nossas obras em tempo recorde.",
-  }
-]; // Duplicado para garantir o loop do carrossel
+];
+
+const DURATION = 5500;
 
 const TestimonialsSection = () => {
-  const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (!api) return;
-    const onSelect = () => setCurrent(api.selectedScrollSnap());
-    api.on("select", onSelect);
-    return () => { api.off("select", onSelect); };
-  }, [api]);
+    if (paused) return;
+    const id = setTimeout(() => setCurrent((p) => (p + 1) % testimonials.length), DURATION);
+    return () => clearTimeout(id);
+  }, [current, paused]);
 
-  useEffect(() => {
-    if (!api || isHovered) return;
-    const interval = setInterval(() => {
-      api.scrollNext();
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [api, isHovered]);
+  const t = testimonials[current];
 
   return (
     <section className="bg-background py-24 w-full">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header textual */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-8 bg-primary"></span>
-              <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
-                DEPOIMENTOS
-              </span>
-              <span className="h-px w-8 bg-primary"></span>
-            </div>
+      <div className="max-w-3xl mx-auto px-4">
+        {/* Badge */}
+        <div className="flex justify-center mb-12">
+          <div className="flex items-center gap-4">
+            <span className="h-px w-8 bg-primary" />
+            <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1">
+              Depoimentos
+            </span>
+            <span className="h-px w-8 bg-primary" />
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold mt-4">
-            O que dizem nossos{" "}
-            <span className="text-primary">parceiros</span>
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mt-6">
-            Lojistas e arquitetos que confiam na MBarros atestam o diferencial do nosso polo fabril e modelo de parceria.
-          </p>
         </div>
 
-        <div className="relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-          <Carousel setApi={setApi} opts={{ loop: true, align: "center" }} className="w-full">
-            <CarouselContent className="items-stretch">
-              {testimonials.map((t, i) => (
-                <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3 p-4">
-                  <div className="bg-card border border-border p-8 rounded-xl h-full flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
-                    <div>
-                      <Quote className="text-primary/20 w-12 h-12 absolute top-6 right-6" />
-                      <p className="text-muted-foreground leading-relaxed italic mb-8 relative z-10 text-sm md:text-base">
-                        "{t.text}"
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-foreground font-display font-bold">{t.name}</h4>
-                      <span className="text-xs uppercase tracking-wider text-muted-foreground">{t.role}</span>
-                    </div>
+        {/* Card — animated swap */}
+        <div
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="relative bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm">
+                <Quote className="absolute top-7 right-7 w-9 h-9 text-primary/15" strokeWidth={1.5} />
+                <p className="text-foreground text-lg md:text-xl lg:text-2xl font-display font-medium leading-snug mb-8">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-border">
+                  <div className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                    {t.name[0]}
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-          
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => api?.scrollTo(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30"}`}
-              />
-            ))}
-          </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Progress dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setCurrent(i); setPaused(true); }}
+              aria-label={`Depoimento ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                current === i ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   Cog,
   Diamond,
   Grid3x3,
@@ -14,7 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 const galleryPhotos = [
@@ -22,8 +20,6 @@ const galleryPhotos = [
   { src: "/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png", alt: "Equipe trabalhando na nova fábrica MBarros", caption: "Equipe em Ação" },
   { src: "/imagens_mbarros/maquina_industria.webp", alt: "Maquinário industrial MBarros", caption: "Maquinário de Ponta" },
 ];
-
-const AUTOPLAY_DELAY = 4500;
 
 const StructureSection = () => {
   const { t } = useTranslation();
@@ -92,147 +88,144 @@ const StructureSection = () => {
     return stopTimer;
   }, [isPaused, startTimer, stopTimer]);
 
-  const [galApi, setGalApi] = useState<CarouselApi>();
-  const [galCurrent, setGalCurrent] = useState(0);
-  const galTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const stopGalTimer = useCallback(() => {
-    if (galTimerRef.current) clearInterval(galTimerRef.current);
-  }, []);
-
-  const startGalTimer = useCallback(() => {
-    if (prefersReducedMotion || !galApi) return;
-    stopGalTimer();
-    galTimerRef.current = setInterval(() => galApi.scrollNext(), AUTOPLAY_DELAY);
-  }, [galApi, prefersReducedMotion, stopGalTimer]);
-
-  useEffect(() => {
-    if (!galApi) return;
-    const onSelectGal = () => setGalCurrent(galApi.selectedScrollSnap());
-    galApi.on("select", onSelectGal);
-    return () => { galApi.off("select", onSelectGal); };
-  }, [galApi]);
-
-  useEffect(() => {
-    if (!isPaused) startGalTimer();
-    else stopGalTimer();
-    return stopGalTimer;
-  }, [isPaused, startGalTimer, stopGalTimer]);
-
+  const fadeUp = {
+    hidden: { opacity: 0, y: 28 },
+    show: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay } }),
+  };
 
   return (
-    <section className="bg-card w-full flex flex-col">
-      {/* Full Background Video Section with Cards */}
-      <div className="relative w-full min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
-          <video
-            src="/videos/IMG_8483.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-70"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/50 to-background/90" />
-        </div>
+    <section className="relative w-full overflow-hidden">
+      {/* Video — full section background */}
+      <div className="absolute inset-0">
+        <video
+          src="/videos/IMG_8483.mp4"
+          autoPlay muted loop playsInline aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Base dark overlay */}
+        <div className="absolute inset-0 bg-black/80" />
+        {/* Uniform darkening — no transparent center */}
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Top fade — blends from previous section in light mode */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
+        {/* Bottom fade — blends into next section */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+        {/* Top accent line */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+      </div>
 
-        {/* Content over video */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16 text-foreground max-w-4xl mx-auto">
-            <div className="flex justify-center mb-6">
-              <div className="flex items-center gap-4">
-                <span className="h-px w-8 bg-primary"></span>
-                <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-sm">
-                  ESTRUTURA FABRIL
-                </span>
-                <span className="h-px w-8 bg-primary"></span>
-              </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-28 md:pt-28 md:pb-36 flex flex-col gap-14 md:gap-18">
+
+        {/* Header */}
+        <motion.div
+          className="text-center max-w-2xl mx-auto"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={fadeUp}
+          custom={0}
+        >
+          <div className="flex justify-center mb-5">
+            <div className="flex items-center gap-4">
+              <span className="h-px w-8 bg-primary" />
+              <span className="bg-primary text-primary-foreground text-xs uppercase tracking-[0.2em] font-bold px-3 py-1 rounded-sm">
+                Estrutura Fabril
+              </span>
+              <span className="h-px w-8 bg-primary" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-display font-semibold mt-4 drop-shadow-md">
-              Tecnologia Europeia e Chinesa —{" "}
-              <span className="text-primary">qualidade padronizada.</span>
-            </h2>
-            <p className="text-foreground/80 text-base md:text-lg leading-relaxed max-w-3xl mx-auto mt-6">
-              Nossa fábrica em Pernambuco possui 10.000 m² equipados com maquinário de última geração. Isso garante agilidade, repetibilidade e um acabamento premium.
-            </p>
           </div>
+          <h2 className="text-3xl md:text-4xl font-display font-semibold text-white drop-shadow-lg">
+            Tecnologia Europeia e Chinesa —{" "}
+            <span className="text-primary">qualidade padronizada.</span>
+          </h2>
+        </motion.div>
 
-          <div className="text-center mb-10 mt-10">
-            <h3 className="text-sm uppercase tracking-[0.2em] font-bold text-primary/70 mb-2">Processo Produtivo MBarros</h3>
-            <h4 className="text-xl md:text-2xl font-display font-medium text-foreground max-w-2xl mx-auto">
-              Precisão, Matérias-Primas e Fornecedores Homologados
-            </h4>
-          </div>
-
-          <div className="w-full h-full" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-            <Carousel setApi={setApi} opts={{ loop: true, align: "center", dragFree: true }} className="w-full h-full">
-              <CarouselContent className="-ml-4 h-full py-4">
+        {/* Materials carousel */}
+        <motion.div
+          className="relative"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          custom={0.1}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <Carousel setApi={setApi} opts={{ loop: true, align: "center", dragFree: true }} className="w-full">
+            <CarouselContent className="-ml-4 py-2">
               {materials.map((m, idx) => (
-                <CarouselItem key={idx} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="h-full bg-card/30 backdrop-blur-md border border-border/30 p-5 rounded-xl text-sm flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-4 text-primary">
-                      <m.icon className="w-6 h-6" />
+                <CarouselItem key={idx} className="pl-4 basis-4/5 sm:basis-1/2 lg:basis-1/3">
+                  <div className="bg-white/6 backdrop-blur-lg border border-white/10 p-5 rounded-xl flex flex-col items-center text-center hover:-translate-y-1 transition-transform duration-300 shadow-lg">
+                    <div className="w-9 h-9 rounded-full bg-primary/25 flex items-center justify-center mb-3 text-primary">
+                      <m.icon className="w-5 h-5" />
                     </div>
-                    <h5 className="text-foreground font-display font-semibold text-base mb-1">{m.name}</h5>
-                    <p className="text-muted-foreground text-xs leading-relaxed">{m.description} </p>
+                    <h5 className="text-white font-display font-semibold text-sm mb-1">{m.name}</h5>
+                    <p className="text-white/50 text-xs leading-relaxed">{m.description}</p>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            {/* Prev / Next buttons over video */}
-            <button onClick={() => api?.scrollPrev()} className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors">
-              <ChevronLeft size={24} />
-            </button>
-            <button onClick={() => api?.scrollNext()} className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-10 items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors">
-              <ChevronRight size={24} />
-            </button>
           </Carousel>
-          
-          <div className="flex justify-center gap-2 mt-8">
+
+          <div className="flex justify-center gap-2 mt-5">
             {materials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-8 bg-primary" : "w-2 bg-white/30"}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-8 bg-primary" : "w-2 bg-white/20"}`}
               />
             ))}
           </div>
-          </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Photo Grid */}
-      <div className="max-w-6xl mx-auto px-4 pb-10 w-full">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          <div className="relative overflow-hidden rounded-lg col-span-2 md:col-span-1 row-span-2 h-64 md:h-full group">
-            <img src={galleryPhotos[0].src} alt={galleryPhotos[0].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[0].caption}</span>
-          </div>
-          <div className="relative overflow-hidden rounded-lg h-44 md:h-auto group">
-            <img src={galleryPhotos[1].src} alt={galleryPhotos[1].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[1].caption}</span>
-          </div>
-          <div className="relative overflow-hidden rounded-lg h-44 md:h-auto group">
-            <img src={galleryPhotos[2].src} alt={galleryPhotos[2].alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-            <span className="absolute bottom-4 left-4 text-white text-sm font-medium tracking-wide">{galleryPhotos[2].caption}</span>
-          </div>
+        {/* Photo strip */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+          {galleryPhotos.map((photo, index) => (
+            <motion.div
+              key={photo.src}
+              className="relative overflow-hidden rounded-xl group ring-1 ring-white/8"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              variants={fadeUp}
+              custom={index * 0.12}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                className="h-52 md:h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+              <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/30 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/75">
+                0{index + 1}
+              </span>
+              <span className="absolute bottom-3 left-4 text-white text-sm font-semibold tracking-wide">
+                {photo.caption}
+              </span>
+            </motion.div>
+          ))}
         </div>
-      </div>
 
-      {/* CTA */}
-      <div className="text-center pb-16">
-        <Button variant="heroBorder" size="lg" asChild>
-          <Link to="/estrutura">
-            Conheça nossa estrutura
-            <ArrowRight size={18} className="ml-2" />
-          </Link>
-        </Button>
+        {/* CTA */}
+        <motion.div
+          className="text-center"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={fadeUp}
+          custom={0.15}
+        >
+          <Button variant="heroBorder" size="lg" className="text-white border-white/80 hover:bg-primary hover:text-primary-foreground hover:border-primary" asChild>
+            <Link to="/estrutura">
+              Conheça nossa estrutura
+              <ArrowRight size={18} className="ml-2" />
+            </Link>
+          </Button>
+        </motion.div>
+
       </div>
     </section>
   );
