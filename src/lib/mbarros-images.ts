@@ -3,6 +3,7 @@ export type MbarrosImage = {
   title: string;
   heroDurationMs?: number;
   heroFocusPosition?: string;
+  heroFocusPositionMobile?: string;
   heroProximity?: boolean;
 };
 
@@ -12,6 +13,7 @@ export const MBARROS_IMAGES: MbarrosImage[] = [
     title: "Foto atualizada da indústria",
     heroDurationMs: 12500,
     heroFocusPosition: "50% 100%",
+    heroFocusPositionMobile: "55% 100%",
     heroProximity: true,
   },
 ];

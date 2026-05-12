@@ -197,14 +197,17 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile actions: theme toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-1">
+            <ThemeToggle />
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -216,6 +219,7 @@ const Header = () => {
                 compact
                 subtle
                 formClassName="rounded-full px-2"
+                hideDefaultSuggestions
               />
 
               {navItems.map((item) => (
@@ -238,13 +242,6 @@ const Header = () => {
                   {t("header.idioma")}
                 </span>
                 <LanguageSwitcher compact />
-              </div>
-
-              <div className="pt-2 flex items-center justify-between">
-                <span className="text-sm uppercase tracking-wider font-medium text-foreground/80">
-                  {t("header.tema")}
-                </span>
-                <ThemeToggle />
               </div>
 
               <Button variant="hero" className="mt-4" asChild>

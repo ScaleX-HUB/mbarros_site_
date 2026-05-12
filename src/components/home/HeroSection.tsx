@@ -73,12 +73,14 @@ const HeroSection = () => {
         <AnimatePresence mode="sync" initial={false}>
           <motion.div
             key={activeImage.src}
-            className="absolute inset-0 bg-cover"
+            className="absolute inset-0 bg-[size:auto_160%] md:bg-cover bg-[position:var(--hero-pos-mobile)] md:bg-[position:var(--hero-pos)]"
             style={{
               backgroundImage: `url('${activeImage.src}')`,
-              backgroundPosition: activeImage.heroFocusPosition ?? "center center",
-              transformOrigin: "50% 50%",
-            }}
+              transformOrigin: "50% 100%",
+              "--hero-pos": activeImage.heroFocusPosition ?? "center center",
+              "--hero-pos-mobile":
+                activeImage.heroFocusPositionMobile ?? activeImage.heroFocusPosition ?? "center center",
+            } as Record<string, string>}
             initial={{ opacity: 0, scale: 1.12 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
