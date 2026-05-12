@@ -9,7 +9,7 @@ const accordionItems = [
     id: "projetos",
     label: "Projetos",
     content:
-      "Atendemos a projetos corporativos e fornecemos móveis sob medida para uma rede de lojistas parceiros em todo o Nordeste.",
+      "Atendemos projetos corporativos, residenciais, hospitalares e hoteleiros, com móveis sob medida e alto padrão, por meio de uma rede de lojistas parceiros em todo o Nordeste.",
   },
   {
     id: "publico",

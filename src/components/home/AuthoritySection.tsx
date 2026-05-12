@@ -41,28 +41,10 @@ const AuthoritySection = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
 
-          {/* Main card — image + content snap together */}
+          {/* Main card — content only */}
           <div className="overflow-hidden shadow-[0_8px_48px_rgba(0,0,0,0.13)] border border-border/40">
 
-            {/* Factory image — slides down */}
-            <motion.div
-              className="relative overflow-hidden"
-              style={{ height: "clamp(160px, 20vw, 260px)" }}
-              initial={{ y: -32, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <img
-                src="/imagens_mbarros/FOTO%20DA%20INDUSTRIA%20-%20ATUALIZADA%20(1).png"
-                alt="Parque fabril MBarros"
-                className="w-full h-full object-cover object-[50%_78%]"
-              />
-              {/* Gradient blending into card below */}
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-card" />
-            </motion.div>
-
-            {/* Content row — slides up to meet image */}
+            {/* Content row */}
             <motion.div
               className="grid md:grid-cols-[44%_56%] bg-card"
               initial={{ y: 32, opacity: 0 }}

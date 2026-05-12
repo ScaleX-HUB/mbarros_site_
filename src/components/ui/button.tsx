@@ -15,7 +15,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-sm",
         ghost: "hover:bg-muted hover:text-foreground rounded-sm",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-to-r from-primary to-accent text-primary-foreground hover:shadow-[0_0_30px_hsl(28_80%_41%/0.4)] rounded-sm",
+        hero: "relative overflow-hidden bg-gradient-to-b from-white to-neutral-100 text-black border border-black/20 shadow-[0_2px_4px_rgba(0,0,0,0.08),0_8px_24px_-6px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.9)] hover:from-white hover:to-white hover:border-black/40 hover:shadow-[0_4px_8px_rgba(0,0,0,0.12),0_14px_36px_-8px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_6px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.6)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[hsl(28_80%_41%)]/70 before:to-transparent after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[hsl(28_80%_41%)]/40 after:to-transparent after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-500 rounded-sm",
         heroBorder: "border-2 border-primary bg-transparent text-foreground hover:bg-primary hover:text-primary-foreground rounded-sm",
       },
       size: {

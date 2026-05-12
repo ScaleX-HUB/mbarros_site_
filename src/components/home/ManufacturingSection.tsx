@@ -34,7 +34,7 @@ const capabilities: ReadonlyArray<{ icon: LucideIcon; title: string; description
   },
   {
     icon: Leaf,
-    title: "Orgânicos",
+    title: "Formas Orgânicas",
     description: "Formas orgânicas e curvas produzidas com maquinário CNC de última geração.",
   },
   {
@@ -70,7 +70,6 @@ const ManufacturingSection = () => {
   return (
     <section className="section-container bg-background py-14 md:py-20">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-10">
           <div className="flex justify-center mb-5">
             <div className="flex items-center gap-4">
@@ -86,11 +85,10 @@ const ManufacturingSection = () => {
             style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}
           >
             Diferenciais que sua loja precisa,{" "}
-            <span className="text-gradient">produzido por nós</span>
+            <span className="text-gradient">produzidos por nós</span>
           </h2>
         </div>
 
-        {/* Cards grid */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4"
           variants={container}
@@ -102,15 +100,11 @@ const ManufacturingSection = () => {
             <motion.div
               key={title}
               variants={item}
-              className="group relative flex flex-col items-start gap-3 rounded-none border border-border/60 bg-card p-5 overflow-hidden
-                         hover:border-primary/50 hover:shadow-[0_4px_24px_hsl(var(--primary)/0.12)] transition-all duration-300"
+              className="group relative flex flex-col items-start gap-3 rounded-none border border-border/60 bg-card p-5 overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-[0_4px_24px_hsl(var(--primary)/0.12)]"
             >
-              {/* Top accent line */}
-              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0
-                              translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0 translate-x-[-100%] transition-transform duration-500 group-hover:translate-x-0" />
 
-              <div className="flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 text-primary border border-primary/20
-                              group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+              <div className="flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 text-primary border border-primary/20 transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
               </div>
 

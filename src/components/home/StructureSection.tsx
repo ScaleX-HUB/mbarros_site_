@@ -16,9 +16,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 const galleryPhotos = [
-  { src: "/imagens_mbarros/pessoa_operando_maquina_fabrica_nova.png", alt: "Operador de máquina na fábrica MBarros", caption: "Operação Industrial" },
-  { src: "/imagens_mbarros/pessoas_trabalhando_fabrica_nova_mbarros.png", alt: "Equipe trabalhando na nova fábrica MBarros", caption: "Equipe em Ação" },
-  { src: "/imagens_mbarros/maquina_industria.webp", alt: "Maquinário industrial MBarros", caption: "Maquinário de Ponta" },
+  { src: "/imagens_mbarros/estrutura-equipe-em-acao.png", alt: "Equipe trabalhando na estrutura MBarros", caption: "Equipe em Ação" },
+  { src: "/imagens_mbarros/estrutura-maquinario-de-ponta.png", alt: "Maquinário de ponta na fábrica MBarros", caption: "Maquinário de Ponta" },
+  { src: "/imagens_mbarros/estrutura-operacao-industrial.jpeg", alt: "Operação industrial na fábrica MBarros", caption: "Operação Industrial" },
 ];
 
 const StructureSection = () => {
@@ -79,7 +79,9 @@ const StructureSection = () => {
     if (!api) return;
     const onSelect = () => setCurrent(api.selectedScrollSnap());
     api.on("select", onSelect);
-    return () => { api.off("select", onSelect); };
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
   useEffect(() => {
@@ -88,37 +90,35 @@ const StructureSection = () => {
     return stopTimer;
   }, [isPaused, startTimer, stopTimer]);
 
-
   const fadeUp = {
     hidden: { opacity: 0, y: 28 },
-    show: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay } }),
+    show: (delay = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
+    }),
   };
 
   return (
     <section className="relative w-full overflow-hidden">
-      {/* Video — full section background */}
       <div className="absolute inset-0">
         <video
           src="/videos/IMG_8483.mp4"
-          autoPlay muted loop playsInline aria-hidden="true"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        {/* Base dark overlay */}
         <div className="absolute inset-0 bg-black/80" />
-        {/* Uniform darkening — no transparent center */}
         <div className="absolute inset-0 bg-black/20" />
-        {/* Top fade — blends from previous section in light mode */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
-        {/* Bottom fade — blends into next section */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
-        {/* Top accent line */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-28 md:pt-28 md:pb-36 flex flex-col gap-14 md:gap-18">
-
-        {/* Header */}
         <motion.div
           className="text-center max-w-2xl mx-auto"
           initial="hidden"
@@ -137,12 +137,11 @@ const StructureSection = () => {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-semibold text-white drop-shadow-lg">
-            Tecnologia Europeia e Chinesa —{" "}
+            Tecnologia Europeia e Chinesa{" "}
             <span className="text-primary">qualidade padronizada.</span>
           </h2>
         </motion.div>
 
-        {/* Materials carousel */}
         <motion.div
           className="relative"
           initial="hidden"
@@ -174,13 +173,13 @@ const StructureSection = () => {
               <button
                 key={i}
                 onClick={() => api?.scrollTo(i)}
+                aria-label={`Ver diferencial ${i + 1}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? "w-8 bg-primary" : "w-2 bg-white/20"}`}
               />
             ))}
           </div>
         </motion.div>
 
-        {/* Photo strip */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           {galleryPhotos.map((photo, index) => (
             <motion.div
@@ -209,7 +208,6 @@ const StructureSection = () => {
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           className="text-center"
           initial="hidden"
@@ -225,7 +223,6 @@ const StructureSection = () => {
             </Link>
           </Button>
         </motion.div>
-
       </div>
     </section>
   );
