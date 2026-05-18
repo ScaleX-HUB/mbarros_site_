@@ -75,11 +75,11 @@ const BlogPost = () => {
               <Link to="/blog" className="block text-muted-foreground transition-colors hover:text-primary">
                 Ir para todos os artigos
               </Link>
-              <Link to="/parceiro" className="block text-muted-foreground transition-colors hover:text-primary">
-                Conhecer o modelo Parceiro
+              <Link to="/seja-parceiro" className="block text-muted-foreground transition-colors hover:text-primary">
+                Conhecer o modelo lojista
               </Link>
               <Link to="/seja-parceiro" className="block text-muted-foreground transition-colors hover:text-primary">
-                Falar sobre parceria
+                Falar sobre ser lojista
               </Link>
             </div>
           </aside>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -74,7 +74,7 @@ const Card = ({
 
   return (
     <motion.div
-      className={cn("absolute overflow-hidden rounded-xl shadow-lg", isFront && "z-20")}
+      className={cn("absolute overflow-hidden rounded-xl bg-black shadow-lg", isFront && "z-20")}
       style={{
         width: cardBoxWidth,
         height: cardBoxHeight,
@@ -178,9 +178,8 @@ const Card = ({
         alt={alt}
         width={resolvedWidth}
         height={resolvedHeight}
-        className="h-full w-full object-cover rounded-xl"
+        className="h-full w-full object-contain rounded-xl"
         loading={isFront ? "eager" : "lazy"}
-        fetchPriority={isFront ? "high" : "auto"}
         decoding="async"
         draggable={false}
       />
@@ -212,10 +211,10 @@ export function CardStack3D({
   const isControlled = frontIndex !== undefined;
   const currentFrontIndex = isControlled ? frontIndex! : frontCardIndex;
 
-  const setFrontIndex = (next: number | null) => {
+  const setFrontIndex = useCallback((next: number | null) => {
     if (!isControlled) setFrontCardIndex(next);
     onFrontIndexChange?.(next);
-  };
+  }, [isControlled, onFrontIndexChange]);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -239,7 +238,14 @@ export function CardStack3D({
     }, autoFrontCycleMs);
 
     return () => window.clearInterval(id);
-  }, [autoFrontCycleMs, currentFrontIndex, images.length, isControlled, onFrontIndexChange]);
+  }, [
+    autoFrontCycleMs,
+    currentFrontIndex,
+    images.length,
+    isControlled,
+    onFrontIndexChange,
+    setFrontIndex,
+  ]);
 
   return (
     <div className={cn("flex justify-center items-center", className)}>

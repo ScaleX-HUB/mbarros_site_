@@ -4,7 +4,7 @@ export const en = {
     projetos: "Projects",
     blog: "Blog",
     contato: "Contact",
-    sejaParceiro: "Become a Partner",
+    sejaParceiro: "Become a Retailer",
     faleComEquipe: "Talk to our team",
     trabalheConosco: "Work with Us",
     busque: "Search",
@@ -16,7 +16,7 @@ export const en = {
     title1: "Industrial structure for",
     title2: "brands that want to grow",
     subtitle: "Partner with a smart industry. We focus on production so you can focus on sales.",
-    ctaParceiro: "Become a Partner",
+    ctaParceiro: "Become a Retailer",
     ctaContato: "Talk to our team"
   },
   authority: {

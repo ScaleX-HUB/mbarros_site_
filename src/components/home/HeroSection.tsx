@@ -38,8 +38,8 @@ const heroCards = [
   {
     title: "Quem Atendemos",
     description: "Lojistas, construtoras e arquitetos que confiam no nosso padrão corporativo e residencial.",
-    href: "/parceiro",
-    cta: "Entender o modelo",
+    href: "/seja-parceiro",
+    cta: "Seja um lojista",
   },
 ] as const;
 

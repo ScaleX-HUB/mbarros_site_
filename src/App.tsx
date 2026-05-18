@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
-import WhiteLabel from "./pages/WhiteLabel";
 import ProjetosGaleria from "./pages/ProjetosGaleria";
 import Contato from "./pages/Contato";
 import SejaParceiro from "./pages/SejaParceiro";
@@ -102,8 +101,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/estrutura" element={<Estrutura />} />
-            <Route path="/white-label" element={<Navigate to="/parceiro" replace />} />
-            <Route path="/parceiro" element={<WhiteLabel />} />
+            <Route path="/white-label" element={<Navigate to="/seja-parceiro" replace />} />
+            <Route path="/parceiro" element={<Navigate to="/seja-parceiro" replace />} />
             <Route path="/projetos" element={<ProjetosGaleria />} />
             <Route path="/contato" element={<Contato />} />
             <Route path="/seja-parceiro" element={<SejaParceiro />} />

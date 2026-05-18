@@ -4,7 +4,7 @@ export const es = {
     projetos: "Proyectos",
     blog: "Blog",
     contato: "Contacto",
-    sejaParceiro: "Sea un Socio",
+    sejaParceiro: "Sea un Minorista",
     faleComEquipe: "Hable con nosotros",
     trabalheConosco: "Trabaja con Nosotros",
     busque: "Buscar",
@@ -16,7 +16,7 @@ export const es = {
     title1: "Estructura industrial para",
     title2: "marcas que quieren crecer",
     subtitle: "Asóciese con una industria inteligente. Nos centramos en la producción para que usted se centre en las ventas.",
-    ctaParceiro: "Sea un Socio",
+    ctaParceiro: "Sea un Minorista",
     ctaContato: "Hable con nuestro equipo"
   },
   authority: {
