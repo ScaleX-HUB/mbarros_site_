@@ -56,7 +56,7 @@ const Busca = () => {
                 Nada encontrado
               </h2>
               <p className="mt-3 text-sm text-muted-foreground">
-                Tente buscar por termos como White Label, Corporativo, Blog ou Contato.
+                Tente buscar por termos como Lojista, Corporativo, Blog ou Contato.
               </p>
             </div>
           )}

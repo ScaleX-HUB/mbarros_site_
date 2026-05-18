@@ -351,7 +351,7 @@ const Estrutura = () => {
             </div>
             <div className="flex items-center gap-3 shrink-0">
               <Button variant="hero" size="sm" asChild>
-                <Link to="/seja-parceiro">Quero ser parceiro <ArrowRight size={15} className="ml-1" /></Link>
+                <Link to="/seja-parceiro">Quero ser lojista <ArrowRight size={15} className="ml-1" /></Link>
               </Button>
               <Button variant="outline" size="sm" asChild>
                 <Link to="/contato">Fale conosco</Link>

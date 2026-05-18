@@ -41,42 +41,6 @@ const LEGACY_CATEGORY_META: ProjectCategoryMeta[] = [
 ];
 
 const LEGACY_CATEGORY_IMAGES: Partial<Record<ProjectCategory, CardImage[]>> = {
-  residenciais: [
-    {
-      src: "/imagens_mbarros/projetos_corporativos/casa-design-home-office-681x1024.jpg",
-      alt: "Home office planejado com estantes modulares e parede de tijolinho",
-    },
-    {
-      src: "/imagens_mbarros/projetos_corporativos/casa-design-office.jpg",
-      alt: "Escritorio pessoal com estante em madeira escura e papel de parede tropical",
-    },
-  ],
-  corporativos: [
-    {
-      src: "/imagens_mbarros/projetos_corporativos/casa-design-moveis-sala-reuniao-3-bvg-1024x683.jpg",
-      alt: "Sala de reunioes executiva com painel em laca escura e TV embutida",
-    },
-    {
-      src: "/imagens_mbarros/projetos_corporativos/casa-design-sala-reuniao.jpg",
-      alt: "Sala de reuniao com armarios em laca vermelha e mesa central",
-    },
-    {
-      src: "/imagens_mbarros/projetos_corporativos/PHOTO-2017-01-30-17-42-15-1024x768.jpg",
-      alt: "Balcao de recepcao corporativa em laminado branco com tampo de vidro",
-    },
-    {
-      src: "/imagens_mbarros/projetos_corporativos/PHOTO-2017-01-30-17-38-45-1024x768.jpg",
-      alt: "Balcao de recepcao em granito com painel de marcenaria ao fundo",
-    },
-    {
-      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-6.jpeg",
-      alt: "Grande salao com mesas longas em madeira e metal",
-    },
-    {
-      src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-8.jpeg",
-      alt: "Espaco de trabalho coletivo com fileiras de mesas e divisorias",
-    },
-  ],
   especiais: [
     {
       src: "/imagens_mbarros/projetos_especiais/aeroportorecife2.jpg",
@@ -105,6 +69,172 @@ const LEGACY_CATEGORY_IMAGES: Partial<Record<ProjectCategory, CardImage[]>> = {
   ],
 };
 
+const generatedCorporateImages =
+  (GENERATED_PROJECT_CATEGORY_IMAGES as Partial<Record<ProjectCategory, CardImage[]>>)
+    .corporativos ?? [];
+
+const getGeneratedCorporateImage = (fileToken: string, alt: string): CardImage => {
+  const image = generatedCorporateImages.find((item) => item.src.includes(fileToken));
+
+  if (!image) {
+    return { src: "/placeholder.svg", alt };
+  }
+
+  return { ...image, alt };
+};
+
+const corporateReceptionImages: CardImage[] = [
+  getGeneratedCorporateImage(
+    "001-2020-11-07-casadesign-fecomercio-fotocomph-07",
+    "Recepção corporativa com painel ripado e balcão planejado"
+  ),
+  getGeneratedCorporateImage(
+    "002-2020-11-07-casadesign-fecomercio-fotocomph-08",
+    "Recepção corporativa com marcenaria clara e iluminação indireta"
+  ),
+  getGeneratedCorporateImage(
+    "003-2020-11-07-casadesign-fecomercio-fotocomph-09",
+    "Recepção corporativa com bancada de atendimento"
+  ),
+  getGeneratedCorporateImage(
+    "004-2020-11-07-casadesign-fecomercio-fotocomph-10",
+    "Recepção corporativa ampla com balcão branco"
+  ),
+];
+
+const corporateMeetingImages: CardImage[] = [
+  getGeneratedCorporateImage(
+    "006-2020-11-07-casadesign-fecomercio-fotocomph-19",
+    "Sala de reunião corporativa com mesa redonda e painel amadeirado"
+  ),
+  getGeneratedCorporateImage(
+    "007-2020-11-07-casadesign-fecomercio-fotocomph-23",
+    "Sala de reunião integrada com poltronas e mesa de apoio"
+  ),
+  getGeneratedCorporateImage(
+    "008-2020-11-07-casadesign-fecomercio-fotocomph-29",
+    "Sala de reunião com copa de apoio planejada"
+  ),
+];
+
+const corporateAuditoriumImages: CardImage[] = [
+  {
+    src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-6.jpeg",
+    alt: "Auditório corporativo com bancadas longas em madeira e estrutura metálica",
+  },
+  {
+    src: "/imagens_mbarros/projetos_especiais/projetos-especiais-mbarros-planejados-8.jpeg",
+    alt: "Auditório corporativo com fileiras de mesas planejadas",
+  },
+];
+
+const corporateOfficeImages: CardImage[] = [
+  getGeneratedCorporateImage(
+    "009-escritorio-celia",
+    "Escritório corporativo com estações de trabalho e marcenaria planejada"
+  ),
+  getGeneratedCorporateImage(
+    "010-escritorio-celia-beatriz",
+    "Escritório corporativo com mesa compartilhada"
+  ),
+  getGeneratedCorporateImage(
+    "011-escritorio-celia-beatriz-1",
+    "Escritório corporativo com armários e estações de trabalho"
+  ),
+  getGeneratedCorporateImage(
+    "012-escritorio-celia-beatriz-2",
+    "Escritório corporativo com bancada e nichos superiores"
+  ),
+  getGeneratedCorporateImage(
+    "013-escritorio-celia-beatriz-3",
+    "Escritório corporativo com marcenaria sob medida"
+  ),
+];
+
+const burilTavaresImages: CardImage[] = [
+  {
+    src: "/projetos/corporativos/buril-tavares/buril-tavares-escritorio-1.jpg",
+    alt: "Escritório Buril Tavares com painel amadeirado e estante planejada",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/projetos/corporativos/buril-tavares/buril-tavares-escritorio-2.jpg",
+    alt: "Escritório Buril Tavares com mesa de trabalho e divisória em vidro",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/projetos/corporativos/buril-tavares/buril-tavares-escritorio-3.jpg",
+    alt: "Escritório Buril Tavares com estante iluminada",
+    width: 1600,
+    height: 1066,
+  },
+  {
+    src: "/projetos/corporativos/buril-tavares/buril-tavares-escritorio-4.jpg",
+    alt: "Sala de reunião Buril Tavares com painel iluminado e estante planejada",
+    width: 1600,
+    height: 900,
+  },
+];
+
+const CORPORATE_SEGMENT_ITEMS: ProjectGalleryItem[] = [
+  {
+    id: "corporativos-sala-reuniao",
+    title: "Corporativo - Sala de Reunião",
+    category: "corporativos",
+    image: corporateMeetingImages[0].thumbSrc ?? corporateMeetingImages[0].src,
+    imageWidth: corporateMeetingImages[0].thumbWidth ?? corporateMeetingImages[0].width,
+    imageHeight: corporateMeetingImages[0].thumbHeight ?? corporateMeetingImages[0].height,
+    description: "Salas de reunião corporativas com marcenaria planejada.",
+    relatedImages: corporateMeetingImages,
+  },
+  {
+    id: "corporativos-auditorio",
+    title: "Corporativo - Auditório",
+    category: "corporativos",
+    image: corporateAuditoriumImages[0].src,
+    imageWidth: corporateAuditoriumImages[0].width,
+    imageHeight: corporateAuditoriumImages[0].height,
+    description: "Auditórios e espaços coletivos com bancadas e mobiliário sob medida.",
+    relatedImages: corporateAuditoriumImages,
+  },
+  {
+    id: "corporativos-recepcao",
+    title: "Corporativo - Recepção",
+    category: "corporativos",
+    image: corporateReceptionImages[0].thumbSrc ?? corporateReceptionImages[0].src,
+    imageWidth: corporateReceptionImages[0].thumbWidth ?? corporateReceptionImages[0].width,
+    imageHeight: corporateReceptionImages[0].thumbHeight ?? corporateReceptionImages[0].height,
+    description: "Recepções corporativas com balcões, painéis e acabamento planejado.",
+    relatedImages: corporateReceptionImages,
+  },
+  {
+    id: "corporativos-escritorio",
+    title: "Corporativo - Escritório",
+    category: "corporativos",
+    image: corporateOfficeImages[0].thumbSrc ?? corporateOfficeImages[0].src,
+    imageWidth: corporateOfficeImages[0].thumbWidth ?? corporateOfficeImages[0].width,
+    imageHeight: corporateOfficeImages[0].thumbHeight ?? corporateOfficeImages[0].height,
+    description: "Escritórios planejados com estações, estantes e painéis técnicos.",
+    relatedImages: corporateOfficeImages,
+  },
+  {
+    id: "corporativos-buril-tavares",
+    title: "Corporativo - Buril Tavares",
+    category: "corporativos",
+    image: burilTavaresImages[0].src,
+    imageWidth: burilTavaresImages[0].width,
+    imageHeight: burilTavaresImages[0].height,
+    description: "Projeto corporativo Buril Tavares com escritórios e sala de reunião planejados.",
+    relatedImages: burilTavaresImages,
+  },
+];
+
+const CORPORATE_CATEGORY_IMAGES = CORPORATE_SEGMENT_ITEMS.flatMap(
+  (project) => project.relatedImages
+);
+
 const toProjectMeta = (meta: GeneratedProjectCategoryMeta): ProjectCategoryMeta => ({
   ...meta,
   id: meta.id as ProjectCategory,
@@ -112,12 +242,7 @@ const toProjectMeta = (meta: GeneratedProjectCategoryMeta): ProjectCategoryMeta 
 
 const toProjectItem = (item: GeneratedProjectGalleryItem): ProjectGalleryItem => ({
   ...item,
-  title:
-    item.title === "Projetos Corporativos"
-      ? "Projeto Corporativo Geral"
-      : item.title === "Projeto Hospitalar Geral"
-      ? "Projeto Hospitalar Geral"
-      : item.title,
+  title: item.title === "Projeto Hospitalar Geral" ? "Projeto Hospitalar Geral" : item.title,
   category: item.category as ProjectCategory,
 });
 
@@ -139,7 +264,10 @@ export const PROJECT_CATEGORY_IMAGES: Record<ProjectCategory, CardImage[]> = com
       ] ?? [];
     const legacyImages = LEGACY_CATEGORY_IMAGES[category.id] ?? [];
 
-    acc[category.id] = [...generatedImages, ...legacyImages];
+    acc[category.id] =
+      category.id === "corporativos"
+        ? CORPORATE_CATEGORY_IMAGES
+        : [...generatedImages, ...legacyImages];
     return acc;
   },
   {} as Record<ProjectCategory, CardImage[]>
@@ -171,23 +299,11 @@ const LEGACY_GALLERY_ITEMS: ProjectGalleryItem[] = Object.entries(LEGACY_CATEGOR
     const getLegacyTitle = (imageSrc: string, fallback: string) => {
       const normalized = imageSrc.toLowerCase();
 
-      if (normalized.includes("casa-design-home-office")) return "Casa Design Home Office";
-      if (normalized.includes("casa-design-office")) return "Casa Design Office";
-      if (normalized.includes("casa-design-moveis-sala-reuniao")) {
-        return "Casa Design Sala de Reuniao";
-      }
-      if (normalized.includes("casa-design-sala-reuniao")) return "Casa Design Sala de Reuniao";
-      if (normalized.includes("photo-2017-01-30-17-42-15")) return "Recepcao Corporativa";
-      if (normalized.includes("photo-2017-01-30-17-38-45")) {
-        return "Recepcao Corporativa em Granito";
-      }
       if (normalized.includes("aeroportorecife")) return "Aeroporto de Recife";
       if (normalized.includes("aeropotonatal")) return "Aeroporto de Natal";
       if (normalized.includes("planejados-1")) return "Recepcao Premium Ondulada";
       if (normalized.includes("planejados-2")) return "Recepcao em MDF Ripado";
       if (normalized.includes("planejados-3")) return "Recepcao Ondulada Frontal";
-      if (normalized.includes("planejados-6")) return "Espaco Corporativo Integrado";
-      if (normalized.includes("planejados-8")) return "Estacao de Trabalho Coletiva";
       if (normalized.includes("planejados-9")) return "Instalacao Expositiva Especial";
 
       return fallback;
@@ -207,7 +323,10 @@ const LEGACY_GALLERY_ITEMS: ProjectGalleryItem[] = Object.entries(LEGACY_CATEGOR
 );
 
 export const PROJECT_GALLERY_ITEMS: ProjectGalleryItem[] = [
-  ...GENERATED_PROJECT_GALLERY_ITEMS.map(toProjectItem),
+  ...GENERATED_PROJECT_GALLERY_ITEMS.filter(
+    (item) => item.category !== "corporativos"
+  ).map(toProjectItem),
+  ...CORPORATE_SEGMENT_ITEMS,
   ...LEGACY_GALLERY_ITEMS,
 ];
 

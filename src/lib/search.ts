@@ -1,5 +1,5 @@
 import { blogPosts } from "@/lib/blog-data";
-import { projects, projectCategories } from "@/lib/project-data";
+import { PROJECT_CATEGORY_META, PROJECT_GALLERY_ITEMS } from "@/lib/project-gallery";
 
 export interface SearchSuggestion {
   id: string;
@@ -28,14 +28,6 @@ const staticPages: SearchSuggestion[] = [
     keywords: ["sobre", "historia", "estrutura", "empresa", "pernambuco"],
   },
   {
-    id: "page-parceiro",
-    title: "Parceiro",
-    description: "Modelo de parceria industrial para lojistas e marcas de moveis planejados.",
-    path: "/parceiro",
-    type: "page",
-    keywords: ["white label", "mdf", "mdp", "laca", "aluminio", "vidro"],
-  },
-  {
     id: "page-projetos",
     title: "Projetos",
     description: "Portfolio com ambientes residenciais, corporativos e especiais.",
@@ -60,12 +52,12 @@ const staticPages: SearchSuggestion[] = [
     keywords: ["contato", "telefone", "email", "endereco", "fale conosco"],
   },
   {
-    id: "page-parceiro",
-    title: "Seja um Parceiro",
+    id: "page-lojista",
+    title: "Seja um Lojista",
     description: "Cadastro para lojistas interessados em crescer com estrutura industrial.",
     path: "/seja-parceiro",
     type: "page",
-    keywords: ["parceiro", "lojista", "cadastro", "comercial", "franquia"],
+    keywords: ["parceiro", "lojista", "cadastro", "comercial", "franquia", "white label"],
   },
   {
     id: "page-carreiras",
@@ -77,18 +69,16 @@ const staticPages: SearchSuggestion[] = [
   },
 ];
 
-const categorySuggestions: SearchSuggestion[] = projectCategories
-  .filter((category) => category.id !== "todos")
-  .map((category) => ({
-    id: `category-${category.id}`,
-    title: category.label,
-    description: `Projetos da categoria ${category.label.toLowerCase()}.`,
-    path: `/projetos?categoria=${category.id}`,
-    type: "category" as const,
-    keywords: [category.label, category.id, "portfolio", "projetos"],
-  }));
+const categorySuggestions: SearchSuggestion[] = PROJECT_CATEGORY_META.map((category) => ({
+  id: `category-${category.id}`,
+  title: category.label,
+  description: `Projetos da categoria ${category.label.toLowerCase()}.`,
+  path: `/projetos?categoria=${category.id}`,
+  type: "category" as const,
+  keywords: [category.label, category.id, "portfolio", "projetos"],
+}));
 
-const projectSuggestions: SearchSuggestion[] = projects.map((project) => ({
+const projectSuggestions: SearchSuggestion[] = PROJECT_GALLERY_ITEMS.map((project) => ({
   id: `project-${project.id}`,
   title: project.title,
   description: project.description,
@@ -115,7 +105,7 @@ const SEARCH_ENTRIES: SearchSuggestion[] = [
 
 const DEFAULT_SUGGESTION_IDS = [
   "page-projetos",
-  "page-parceiro",
+  "page-lojista",
   "page-blog",
   "page-contato",
   "category-residenciais",

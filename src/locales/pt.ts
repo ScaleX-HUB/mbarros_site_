@@ -4,7 +4,7 @@ export const pt = {
     projetos: "Projetos",
     blog: "Blog",
     contato: "Contato",
-    sejaParceiro: "Seja um Parceiro",
+    sejaParceiro: "Seja um Lojista",
     faleComEquipe: "Fale com a equipe",
     trabalheConosco: "Trabalhe Conosco",
     busque: "Buscar",
@@ -15,8 +15,8 @@ export const pt = {
     badge: "Indústria 100% Nordestina · Orgulhosamente Pernambucana",
     title1: "Estrutura industrial para",
     title2: "marcas que querem crescer",
-    subtitle: "Seja parceiro de uma indústria inteligente. Focamos na produção para que você foque nas vendas.",
-    ctaParceiro: "Seja um Parceiro",
+    subtitle: "Seja lojista de uma indústria inteligente. Focamos na produção para que você foque nas vendas.",
+    ctaParceiro: "Seja um Lojista",
     ctaContato: "Fale com nosso time"
   },
   authority: {
@@ -101,7 +101,7 @@ export const pt = {
     title1: "Sua loja está pronta para",
     title2: " crescer com estrutura industrial?",
     desc: "Descubra como a parceria industrial pode transformar sua operação e impulsionar seus resultados.",
-    btnPartner: "Quero ser parceiro",
+    btnPartner: "Quero ser lojista",
     btnContact: "Fale com nosso time"
   },
   sobre: {

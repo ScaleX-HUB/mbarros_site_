@@ -161,7 +161,7 @@ const CTASection = () => {
                   {status === "sending" ? (
                     <span className="animate-pulse">Enviando…</span>
                   ) : (
-                    <>Quero ser parceiro <ArrowRight size={16} /></>
+                    <>Quero ser lojista <ArrowRight size={16} /></>
                   )}
                 </button>
 

@@ -24,7 +24,7 @@ const Header = () => {
   const navItems = [
     { label: "Home", path: "/" },
     { label: t("header.sobre"), path: "/sobre" },
-    { label: "Parceiro", path: "/parceiro" },
+    { label: t("header.sejaParceiro"), path: "/seja-parceiro" },
     { label: "Estrutura", path: "/estrutura" },
     { label: t("header.projetos"), path: "/projetos" },
     { label: t("header.blog"), path: "/blog" },
@@ -84,13 +84,13 @@ const Header = () => {
               </Link>
 
               <Link
-                to="/parceiro"
+                to="/seja-parceiro"
                 onMouseEnter={() => setActive(null)}
                 className={`text-sm uppercase tracking-wider font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === "/parceiro" ? "text-primary" : "text-foreground/90"
+                  location.pathname === "/seja-parceiro" ? "text-primary" : "text-foreground/90"
                 }`}
               >
-                Parceiro
+                {t("header.sejaParceiro")}
               </Link>
 
               <Link
