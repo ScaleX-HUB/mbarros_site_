@@ -1,5 +1,5 @@
 ﻿import Layout from "@/components/layout/Layout";
-import { Award, Building2, Factory, Leaf, Maximize2, Play, ShieldCheck, Target, Trees } from "lucide-react";
+import { Award, Factory, Leaf, Maximize2, Play, ShieldCheck, Target, Trees } from "lucide-react";
 import { Timeline } from "@/components/ui/timeline";
 import { MBARROS_IMAGES } from "@/lib/mbarros-images";
 import { useRef, useState } from "react";
@@ -52,7 +52,7 @@ const values = [
   {
     icon: Award,
     title: "Valores",
-    description: "Sustentabilidade, excelência, inovação, parceria com o lojista, compromisso com resultados e ética em cada etapa, valores que fortalecem relações, impulsionam vendas e constroem negócios sólidos no mercado de móveis planejados.",
+    description: "Sustentabilidade, excelência, inovação, parceria com o lojista, compromisso com resultados e ética em cada etapa valores que fortalecem relações, impulsionam vendas e constroem negócios sólidos no mercado de móveis planejados.",
   },
 ];
 
@@ -79,16 +79,19 @@ const groupBrands = [
     name: "MBarros",
     label: "Indústria",
     description: "Responsável pela produção, engenharia dos projetos e atendimento a lojistas parceiros.",
+    logo: "/imagens_mbarros/grupo/mbarros-original.png",
   },
   {
     name: "Casa Design",
     label: "Residencial e projetos especiais",
     description: "Com unidades em Parnamirim e Boa Viagem, desenvolve soluções para ambientes residenciais, corporativos, hoteleiros e projetos especiais.",
+    logo: "/imagens_mbarros/grupo/casa-design-original.png",
   },
   {
     name: "Casa Design Office",
     label: "Mobiliário corporativo",
     description: "Amplia a atuação do grupo com um setor dedicado ao mobiliário corporativo e móveis soltos.",
+    logo: "/imagens_mbarros/grupo/casa-design-original.png",
   },
 ];
 
@@ -208,53 +211,82 @@ const Sobre = () => {
       </section>
 
       {/* Sustainability */}
-      <section className="section-container bg-card py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start">
-            <div className="space-y-5">
-              <span className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-medium">
-                <span className="w-8 h-px bg-primary inline-block" />
-                Sustentabilidade
-              </span>
-              <h2 className="section-title">
-                Compromisso que vai além da produção
-              </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Na MBarros, sustentabilidade não é apenas um diferencial, é parte do processo. A indústria trabalha com matérias-primas certificadas e parceiros reconhecidos nacionalmente, garantindo responsabilidade ambiental em cada etapa da produção.
-                </p>
-                <p>
-                  Os selos FSC® e SCS Global reforçam o compromisso com o uso de madeiras provenientes de reflorestamento e manejo responsável, enquanto a certificação Madeira Verde evidencia práticas alinhadas à preservação ambiental.
-                </p>
-                <p>
-                  Além disso, a parceria com grandes distribuidoras sustentáveis de MDF e MDP, como Duratex e Placas do Brasil, fortalece uma cadeia produtiva mais consciente, unindo qualidade, inovação e responsabilidade ambiental.
-                </p>
+      <section className="bg-card overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-14 md:pt-24 lg:pt-32 pb-16 md:pb-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start">
+              <div className="space-y-5">
+                <span className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-medium">
+                  <span className="w-8 h-px bg-primary inline-block" />
+                  Sustentabilidade
+                </span>
+                <h2 className="section-title">
+                  Compromisso que vai além da produção
+                </h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Na MBarros, sustentabilidade não é apenas um diferencial, é parte do processo. A indústria trabalha com matérias-primas certificadas e parceiros reconhecidos nacionalmente, garantindo responsabilidade ambiental em cada etapa da produção.
+                  </p>
+                  <p>
+                    Os selos FSC® e SCS Global reforçam o compromisso com o uso de madeiras provenientes de reflorestamento e manejo responsável, enquanto a certificação Madeira Verde evidencia práticas alinhadas à preservação ambiental.
+                  </p>
+                  <p>
+                    Além disso, a parceria com grandes distribuidoras sustentáveis de MDF e MDP, como Duratex e Placas do Brasil, fortalece uma cadeia produtiva mais consciente, unindo qualidade, inovação e responsabilidade ambiental.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                {sustainabilityItems.map((item) => (
+                  <div key={item.title} className="card-industrial flex gap-4 items-start">
+                    <div className="shrink-0 inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-sm">
+                      <item.icon size={24} className="text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-display font-medium text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
 
-            <div className="grid gap-4">
-              {sustainabilityItems.map((item) => (
-                <div key={item.title} className="card-industrial flex gap-4 items-start">
-                  <div className="shrink-0 inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-sm">
-                    <item.icon size={24} className="text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-display font-medium text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mt-1">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+        {/* Fade do escuro para o branco (sem conteúdo) */}
+        <div className="h-24 md:h-32 bg-gradient-to-b from-card to-white" aria-hidden="true" />
 
-              <div className="grid grid-cols-3 gap-3 pt-2">
-                {["FSC®", "SCS Global", "Madeira Verde"].map((seal) => (
-                  <div key={seal} className="border border-primary/30 bg-background/60 px-3 py-5 text-center">
-                    <span className="text-xs md:text-sm uppercase tracking-[0.16em] font-semibold text-primary">
-                      {seal}
-                    </span>
+        {/* Faixa branca sólida com os selos */}
+        <div className="bg-white pt-4 pb-20 md:pb-24">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12 md:mb-16">
+                <span className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-medium">
+                  <span className="w-8 h-px bg-primary inline-block" />
+                  Certificações Ambientais
+                  <span className="w-8 h-px bg-primary inline-block" />
+                </span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 items-center justify-items-center">
+                {[
+                  { name: "FSC®", src: "/imagens_mbarros/selos/fsc.png" },
+                  { name: "SCS Global", src: "/imagens_mbarros/selos/scs-global.png" },
+                  { name: "Energia Verde", src: "/imagens_mbarros/selos/energia-verde.jpg" },
+                ].map((seal) => (
+                  <div
+                    key={seal.name}
+                    className="flex items-center justify-center w-full h-40 md:h-48 lg:h-56"
+                  >
+                    <img
+                      src={seal.src}
+                      alt={`Selo ${seal.name}`}
+                      loading="lazy"
+                      className="max-h-full max-w-full object-contain"
+                    />
                   </div>
                 ))}
               </div>
@@ -263,8 +295,11 @@ const Sobre = () => {
         </div>
       </section>
 
+      {/* Fade do branco de volta para o fundo escuro */}
+      <div className="h-24 md:h-32 bg-gradient-to-b from-white to-background" aria-hidden="true" />
+
       {/* Group brands */}
-      <section className="section-container py-24">
+      <section className="container mx-auto px-4 md:px-6 lg:px-8 pb-14 md:pb-24 lg:pb-32 pt-8 md:pt-12">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl mb-12">
             <span className="inline-flex items-center gap-3 text-primary text-sm uppercase tracking-widest font-medium">
@@ -286,10 +321,16 @@ const Sobre = () => {
 
           <div className="grid md:grid-cols-3 gap-4">
             {groupBrands.map((brand) => (
-              <div key={brand.name} className="relative overflow-hidden bg-[#171717] border border-white/10 px-6 py-8 min-h-[250px] flex flex-col">
+              <div key={brand.name} className="relative overflow-hidden bg-[#171717] border border-white/10 px-6 py-8 min-h-[280px] flex flex-col">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
-                <div className="inline-flex items-center justify-center w-11 h-11 bg-primary/15 text-primary rounded-sm mb-8">
-                  <Building2 size={22} />
+                <div className="h-14 flex items-center mb-8">
+                  <img
+                    src={brand.logo}
+                    alt={`Logo ${brand.name}`}
+                    loading="lazy"
+                    className="max-h-full max-w-[180px] object-contain"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                  />
                 </div>
                 <p className="text-[11px] uppercase tracking-[0.2em] text-primary font-semibold mb-3">
                   {brand.label}
