@@ -30,7 +30,7 @@ jobs:
           fi
 
       - name: SSH Trigger Dokku Git Sync
-        uses: appleboy/ssh-action@v1.2.2
+        uses: appleboy/ssh-action@2ead5e36573f08b82fbfce1504f1a4b05a647c6f # v1.2.2
         env:
           VPS_OS_PASSWORD: ${{ secrets.VPS_OS_PASSWORD }}
           GITHUB_DOKKU_TOKEN: ${{ secrets.GITHUB_DOKKU_TOKEN }}
